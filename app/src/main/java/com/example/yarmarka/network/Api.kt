@@ -32,7 +32,7 @@ interface Api {
         @Path("projectId") projectId: Int
     ): Call<Project>
 
-    @POST
+    @POST("/api/project/{projectId}/{candidate}")
     fun addCandidate(
         @Path("projectId") projectId: Int,
         @Path("candidate") candidate: Candidate
