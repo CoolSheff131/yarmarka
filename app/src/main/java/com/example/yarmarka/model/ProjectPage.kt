@@ -1,4 +1,4 @@
-package com.example.yarmarka.Modal
+package com.example.yarmarka.model
 
 data class ProjectPage (
     var current_page: Int? = null,

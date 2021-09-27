@@ -1,4 +1,4 @@
-package com.example.yarmarka.Modal
+package com.example.yarmarka.model
 
 data class Candidate (
     var fio: String? = null,
