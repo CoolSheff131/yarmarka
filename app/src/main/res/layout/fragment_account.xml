@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.account.AccountFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageButton
+        android:id="@+id/btn_account_close"
+        android:layout_width="@dimen/btn_corner_size"
+        android:layout_height="@dimen/btn_corner_size"
+        android:layout_margin="@dimen/app_margin_large"
+        android:background="@drawable/btn_small_white"
+        android:elevation="@dimen/app_elevation"
+        android:src="@drawable/ic_cross"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_profile"
+        style="@style/text_title_black"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/profile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_account_close" />
+
+    <TextView
+        android:id="@+id/tv_title_name"
+        style="@style/text_medium_blue"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        style="@style/text_little_black"
+        android:layout_marginHorizontal="@dimen/app_margin_large"
+        android:layout_marginVertical="@dimen/app_margin_little"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
+        tools:text="Карбушев Иван Владимирович" />
+
+    <TextView
+        android:id="@+id/tv_title_group"
+        style="@style/text_medium_blue"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/group"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_group"
+        style="@style/text_little_black"
+        android:layout_marginHorizontal="@dimen/app_margin_large"
+        android:layout_marginVertical="@dimen/app_margin_little"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_group"
+        tools:text="ИСТб-19-2" />
+
+    <TextView
+        android:id="@+id/tv_title_email"
+        style="@style/text_medium_blue"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_group" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        style="@style/text_little_black"
+        android:layout_marginHorizontal="@dimen/app_margin_large"
+        android:layout_marginVertical="@dimen/app_margin_little"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_email"
+        tools:text="Karbushev_Ivan@mail.ru" />
+
+    <TextView
+        android:id="@+id/tv_title_phone"
+        style="@style/text_medium_blue"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/phone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        style="@style/text_little_black"
+        android:layout_marginHorizontal="@dimen/app_margin_large"
+        android:layout_marginVertical="@dimen/app_margin_little"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_phone"
+        tools:text="+7-964-656-34-93" />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/my_requests"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/btn_big_white" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/my_projects"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/btn_big_blue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

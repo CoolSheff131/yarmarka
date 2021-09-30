@@ -2,4 +2,11 @@
     <string name="app_name">Ярмарка проектов</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile">Профиль</string>
+    <string name="name">ФИО:</string>
+    <string name="group">Группа:</string>
+    <string name="email">E-mail:</string>
+    <string name="phone">Телефон:</string>
+    <string name="my_requests">Мои заявки</string>
+    <string name="my_projects">Мои проекты</string>
 </resources>
