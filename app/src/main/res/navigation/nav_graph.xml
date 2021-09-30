@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/onBoardingFragment">
+    <fragment
+        android:id="@+id/onBoardingFragment"
+        android:name="com.example.yarmarka.ui.onboarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_onBoardingFragment_to_motivationFragment2"
+            app:destination="@id/motivationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.yarmarka.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.yarmarka.ui.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_projectInformationFragment"
+            app:destination="@id/projectInformationFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_motivationFragment2"
+            app:destination="@id/motivationFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_filtersFragment"
+            app:destination="@id/filtersFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_myApplicationsFragment2"
+            app:destination="@id/myApplicationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/projectInformationFragment"
+        android:name="com.example.yarmarka.ui.project_info.ProjectInformationFragment"
+        android:label="fragment_project_information"
+        tools:layout="@layout/fragment_project_information" >
+        <action
+            android:id="@+id/action_projectInformationFragment_to_applicationFragment"
+            app:destination="@id/applicationFragment" />
+        <action
+            android:id="@+id/action_projectInformationFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.yarmarka.ui.account.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_myApplicationsFragment2"
+            app:destination="@id/myApplicationsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_myProjectsFragment"
+            app:destination="@id/myProjectsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filtersFragment"
+        android:name="com.example.yarmarka.ui.filters.FiltersFragment"
+        android:label="fragment_filters"
+        tools:layout="@layout/fragment_filters" />
+    <fragment
+        android:id="@+id/myProjectsFragment"
+        android:name="com.example.yarmarka.ui.my_projects.MyProjectsFragment"
+        android:label="fragment_my_projects"
+        tools:layout="@layout/fragment_my_projects" />
+    <fragment
+        android:id="@+id/applicationFragment"
+        android:name="com.example.yarmarka.ui.application.ApplicationFragment"
+        android:label="fragment_application"
+        tools:layout="@layout/fragment_application" >
+        <action
+            android:id="@+id/action_applicationFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/motivationFragment"
+        android:name="com.example.yarmarka.ui.motivation.MotivationFragment"
+        android:label="fragment_motivation"
+        tools:layout="@layout/fragment_motivation" />
+    <fragment
+        android:id="@+id/myApplicationsFragment"
+        android:name="com.example.yarmarka.ui.my_applications.MyApplicationsFragment"
+        android:label="fragment_my_applications"
+        tools:layout="@layout/fragment_my_applications" />
+</navigation>
