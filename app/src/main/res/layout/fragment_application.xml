@@ -56,8 +56,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/round_white_background"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_input_without_border"
         android:drawableLeft="@drawable/ic_resource_case"
         android:drawablePadding="12dp"
         android:elevation="@dimen/app_elevation"
@@ -68,6 +68,7 @@
         android:padding="10dp"
         android:paddingStart="12dp"
         app:layout_constraintEnd_toEndOf="@+id/btn_project_information_account"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/roleTitle" />
 
@@ -84,8 +85,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/round_white_background"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_input_without_border"
         android:drawableLeft="@drawable/ic_skills"
 
         android:drawablePadding="12dp"
@@ -96,6 +97,7 @@
         android:padding="10dp"
         android:paddingStart="12dp"
         app:layout_constraintEnd_toEndOf="@+id/editTextRole"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/skilsTitle" />
 
@@ -114,9 +116,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/round_white_background"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_input_without_border"
         android:drawableLeft="@drawable/ic_experience"
+
         android:drawablePadding="12dp"
         android:elevation="@dimen/app_elevation"
         android:ems="10"
@@ -126,6 +129,7 @@
 
         android:paddingStart="12dp"
         app:layout_constraintEnd_toEndOf="@+id/editTextSkils"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expTitle" />
 
@@ -146,7 +150,7 @@
         android:layout_width="0dp"
         android:layout_height="28dp"
         android:layout_marginStart="132dp"
-        android:background="@drawable/round_white_background"
+        android:background="@drawable/round_input_without_border"
         android:button="@drawable/ic_check"
         android:elevation="@dimen/app_elevation"
 
