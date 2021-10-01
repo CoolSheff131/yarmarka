@@ -71,10 +71,16 @@
     <string name="prjInfo_req_text">Знание основ верстки и дизайна веб-страниц</string>
     <string name="prjInfo_btn">Оставить заявку на участие</string>
 
-
-
-
-
+    <string name="req_title">Заявка</string>
+    <string name="req_role_title">Какую роль/роли хотели бы занять?*</string>
+    <string name="req_role_field">Android разработчик</string>
+    <string name="req_skils_title">Какими навыками обладаете?*</string>
+    <string name="req_skils_field">Умею делать мобильные приложения</string>
+    <string name="req_exp_title">Опыт участия в проетах</string>
+    <string name="req_exp_field">Помогал строить ракету</string>
+    <string name="req_personal_info">Согласие на обработку персональных данных*</string>
+    <string name="req_required">* - обязательные поля</string>
+    <string name="req_btn">Отправить заявку на участие</string>
 
 
 </resources>
