@@ -179,7 +179,7 @@
     <Button
         android:id="@+id/motivationBtn"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_margin="@dimen/app_margin_large"
         android:text="@string/req_btn"
         app:layout_constraintBottom_toBottomOf="parent"
