@@ -24,4 +24,33 @@
     <string name="motivation_title">Зачем мне участвовать в проетах?</string>
     <string name="motivation_text">Участие в проектах позволяет получить необходимый опыт работе в команде, планировании задач и выполнению их в срок. Также, все проекты имеют практическую пользу. А это отличный шанс использовать уже накопленные знания на реальной практике и углубить их. Весь опыт участия отразится в твоём портфолио которое ты сможешь смело показывать своим работодателям. Все плюсы на лицо. Прокачка софт и хард скиллов в контексте реализации практичных проектов.</string>
     <string name="motivation_btn">Выбрать проект</string>
+
+    <string name="filter_title">Фильтры</string>
+    <string name="filter_projects_status">Проекты:</string>
+    <string name="filter_projects_type">Тип проекта:</string>
+    <string name="filter_leader">Руководитель:</string>
+    <string name="filter_tag">Теги проекта:</string>
+    <string name="filter_time">Сроки реализации:</string>
+    <string name="filter_difficulty">Сложность:</string>
+    <string name="filter_btn">Применить фильтр</string>
+    <string name="filter_projects_status_open">Открытые</string>
+    <string name="filter_projects_status_closed">Закрытые</string>
+    <string name="filter_projects_status_active">Активные</string>
+    <string name="filter_projects_type_research">Иследовательский</string>
+    <string name="filter_projects_type_hard">Прикладной</string>
+    <string name="filter_projects_type_service">Сервисный</string>
+    <string name="filter_leader_arshinsky">Аршинский В.Л.</string>
+    <string name="filter_leader_osipova">Осипова Е.А.</string>
+    <string name="filter_leader_sereshova">Серешева И.А.</string>
+    <string name="filter_leader_lukash">Лукьянов Н.Д.</string>
+    <string name="filter_leader_malanova">Маланова Т.В.</string>
+    <string name="filter_leader_govorkov">Говорков А.С.</string>
+    <string name="filter_tag_univer">Университет</string>
+    <string name="filter_tag_web">Web</string>
+    <string name="filter_tag_ii">ИИ</string>
+    <string name="filter_tag_conference">Конференция</string>
+    <string name="filter_tag_science">Наука</string>
+    <string name="filter_tag_math">Мат. модели</string>
+    <string name="filter_time_start">от</string>
+    <string name="filter_time_end">до</string>
 </resources>

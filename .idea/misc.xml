@@ -5,12 +5,17 @@
       <map>
         <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/drawable/btn_big_blue.xml" value="0.20104166666666667" />
         <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/card_list_item.xml" value="0.4" />
+        <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/card_list_item.xml" value="0.22533800701051576" />
+        <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_account.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_application.xml" value="0.11574074074074074" />
+        <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_filters.xml" value="0.264" />
         <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_login.xml" value="0.15625" />
+        <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_main.xml" value="0.11574074074074074" />
         <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_motivation.xml" value="0.4" />
         <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_my_applications.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_my_projects.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_search.xml" value="0.15625" />
+        <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/tag_list_item.xml" value="0.8800000000000001" />
       </map>
     </option>
   </component>
