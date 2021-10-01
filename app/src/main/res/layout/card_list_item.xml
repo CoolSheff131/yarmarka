@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/app_margin_large"
+    app:cardCornerRadius="@dimen/corner_radius"
+    app:cardElevation="@dimen/app_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/card_title"
+            style="@style/text_card_title_blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/app_margin_large"
+            android:layout_marginTop="@dimen/app_margin_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Платформа для размещения вузовских олимпиад" />
+
+        <TextView
+            android:id="@+id/tv_recruitment_open"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_margin_large"
+            android:layout_marginTop="@dimen/app_margin_large"
+            android:background="@drawable/round_green_background"
+            android:fontFamily="@font/mont_regular"
+            android:paddingHorizontal="@dimen/text_padding_horizontal"
+            android:paddingVertical="@dimen/text_padding_vertical"
+            android:text="@string/recruitment_open"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/constraint_layout_total_places"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_title" />
+
+        <TextView
+            android:id="@+id/tv_recruitment_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_margin_large"
+            android:layout_marginTop="@dimen/app_margin_large"
+            android:background="@drawable/round_red_background"
+            android:fontFamily="@font/mont_regular"
+            android:paddingHorizontal="@dimen/text_padding_horizontal"
+            android:paddingVertical="@dimen/text_padding_vertical"
+            android:text="@string/recruitment_close"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:elevation="@dimen/app_elevation"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/tv_recruitment_open"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_title" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_total_places"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/app_margin_large"
+            android:background="@drawable/round_white_background"
+            android:paddingHorizontal="@dimen/text_padding_horizontal"
+            android:paddingVertical="@dimen/text_padding_vertical"
+            android:elevation="@dimen/app_elevation"
+            app:layout_constraintEnd_toStartOf="@+id/constraint_layout_difficulty"
+            app:layout_constraintStart_toEndOf="@+id/tv_recruitment_open"
+            app:layout_constraintTop_toBottomOf="@+id/card_title">
+
+            <TextView
+                android:id="@+id/tv_title_total_places"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mont_light"
+                android:text="@string/total_places"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_total_places"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/app_margin_small"
+                android:fontFamily="@font/mont_light"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/tv_title_total_places"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_layout_difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/app_margin_large"
+            android:layout_marginRight="@dimen/app_margin_large"
+            android:background="@drawable/round_green_background"
+            android:paddingHorizontal="@dimen/text_padding_horizontal"
+            android:paddingVertical="@dimen/text_padding_vertical"
+            android:elevation="@dimen/app_elevation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraint_layout_total_places"
+            app:layout_constraintTop_toBottomOf="@+id/card_title">
+
+            <TextView
+                android:id="@+id/tv_title_difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/difficulty"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:fontFamily="@font/mont_regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_difficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/app_margin_small"
+                android:text="@string/difficulty"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:fontFamily="@font/mont_regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/tv_title_difficulty"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="5/10" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tv_description"
+            style="@style/text_card_description_black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/app_margin_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_layout_total_places"
+            tools:text="Создать платформу (страничку) для рекламы олимпиад" />
+
+        <TextView
+            android:id="@+id/tv_title_supervisor"
+            style="@style/text_small_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_margin_large"
+            android:layout_marginTop="@dimen/app_margin_large"
+            android:text="@string/supervisor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description" />
+
+        <TextView
+            android:id="@+id/tv_supervisor_name"
+            style="@style/text_small_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_margin_small"
+            android:layout_marginTop="@dimen/app_margin_large"
+            app:layout_constraintStart_toEndOf="@+id/tv_title_supervisor"
+            app:layout_constraintTop_toBottomOf="@+id/tv_description"
+            tools:text="Лукьянов Н.Д." />
+
+        <TextView
+            android:id="@+id/tv_title_estimated_time"
+            style="@style/text_small_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_margin_large"
+            android:layout_marginTop="@dimen/app_margin_small"
+            android:text="@string/estimated_time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_supervisor" />
+
+        <TextView
+            android:id="@+id/tv_estimated_time"
+            style="@style/text_small_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_margin_small"
+            android:layout_marginTop="@dimen/app_margin_small"
+            app:layout_constraintStart_toEndOf="@+id/tv_title_estimated_time"
+            app:layout_constraintTop_toBottomOf="@+id/tv_supervisor_name"
+            tools:text="29.01.21 - 1.06.21" />
+
+        <HorizontalScrollView
+            android:id="@+id/card_tags"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/app_margin_large"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_estimated_time">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/tag_list_item"
+                android:layout_height="wrap_content"/>
+
+        </HorizontalScrollView>
+
+        <Button
+            android:id="@+id/btn_projects"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/app_margin_large"
+            android:text="@string/detail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_tags"
+            style="@style/btn_card" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

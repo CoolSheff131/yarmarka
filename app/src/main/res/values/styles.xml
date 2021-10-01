@@ -9,6 +9,22 @@
         <item name="android:textSize">28sp</item>
     </style>
 
+    <style name="text_card_title_blue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/mont_regular</item>
+        <item name="android:textColor">@color/main_blue</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="text_card_description_black">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/mont_light</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
     <style name="text_medium_blue">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -16,11 +32,18 @@
         <item name="android:textColor">@color/main_blue</item>
     </style>
 
-    <style name="text_little_black">
+    <style name="text_small_blue">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/mont_light</item>
+        <item name="android:textColor">@color/main_blue</item>
+    </style>
+
+    <style name="text_small_black">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:fontFamily">@font/mont_regular</item>
+        <item name="android:fontFamily">@font/mont_light</item>
     </style>
 
     <style name="btn_big_white">
@@ -39,6 +62,15 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="btn_card">
+        <item name="android:background">@drawable/btn_card_blue</item>
+        <item name="android:elevation">@dimen/app_elevation</item>
+        <item name="android:fontFamily">@font/mont_regular</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
 </resources>
