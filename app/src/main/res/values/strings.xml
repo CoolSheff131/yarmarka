@@ -16,5 +16,8 @@
     <string name="detail">Подробнее</string>
     <string name="total_places">Всего мест:</string>
     <string name="difficulty">Сложность</string>
-    <string name="my_projects">Мои проекты</string>
+    <string name="login">Логин</string>
+    <string name="enter">Вход</string>
+    <string name="password">Пароль</string>
+    <string name="to_enter">Войти</string>
 </resources>
