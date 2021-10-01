@@ -1,14 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.motivation.MotivationFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.my_projects.MyProjectsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageButton
+        android:id="@+id/btn_my_projects_close"
+        android:layout_width="@dimen/btn_corner_size"
+        android:layout_height="@dimen/btn_corner_size"
+        android:layout_margin="@dimen/app_margin_large"
+        android:background="@drawable/btn_small_white"
+        android:elevation="@dimen/app_elevation"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
+        android:id="@+id/motivationTitle"
+        style="@style/text_title_black"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_large"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/motivation_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_my_projects_close" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/motivationText"
+        style="@style/text_title_black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_large"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/mont_light"
+        android:text="@string/motivation_text"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motivationTitle"
+        app:lineHeight="30dp" />
+
+    <Button
+        android:id="@+id/motivationBtn"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/motivation_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        style="@style/btn_big_blue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
