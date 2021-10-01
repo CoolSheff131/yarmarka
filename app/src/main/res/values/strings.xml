@@ -53,4 +53,28 @@
     <string name="filter_tag_math">Мат. модели</string>
     <string name="filter_time_start">от</string>
     <string name="filter_time_end">до</string>
+
+    <string name="prjInfo_title">Платформа для размещения вузовских олимпиад</string>
+    <string name="prjInfo_freeSpace">Вакантных мест: 2</string>
+    <string name="prjInfo_active">Набор открыт</string>
+    <string name="prjInfo_leader_title">Руководитель проекта:</string>
+    <string name="prjInfo_leader_text">Лукьянов Никита Дмитриевич</string>
+    <string name="prjInfo_type_title">Тип проекта</string>
+    <string name="prjInfo_type_text">Прикладной</string>
+    <string name="prjInfo_goal_title">Цель проекта</string>
+    <string name="prjInfo_goal_text">Создать платформу (страничку) для рекламы олимпиад</string>
+    <string name="prjInfo_idea_title">Идея проекта</string>
+    <string name="prjInfo_idea_text">В настоящий момент олимпиады проводятся на сайте "Открытые курсы ИРНИТУ", базирующемся на платформе MOODLE, ДАнная платформа при всех ее достоинствах имеет существенный недостаток в сложности регистрации, поэтому необходимо создать страницу с простой регистрацией на мероприятия и подключением через api к moodle</string>
+    <string name="prjInfo_time_title">Сроки реализации</string>
+    <string name="prjInfo_time_text">29.01.21 – 1.06.21</string>
+    <string name="prjInfo_req_title">Требования к участникам</string>
+    <string name="prjInfo_req_text">Знание основ верстки и дизайна веб-страниц</string>
+    <string name="prjInfo_btn">Оставить заявку на участие</string>
+
+
+
+
+
+
+
 </resources>
