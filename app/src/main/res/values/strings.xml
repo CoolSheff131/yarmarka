@@ -12,4 +12,78 @@
     <string name="edt_main_hint">Поиск</string>
     <string name="txt_main_title">Проекты</string>
     <string name="question_mark">\?</string>
+    <string name="recruitment_open">Набор открыт</string>
+    <string name="recruitment_close">Набор закрыт</string>
+    <string name="supervisor">Руководитель:</string>
+    <string name="estimated_time">Сроки реализации:</string>
+    <string name="detail">Подробнее</string>
+    <string name="total_places">Всего мест:</string>
+    <string name="difficulty">Сложность</string>
+    <string name="login">Логин</string>
+    <string name="enter">Вход</string>
+    <string name="password">Пароль</string>
+    <string name="to_enter">Войти</string>
+
+    <string name="motivation_title">Зачем мне участвовать в проетах?</string>
+    <string name="motivation_text">Участие в проектах позволяет получить необходимый опыт работе в команде, планировании задач и выполнению их в срок. Также, все проекты имеют практическую пользу. А это отличный шанс использовать уже накопленные знания на реальной практике и углубить их. Весь опыт участия отразится в твоём портфолио которое ты сможешь смело показывать своим работодателям. Все плюсы на лицо. Прокачка софт и хард скиллов в контексте реализации практичных проектов.</string>
+    <string name="motivation_btn">Выбрать проект</string>
+
+    <string name="filter_title">Фильтры</string>
+    <string name="filter_projects_status">Проекты:</string>
+    <string name="filter_projects_type">Тип проекта:</string>
+    <string name="filter_leader">Руководитель:</string>
+    <string name="filter_tag">Теги проекта:</string>
+    <string name="filter_time">Сроки реализации:</string>
+    <string name="filter_difficulty">Сложность:</string>
+    <string name="filter_btn">Применить фильтр</string>
+    <string name="filter_projects_status_open">Открытые</string>
+    <string name="filter_projects_status_closed">Закрытые</string>
+    <string name="filter_projects_status_active">Активные</string>
+    <string name="filter_projects_type_research">Иследовательский</string>
+    <string name="filter_projects_type_hard">Прикладной</string>
+    <string name="filter_projects_type_service">Сервисный</string>
+    <string name="filter_leader_arshinsky">Аршинский В.Л.</string>
+    <string name="filter_leader_osipova">Осипова Е.А.</string>
+    <string name="filter_leader_sereshova">Серешева И.А.</string>
+    <string name="filter_leader_lukash">Лукьянов Н.Д.</string>
+    <string name="filter_leader_malanova">Маланова Т.В.</string>
+    <string name="filter_leader_govorkov">Говорков А.С.</string>
+    <string name="filter_tag_univer">Университет</string>
+    <string name="filter_tag_web">Web</string>
+    <string name="filter_tag_ii">ИИ</string>
+    <string name="filter_tag_conference">Конференция</string>
+    <string name="filter_tag_science">Наука</string>
+    <string name="filter_tag_math">Мат. модели</string>
+    <string name="filter_time_start">от</string>
+    <string name="filter_time_end">до</string>
+
+    <string name="prjInfo_title">Платформа для размещения вузовских олимпиад</string>
+    <string name="prjInfo_freeSpace">Вакантных мест: 2</string>
+    <string name="prjInfo_active">Набор открыт</string>
+    <string name="prjInfo_leader_title">Руководитель проекта:</string>
+    <string name="prjInfo_leader_text">Лукьянов Никита Дмитриевич</string>
+    <string name="prjInfo_type_title">Тип проекта</string>
+    <string name="prjInfo_type_text">Прикладной</string>
+    <string name="prjInfo_goal_title">Цель проекта</string>
+    <string name="prjInfo_goal_text">Создать платформу (страничку) для рекламы олимпиад</string>
+    <string name="prjInfo_idea_title">Идея проекта</string>
+    <string name="prjInfo_idea_text">В настоящий момент олимпиады проводятся на сайте "Открытые курсы ИРНИТУ", базирующемся на платформе MOODLE, ДАнная платформа при всех ее достоинствах имеет существенный недостаток в сложности регистрации, поэтому необходимо создать страницу с простой регистрацией на мероприятия и подключением через api к moodle</string>
+    <string name="prjInfo_time_title">Сроки реализации</string>
+    <string name="prjInfo_time_text">29.01.21 – 1.06.21</string>
+    <string name="prjInfo_req_title">Требования к участникам</string>
+    <string name="prjInfo_req_text">Знание основ верстки и дизайна веб-страниц</string>
+    <string name="prjInfo_btn">Оставить заявку на участие</string>
+
+    <string name="req_title">Заявка</string>
+    <string name="req_role_title">Какую роль/роли хотели бы занять?*</string>
+    <string name="req_role_field">Android разработчик</string>
+    <string name="req_skils_title">Какими навыками обладаете?*</string>
+    <string name="req_skils_field">Умею делать мобильные приложения</string>
+    <string name="req_exp_title">Опыт участия в проетах</string>
+    <string name="req_exp_field">Помогал строить ракету</string>
+    <string name="req_personal_info">Согласие на обработку персональных данных*</string>
+    <string name="req_required">* - обязательные поля</string>
+    <string name="req_btn">Отправить заявку на участие</string>
+
+
 </resources>

@@ -1,14 +1,294 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.project_info.ProjectInformationFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.my_projects.MyProjectsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageButton
+        android:id="@+id/btn_my_projects_close"
+        android:layout_width="@dimen/btn_corner_size"
+        android:layout_height="@dimen/btn_corner_size"
+        android:layout_margin="@dimen/app_margin_large"
+        android:background="@drawable/btn_small_white"
+        android:elevation="@dimen/app_elevation"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_project_information_account"
+        android:layout_width="@dimen/btn_corner_size"
+        android:layout_height="@dimen/btn_corner_size"
+        android:layout_margin="@dimen/app_margin_large"
+        android:background="@drawable/btn_small_white"
+        android:elevation="@dimen/app_elevation"
+        android:src="@drawable/ic_account"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
+        android:id="@+id/motivationTitle"
+        style="@style/text_title_black"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_large"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/prjInfo_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_my_projects_close" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:background="@drawable/round_green_background"
+        android:elevation="@dimen/app_elevation"
+        android:paddingHorizontal="@dimen/text_padding_horizontal"
+
+        android:paddingVertical="@dimen/text_padding_vertical"
+        app:layout_constraintStart_toEndOf="@+id/constraint_layout_difficulty"
+        app:layout_constraintTop_toBottomOf="@+id/motivationTitle">
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mont_regular"
+            android:text="@string/prjInfo_active"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_difficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/btn_card_blue"
+        android:elevation="@dimen/app_elevation"
+        android:paddingHorizontal="@dimen/text_padding_horizontal"
+        android:paddingVertical="@dimen/text_padding_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motivationTitle">
+
+        <TextView
+            android:id="@+id/tv_mest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mont_regular"
+            android:text="@string/difficulty"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_mest_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_margin_small"
+            android:fontFamily="@font/mont_regular"
+            android:text="@string/difficulty"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_mest"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="5/10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="392dp"
+        android:layout_height="439dp"
+        app:layout_constraintBottom_toTopOf="@+id/submitBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_difficulty">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/leaderTitle"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_large"
+                android:text="@string/prjInfo_leader_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/leaderText"
+                style="@style/text_title_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_large"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/mont_regular"
+                android:text="@string/prjInfo_leader_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/leaderTitle"
+                app:lineHeight="30dp" />
+
+            <TextView
+                android:id="@+id/typePrjTitle"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_large"
+                android:text="@string/prjInfo_type_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/leaderText" />
+
+
+            <TextView
+                android:id="@+id/typePrjText"
+                style="@style/text_title_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_large"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/mont_regular"
+                android:text="@string/prjInfo_type_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/typePrjTitle"
+                app:lineHeight="30dp" />
+
+            <TextView
+                android:id="@+id/goalTitle"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_large"
+                android:text="@string/prjInfo_goal_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/typePrjText" />
+
+
+            <TextView
+                android:id="@+id/goalText"
+                style="@style/text_title_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_large"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/mont_regular"
+                android:text="@string/prjInfo_goal_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goalTitle"
+                app:lineHeight="30dp" />
+
+            <TextView
+                android:id="@+id/ideaTitle"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_large"
+                android:text="@string/prjInfo_idea_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/goalText" />
+
+
+            <TextView
+                android:id="@+id/ideaText"
+                style="@style/text_title_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_large"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/mont_regular"
+                android:text="@string/prjInfo_idea_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ideaTitle"
+                app:lineHeight="30dp" />
+
+            <TextView
+                android:id="@+id/timeTitle"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_large"
+                android:text="@string/prjInfo_time_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ideaText" />
+
+
+            <TextView
+                android:id="@+id/timeText"
+                style="@style/text_title_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_large"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/mont_regular"
+                android:text="@string/prjInfo_time_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/timeTitle"
+                app:lineHeight="30dp" />
+
+            <TextView
+                android:id="@+id/reqTitle"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_large"
+                android:text="@string/prjInfo_req_title"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@+id/timeText" />
+
+
+            <TextView
+                android:id="@+id/reqText"
+                style="@style/text_title_black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_large"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:fontFamily="@font/mont_regular"
+                android:text="@string/prjInfo_req_text"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/reqTitle"
+                app:lineHeight="30dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_margin="@dimen/app_margin_large"
+        android:layout_marginTop="20dp"
+        android:text="@string/prjInfo_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        style="@style/btn_big_blue" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
