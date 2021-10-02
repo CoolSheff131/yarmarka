@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Yarmarka" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/bg_color</item>
+     
     </style>
 
     <style name="Theme.Yarmarka.Launcher" parent="Theme.Yarmarka">
