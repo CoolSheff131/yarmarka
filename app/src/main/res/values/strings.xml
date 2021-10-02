@@ -84,6 +84,7 @@
     <string name="req_personal_info">Согласие на обработку персональных данных*</string>
     <string name="req_required">* - обязательные поля</string>
     <string name="req_btn">Отправить заявку на участие</string>
+    <string name="my_applications">Мои заявки</string>
 
 
 </resources>

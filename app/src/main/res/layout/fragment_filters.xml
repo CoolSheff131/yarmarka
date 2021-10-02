@@ -319,17 +319,17 @@
                 app:layout_constraintTop_toBottomOf="@+id/titleDifficulty" />
 
 
-                <Button
-                    android:id="@+id/btn_filter_apply"
-                    style="@style/btn_big_blue"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/app_margin_large"
-                    android:text="@string/filter_btn"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+            <Button
+                android:id="@+id/btn_filter_apply"
+                style="@style/btn_big_blue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_large"
+                android:text="@string/filter_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -9,7 +9,6 @@ import androidx.navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentAccountBinding
-import com.example.yarmarka.databinding.FragmentMainBinding
 
 class AccountFragment : Fragment() {
 
