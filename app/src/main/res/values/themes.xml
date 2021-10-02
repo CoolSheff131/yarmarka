@@ -1,9 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Yarmarka" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Yarmarka" parent="Theme.AppCompat.Light.NoActionBar">
 
     </style>
-
 
     <style name="Theme.Yarmarka.Launcher" parent="Theme.Yarmarka">
         <item name="android:windowBackground">@drawable/launch_screen</item>

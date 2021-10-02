@@ -7,7 +7,7 @@
     tools:context=".ui.account.AccountFragment">
 
     <ImageButton
-        android:id="@+id/btn_account_close"
+        android:id="@+id/btn_main_filter"
         android:layout_width="@dimen/btn_corner_size"
         android:layout_height="@dimen/btn_corner_size"
         android:layout_margin="@dimen/app_margin_large"
@@ -23,7 +23,7 @@
         android:layout_margin="@dimen/app_margin_large"
         android:text="@string/profile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_account_close" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_filter" />
 
     <TextView
         android:id="@+id/tv_title_name"
