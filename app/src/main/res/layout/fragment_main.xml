@@ -4,13 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
     tools:context=".ui.main.MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageButton
+        android:id="@+id/btn_main_back"
+        android:layout_width="@dimen/btn_corner_size"
+        android:layout_height="@dimen/btn_corner_size"
+        android:layout_margin="@dimen/app_margin_xlarge"
+        android:background="@drawable/btn_small_white"
+        android:elevation="@dimen/app_elevation"
+        android:src="@drawable/ic_back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/bth_main_account"
+        android:layout_width="@dimen/btn_corner_size"
+        android:layout_height="@dimen/btn_corner_size"
+        android:layout_margin="@dimen/app_margin_xlarge"
+        android:background="@drawable/btn_small_white"
+        android:elevation="@dimen/app_elevation"
+        android:src="@drawable/ic_account"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edt_main_search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_xlarge"
+        android:background="@drawable/edt_search_style"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="16dp"
+        android:elevation="@dimen/app_elevation"
+        android:fontFamily="@font/mont_light"
+        android:hint="@string/edt_main_hint"
+        android:textColor="@color/light_grey"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_main_filter"
+        app:layout_constraintEnd_toStartOf="@+id/btn_main_filter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_main_filter"
+        android:inputType="text" />
+
+    <ImageButton
+        android:id="@+id/btn_main_filter"
+        android:layout_width="@dimen/btn_corner_size"
+        android:layout_height="@dimen/btn_corner_size"
+        android:layout_margin="@dimen/app_margin_xlarge"
+        android:background="@drawable/btn_small_white"
+        android:elevation="@dimen/app_elevation"
+        android:src="@drawable/ic_filter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bth_main_account" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/txt_main_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_xlarge"
+        android:fontFamily="@font/mont_semi_bold"
+        android:text="@string/txt_main_title"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bth_main_my_application"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bth_main_my_application" />
+
+    <Button
+        android:id="@+id/bth_main_my_application"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_xlarge"
+        android:background="@drawable/btn_small_white_text"
+        android:elevation="@dimen/app_elevation"
+        android:fontFamily="@font/mont_regular"
+        android:textSize="12sp"
+        android:text="@string/my_projects"
+        android:textAllCaps="false"
+        android:textColor="@color/main_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_filter" />
+
+    <Button
+        android:id="@+id/bth_main_motivation"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/btn_small_white"
+        android:fontFamily="@font/mont_semi_bold"
+        android:src="@drawable/ic_search"
+        android:text="@string/question_mark"
+        android:textColor="@color/main_blue"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bth_main_my_application"
+        app:layout_constraintStart_toEndOf="@+id/txt_main_title"
+        app:layout_constraintTop_toTopOf="@+id/bth_main_my_application" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_main_all_projects"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/app_margin_xlarge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bth_main_my_application" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

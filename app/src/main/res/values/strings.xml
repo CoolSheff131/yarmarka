@@ -9,6 +9,9 @@
     <string name="phone">Телефон:</string>
     <string name="my_requests">Мои заявки</string>
     <string name="my_projects">Мои проекты</string>
+    <string name="edt_main_hint">Поиск</string>
+    <string name="txt_main_title">Проекты</string>
+    <string name="question_mark">\?</string>
     <string name="recruitment_open">Набор открыт</string>
     <string name="recruitment_close">Набор закрыт</string>
     <string name="supervisor">Руководитель:</string>

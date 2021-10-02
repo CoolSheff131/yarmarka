@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="app_margin_xlarge">24dp</dimen>
     <dimen name="app_margin_large">16dp</dimen>
     <dimen name="app_margin_small">6dp</dimen>
     <dimen name="btn_corner_size">40dp</dimen>

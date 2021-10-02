@@ -32,12 +32,23 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    viewBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     // rxJava
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    // ViewBinding
+    implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.4.7'
 
     def room_version = "2.3.0"
     implementation("androidx.room:room-runtime:$room_version")

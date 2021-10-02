@@ -319,7 +319,7 @@
 
 
                 <Button
-                    android:id="@+id/btn_projects"
+                    android:id="@+id/btn_filter_apply"
                     style="@style/btn_big_blue"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
