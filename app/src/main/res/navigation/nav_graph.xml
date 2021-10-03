@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/onBoardingFragment">
-    <fragment
+     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.example.yarmarka.ui.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
@@ -23,7 +23,8 @@
         tools:layout="@layout/fragment_login" >
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
@@ -72,6 +73,11 @@
         <action
             android:id="@+id/action_accountFragment_to_myProjectsFragment"
             app:destination="@id/myProjectsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/filtersFragment"

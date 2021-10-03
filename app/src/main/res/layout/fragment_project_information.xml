@@ -50,7 +50,6 @@
         android:background="@drawable/round_green_background"
         android:elevation="@dimen/app_elevation"
         android:paddingHorizontal="@dimen/text_padding_horizontal"
-
         android:paddingVertical="@dimen/text_padding_vertical"
         app:layout_constraintStart_toEndOf="@+id/constraint_layout_difficulty"
         app:layout_constraintTop_toBottomOf="@+id/project_title">
@@ -75,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:background="@drawable/btn_card_blue"
+        android:background="@drawable/round_blue_background"
         android:elevation="@dimen/app_elevation"
         android:paddingHorizontal="@dimen/text_padding_horizontal"
         android:paddingVertical="@dimen/text_padding_vertical"
@@ -116,6 +115,7 @@
         app:layout_constraintBottom_toTopOf="@+id/submitBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:scrollbars="none"
         app:layout_constraintTop_toBottomOf="@+id/constraint_layout_difficulty">
 
         <androidx.constraintlayout.widget.ConstraintLayout

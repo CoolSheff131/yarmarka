@@ -40,6 +40,12 @@ class AccountFragment : Fragment() {
         binding.btnRequests.setOnClickListener {
             view.findNavController().navigate(R.id.action_accountFragment_to_myApplicationsFragment2)
         }
+
+        binding.btnAccountQuit.setOnClickListener {
+            view.findNavController().navigate(R.id.action_accountFragment_to_onBoardingFragment)
+            //view.findNavController().clearBackStack(R.id.loginFragment)
+//            view.findNavController().popBackStack()
+        }
     }
 
 }

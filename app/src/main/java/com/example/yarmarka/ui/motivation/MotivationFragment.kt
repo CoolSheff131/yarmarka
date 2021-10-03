@@ -33,7 +33,9 @@ class MotivationFragment : Fragment() {
         binding.btnMotivationBack.setOnClickListener {
             view.findNavController().popBackStack()
         }
+
+        binding.motivationBtn.setOnClickListener {
+            view.findNavController().popBackStack()
+        }
     }
-
-
 }

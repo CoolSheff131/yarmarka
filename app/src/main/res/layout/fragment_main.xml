@@ -7,7 +7,7 @@
     android:background="@color/bg_color"
     tools:context=".ui.main.MainFragment">
 
-    <ImageButton
+    <!--<ImageButton
         android:id="@+id/btn_main_back"
         android:layout_width="@dimen/btn_corner_size"
         android:layout_height="@dimen/btn_corner_size"
@@ -16,7 +16,7 @@
         android:elevation="@dimen/app_elevation"
         android:src="@drawable/ic_back_arrow"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <ImageButton
         android:id="@+id/bth_main_account"

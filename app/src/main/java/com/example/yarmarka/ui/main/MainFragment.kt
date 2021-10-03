@@ -64,9 +64,9 @@ class MainFragment : Fragment() , OnProjectClickListener{
 
     private fun initListeners(view: View) {
 
-        binding.btnMainBack.setOnClickListener {
-            view.findNavController().popBackStack()
-        }
+//        binding.btnMainBack.setOnClickListener {
+//            view.findNavController().popBackStack()
+//        }
 
         binding.bthMainAccount.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_accountFragment)
