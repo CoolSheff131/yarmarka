@@ -6,4 +6,6 @@ interface OnProjectClickListener {
 
     fun onProjectItemClicked(project:Project)
 
+    fun onButtonClicked(project: Project)
+
 }

@@ -33,7 +33,20 @@ class ProjectInformationFragment : Fragment() {
         project = arg.project
         Log.d("TAG", project.toString())
 
+        initData()
         initListeners(view)
+
+    }
+
+    private fun initData(){
+        binding.projectTitle.text = project?.title
+        binding.leaderText.text = project?.leader
+        binding.typePrjText.text = project?.type_name
+        binding.goalText.text = project?.goal
+        binding.ideaText.text = project?.idea
+        binding.timeText.text = project?.date_start + "-" + project?.date_end
+        binding.reqText.text = project?.requirements
+        binding.tvMestNumber.text = project?.difficulty.toString()
     }
 
     private fun initListeners(view: View) {
