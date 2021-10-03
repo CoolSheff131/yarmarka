@@ -5,7 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yarmarka.model.Project
 
-class ProjectsRecyclerAdapter (private val projectsList: List<Project>) : RecyclerView.Adapter<ProjectsRecyclerViewHolder>() {
+class ProjectsRecyclerAdapter(
+    private val projectsList: List<Project>,
+    private val onProjectClickListener: OnProjectClickListener
+) : RecyclerView.Adapter<ProjectsRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectsRecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -15,6 +18,9 @@ class ProjectsRecyclerAdapter (private val projectsList: List<Project>) : Recycl
     override fun onBindViewHolder(holder: ProjectsRecyclerViewHolder, position: Int) {
         val project: Project = projectsList[position]
         holder.bind(project)
+        holder.itemView.setOnClickListener {
+            onProjectClickListener.onProjectItemClicked(project)
+        }
     }
 
     override fun getItemCount(): Int = projectsList.size

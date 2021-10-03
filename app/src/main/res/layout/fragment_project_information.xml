@@ -22,7 +22,7 @@
         android:id="@+id/btn_project_information_account"
         android:layout_width="@dimen/btn_corner_size"
         android:layout_height="@dimen/btn_corner_size"
-        android:layout_margin="@dimen/app_margin_large"
+        android:layout_margin="@dimen/app_margin_xlarge"
         android:background="@drawable/btn_small_white"
         android:elevation="@dimen/app_elevation"
         android:src="@drawable/ic_account"
