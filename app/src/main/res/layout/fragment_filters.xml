@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="24dp"
     android:background="@color/bg_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -328,7 +329,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/app_margin_xlarge"
             android:text="@string/filter_btn"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
