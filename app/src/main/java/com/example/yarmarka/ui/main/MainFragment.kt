@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentMainBinding
+import com.example.yarmarka.model.Project
 
 class MainFragment : Fragment() {
 
@@ -22,9 +24,38 @@ class MainFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
+    private val list = listOf(
+        Project(
+            id = 1,
+            title = "Платформа для размещения вузовских олимпиад",
+            goal = "Создать платформу (страничку) для рекламы олимпиад",
+            difficulty = 5,
+            places = 6
+        ),
+        Project(
+            id = 1,
+            title = "Платформа для размещения вузовских олимпиад",
+            goal = "Создать платформу (страничку) для рекламы олимпиад",
+            difficulty = 5,
+            places = 6
+        ),
+        Project(
+            id = 1,
+            title = "Платформа для размещения вузовских олимпиад",
+            goal = "Создать платформу (страничку) для рекламы олимпиад",
+            difficulty = 5,
+            places = 6
+        ),
+    )
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners(view)
+        binding.rcvMainAllProjects.apply {
+            layoutManager = LinearLayoutManager(activity)
+            adapter = ProjectsRecyclerAdapter(list)
+        }
     }
 
     private fun initListeners(view: View) {
