@@ -31,7 +31,8 @@ class MainFragment : Fragment() , OnProjectClickListener{
             title = "Платформа для размещения вузовских олимпиад",
             goal = "Создать платформу (страничку) для рекламы олимпиад",
             difficulty = 5,
-            places = 6
+            places = 6,
+            leader = "Лукьянов Никита Дмитриевич"
         ),
         Project(
             id = 2,
@@ -85,6 +86,12 @@ class MainFragment : Fragment() , OnProjectClickListener{
     }
 
     override fun onProjectItemClicked(project: Project) {
+        val action : MainFragmentDirections.ActionMainFragmentToProjectInformationFragment = MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
+        action.project = project
+        view?.findNavController()?.navigate(action)
+    }
+
+    override fun onButtonClicked(project: Project) {
         val action : MainFragmentDirections.ActionMainFragmentToProjectInformationFragment = MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
         action.project = project
         view?.findNavController()?.navigate(action)

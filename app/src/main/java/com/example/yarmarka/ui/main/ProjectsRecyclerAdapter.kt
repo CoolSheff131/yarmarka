@@ -10,9 +10,11 @@ class ProjectsRecyclerAdapter(
     private val onProjectClickListener: OnProjectClickListener
 ) : RecyclerView.Adapter<ProjectsRecyclerViewHolder>() {
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectsRecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ProjectsRecyclerViewHolder(inflater, parent)
+        return ProjectsRecyclerViewHolder(inflater, parent, onProjectClickListener)
     }
 
     override fun onBindViewHolder(holder: ProjectsRecyclerViewHolder, position: Int) {

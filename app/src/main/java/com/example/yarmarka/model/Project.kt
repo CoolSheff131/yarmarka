@@ -23,5 +23,6 @@ data class Project(
     var type_name: String? = null,
     var user_name: String? = null,
     var vacant_places: Int? = null,
-    var state_name: String? = null
+    var state_name: String? = null,
+    var leader: String? = null
 ) : Parcelable
