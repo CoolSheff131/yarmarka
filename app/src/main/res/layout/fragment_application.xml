@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.my_projects.MyProjectsFragment"
-    >
+    tools:context=".ui.my_projects.MyProjectsFragment">
 
     <ImageButton
         android:id="@+id/btn_my_projects_close"
         android:layout_width="@dimen/btn_corner_size"
         android:layout_height="@dimen/btn_corner_size"
-        android:layout_margin="@dimen/app_margin_large"
+        android:layout_margin="@dimen/app_margin_xlarge"
         android:background="@drawable/btn_small_white"
         android:elevation="@dimen/app_elevation"
 
@@ -24,7 +23,7 @@
         android:id="@+id/btn_project_information_account"
         android:layout_width="@dimen/btn_corner_size"
         android:layout_height="@dimen/btn_corner_size"
-        android:layout_margin="@dimen/app_margin_large"
+        android:layout_margin="@dimen/app_margin_xlarge"
         android:background="@drawable/btn_small_white"
         android:elevation="@dimen/app_elevation"
         android:src="@drawable/ic_account"
@@ -37,7 +36,7 @@
         style="@style/text_title_black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/app_margin_large"
+        android:layout_margin="@dimen/app_margin_xlarge"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/req_title"
@@ -47,7 +46,8 @@
     <TextView
         android:id="@+id/roleTitle"
         style="@style/text_medium_blue"
-        android:layout_margin="@dimen/app_margin_large"
+        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginVertical="@dimen/app_margin_large"
         android:text="@string/req_role_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reqTitle" />
@@ -56,7 +56,7 @@
         android:id="@+id/editTextRole"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/round_input_without_border"
         android:drawableLeft="@drawable/ic_resource_case"
@@ -76,7 +76,8 @@
     <TextView
         android:id="@+id/skilsTitle"
         style="@style/text_medium_blue"
-        android:layout_margin="@dimen/app_margin_large"
+        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginVertical="@dimen/app_margin_large"
         android:text="@string/req_skils_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextRole" />
@@ -85,7 +86,7 @@
         android:id="@+id/editTextSkils"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/round_input_without_border"
         android:drawableLeft="@drawable/ic_skills"
@@ -105,9 +106,8 @@
     <TextView
         android:id="@+id/expTitle"
         style="@style/text_medium_blue"
-        android:layout_margin="@dimen/app_margin_large"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginVertical="@dimen/app_margin_large"
         android:text="@string/req_exp_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextSkils" />
@@ -116,7 +116,7 @@
         android:id="@+id/editTextExp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/round_input_without_border"
         android:drawableLeft="@drawable/ic_experience"
@@ -139,9 +139,8 @@
         style="@style/text_medium_blue"
         android:layout_width="188dp"
         android:layout_height="33dp"
-        android:layout_margin="@dimen/app_margin_large"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginVertical="@dimen/app_margin_large"
         android:text="@string/req_personal_info"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextExp" />
@@ -168,10 +167,8 @@
         style="@style/text_title_black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/app_margin_large"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginVertical="@dimen/app_margin_large"
         android:fontFamily="@font/mont_regular"
         android:text="@string/req_required"
         android:textSize="16sp"
@@ -183,17 +180,14 @@
 
     <Button
         android:id="@+id/motivationBtn"
+        style="@style/btn_big_blue"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_margin="@dimen/app_margin_large"
+        android:layout_margin="@dimen/app_margin_xlarge"
         android:text="@string/req_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        style="@style/btn_big_blue" />
-
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

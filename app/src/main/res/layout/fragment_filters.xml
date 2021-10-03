@@ -2,334 +2,336 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/bg_color"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+        tools:context=".MainActivity">
+
+        <ImageButton
+            android:id="@+id/btn_filter_close"
+            android:layout_width="@dimen/btn_corner_size"
+            android:layout_height="@dimen/btn_corner_size"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:background="@drawable/btn_small_white"
+            android:elevation="@dimen/app_elevation"
+            android:src="@drawable/ic_cross"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_filters"
+            style="@style/text_title_black"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:text="@string/filter_title"
+            app:layout_constraintStart_toEndOf="@+id/btn_filter_close"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/titleProjects"
+            style="@style/text_medium_blue"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:layout_marginStart="216dp"
+            android:text="@string/filter_projects_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_filter_close" />
+
+        <CheckBox
+            android:id="@+id/checkOpen"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:context=".MainActivity">
-            <ImageButton
-        android:id="@+id/btn_filter_close"
-        android:layout_width="@dimen/btn_corner_size"
-        android:layout_height="@dimen/btn_corner_size"
-        android:layout_margin="@dimen/app_margin_large"
-        android:background="@drawable/btn_small_white"
-        android:elevation="@dimen/app_elevation"
-        android:src="@drawable/ic_cross"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_projects_status_open"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleProjects" />
 
-            <TextView
-        android:id="@+id/tv_filters"
-        style="@style/text_title_black"
-        android:layout_margin="@dimen/app_margin_large"
-        android:text="@string/filter_title"
-        app:layout_constraintStart_toEndOf="@+id/btn_filter_close"
-        app:layout_constraintTop_toTopOf="parent" />
+        <CheckBox
+            android:id="@+id/checkClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_projects_status_closed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkOpen" />
 
+        <CheckBox
+            android:id="@+id/checkActive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_projects_status_active"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkClose" />
 
-                <TextView
-                    android:id="@+id/titleProjects"
-                    style="@style/text_medium_blue"
-                    android:layout_margin="@dimen/app_margin_large"
-                    android:layout_marginStart="216dp"
-                    android:text="@string/filter_projects_status"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_filter_close" />
+        <TextView
+            android:id="@+id/titleType"
+            style="@style/text_medium_blue"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:text="@string/filter_projects_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkActive" />
 
-                <CheckBox
-                android:id="@+id/checkOpen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_projects_status_open"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleProjects" />
+        <CheckBox
+            android:id="@+id/checkResearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_projects_type_research"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleType" />
 
-            <CheckBox
-                android:id="@+id/checkClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_projects_status_closed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOpen" />
+        <CheckBox
+            android:id="@+id/checkHard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_projects_type_hard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkResearch" />
 
-            <CheckBox
-                android:id="@+id/checkActive"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_projects_status_active"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkClose" />
+        <CheckBox
+            android:id="@+id/checkService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_projects_type_service"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkHard" />
 
-            <TextView
-                android:id="@+id/titleType"
-                style="@style/text_medium_blue"
-                android:layout_margin="@dimen/app_margin_large"
-                android:text="@string/filter_projects_type"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkActive" />
+        <TextView
+            android:id="@+id/titleLeader"
+            style="@style/text_medium_blue"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:text="@string/filter_leader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkService" />
 
-            <CheckBox
-                android:id="@+id/checkResearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_projects_type_research"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleType" />
+        <CheckBox
+            android:id="@+id/checkArshinsky"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_leader_arshinsky"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleLeader" />
 
-            <CheckBox
-                android:id="@+id/checkHard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_projects_type_hard"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkResearch" />
+        <CheckBox
+            android:id="@+id/checkOsipova"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_leader_osipova"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkArshinsky" />
 
-            <CheckBox
-                android:id="@+id/checkService"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_projects_type_service"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkHard" />
+        <CheckBox
+            android:id="@+id/checkSereshiva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_leader_sereshova"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkOsipova" />
 
-            <TextView
-                android:id="@+id/titleLeader"
-                style="@style/text_medium_blue"
-                android:layout_margin="@dimen/app_margin_large"
-                android:text="@string/filter_leader"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkService" />
+        <CheckBox
+            android:id="@+id/checkLukash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_leader_lukash"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkSereshiva" />
 
-            <CheckBox
-                android:id="@+id/checkArshinsky"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_leader_arshinsky"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleLeader" />
+        <CheckBox
+            android:id="@+id/checkMalanova"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_leader_malanova"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkLukash" />
 
-            <CheckBox
-                android:id="@+id/checkOsipova"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_leader_osipova"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkArshinsky" />
+        <CheckBox
+            android:id="@+id/checkGovorkov"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_leader_govorkov"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkMalanova" />
 
-            <CheckBox
-                android:id="@+id/checkSereshiva"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_leader_sereshova"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkOsipova" />
+        <TextView
+            android:id="@+id/titleTag"
+            style="@style/text_medium_blue"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:text="@string/filter_leader"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkGovorkov" />
 
-            <CheckBox
-                android:id="@+id/checkLukash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_leader_lukash"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkSereshiva" />
+        <CheckBox
+            android:id="@+id/checkUniversity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_tag_univer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTag" />
 
-            <CheckBox
-                android:id="@+id/checkMalanova"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_leader_malanova"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkLukash" />
+        <CheckBox
+            android:id="@+id/checkWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_tag_web"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkUniversity" />
 
-            <CheckBox
-                android:id="@+id/checkGovorkov"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_leader_govorkov"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkMalanova" />
+        <CheckBox
+            android:id="@+id/checkII"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_tag_ii"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkWeb" />
 
-            <TextView
-                android:id="@+id/titleTag"
-                style="@style/text_medium_blue"
-                android:layout_margin="@dimen/app_margin_large"
-                android:text="@string/filter_leader"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkGovorkov" />
+        <CheckBox
+            android:id="@+id/checkConference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_tag_conference"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkII" />
 
-            <CheckBox
-                android:id="@+id/checkUniversity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_tag_univer"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleTag" />
+        <CheckBox
+            android:id="@+id/checkScience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_tag_science"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkConference" />
 
-            <CheckBox
-                android:id="@+id/checkWeb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_tag_web"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkUniversity" />
+        <CheckBox
+            android:id="@+id/checkMath"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_tag_math"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkScience" />
 
-            <CheckBox
-                android:id="@+id/checkII"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_tag_ii"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkWeb" />
+        <TextView
+            android:id="@+id/titleTime"
+            style="@style/text_medium_blue"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:text="@string/filter_time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkMath" />
 
-            <CheckBox
-                android:id="@+id/checkConference"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_tag_conference"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkII" />
+        <EditText
+            android:id="@+id/editTextDateStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTime" />
 
-            <CheckBox
-                android:id="@+id/checkScience"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_tag_science"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkConference" />
+        <TextView
+            android:id="@+id/tv_time_start"
+            style="@style/text_small_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-            <CheckBox
-                android:id="@+id/checkMath"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/filter_tag_math"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkScience" />
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDateStart"
+            app:layout_constraintStart_toEndOf="@+id/editTextDateStart"
+            app:layout_constraintTop_toTopOf="@+id/editTextDateStart"
+            app:layout_constraintVertical_bias="0.518"
+            tools:text="@string/filter_time_start" />
 
-            <TextView
-                android:id="@+id/titleTime"
-                style="@style/text_medium_blue"
-                android:layout_margin="@dimen/app_margin_large"
-                android:text="@string/filter_time"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkMath" />
+        <EditText
+            android:id="@+id/editTextDateEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateStart" />
 
-            <EditText
-                android:id="@+id/editTextDateStart"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:inputType="date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleTime" />
+        <TextView
+            android:id="@+id/tv_time_end"
+            style="@style/text_small_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-            <TextView
-                android:id="@+id/tv_time_start"
-                style="@style/text_small_black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextDateEnd"
+            app:layout_constraintStart_toEndOf="@+id/editTextDateEnd"
+            app:layout_constraintTop_toTopOf="@+id/editTextDateEnd"
+            app:layout_constraintVertical_bias="0.518"
+            tools:text="@string/filter_time_end" />
 
-                android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextDateStart"
-                app:layout_constraintStart_toEndOf="@+id/editTextDateStart"
-                app:layout_constraintTop_toTopOf="@+id/editTextDateStart"
-                app:layout_constraintVertical_bias="0.518"
-                tools:text="@string/filter_time_start" />
+        <TextView
+            android:id="@+id/titleDifficulty"
+            style="@style/text_medium_blue"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:text="@string/filter_difficulty"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextDateEnd" />
 
-            <EditText
-                android:id="@+id/editTextDateEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:ems="10"
-                android:inputType="date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDateStart" />
-
-            <TextView
-                android:id="@+id/tv_time_end"
-                style="@style/text_small_black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/editTextDateEnd"
-                app:layout_constraintStart_toEndOf="@+id/editTextDateEnd"
-                app:layout_constraintTop_toTopOf="@+id/editTextDateEnd"
-                app:layout_constraintVertical_bias="0.518"
-                tools:text="@string/filter_time_end" />
-
-            <TextView
-                android:id="@+id/titleDifficulty"
-                style="@style/text_medium_blue"
-                android:layout_margin="@dimen/app_margin_large"
-                android:text="@string/filter_difficulty"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextDateEnd" />
-
-            <SeekBar
-                android:id="@+id/seekBar2"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="12dp"
-                android:max="100"
-                android:progress="3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/titleDifficulty" />
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:max="100"
+            android:progress="3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleDifficulty" />
 
 
-                <Button
-                    android:id="@+id/btn_filter_apply"
-                    style="@style/btn_big_blue"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/app_margin_large"
-                    android:text="@string/filter_btn"
+        <Button
+            android:id="@+id/btn_filter_apply"
+            style="@style/btn_big_blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:text="@string/filter_btn"
 
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

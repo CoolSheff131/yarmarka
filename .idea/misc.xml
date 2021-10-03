@@ -10,20 +10,21 @@
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/drawable/btn_small_white.xml" value="0.2703125" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/drawable/btn_small_white_text.xml" value="0.2703125" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/drawable/edt_search_style.xml" value="0.2703125" />
+        <entry key="..\:/AndProject/yarmarka/app/src/main/res/drawable/ic_password.xml" value="0.2703125" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/drawable/launch_screen.xml" value="0.2703125" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/drawable/small_white_button_style.xml" value="0.2703125" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/font/aaa.xml" value="0.16041666666666668" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/activity_main.xml" value="0.3255208333333333" />
-        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_account.xml" value="0.4052532833020638" />
-        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_application.xml" value="0.20969202898550723" />
-        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_filters.xml" value="0.20471014492753623" />
-        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_login.xml" value="0.20969202898550723" />
+        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_account.xml" value="0.536" />
+        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_application.xml" value="0.40229885057471265" />
+        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_filters.xml" value="0.1986161986161986" />
+        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_login.xml" value="0.4" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_main.xml" value="0.264" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_motivation.xml" value="0.20471014492753623" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_my_applications.xml" value="0.20516304347826086" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_my_projects.xml" value="0.20516304347826086" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_on_boarding.xml" value="0.264" />
-        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_project_information.xml" value="0.16893115942028986" />
+        <entry key="..\:/AndProject/yarmarka/app/src/main/res/layout/fragment_project_information.xml" value="0.4" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
         <entry key="..\:/AndProject/yarmarka/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/aniku/Desktop/kok/app/src/main/res/layout/fragment_login.xml" value="0.15625" />
