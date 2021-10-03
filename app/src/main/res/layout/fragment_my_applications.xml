@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.my_applications.MyApplicationsFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+    <ImageButton
+        android:id="@+id/btn_my_applications_close"
+        android:layout_width="@dimen/btn_corner_size"
+        android:layout_height="@dimen/btn_corner_size"
+        android:layout_margin="@dimen/app_margin_large"
+        android:background="@drawable/btn_small_white"
+        android:elevation="@dimen/app_elevation"
+        android:src="@drawable/ic_cross"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/txt_onboarding_subtitle"
+        style="@style/text_title_black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_large"
+        android:text="@string/my_applications"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_my_applications_close" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_my_projects"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:listitem="@layout/card_list_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_onboarding_subtitle" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
