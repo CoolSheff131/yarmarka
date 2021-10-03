@@ -9,10 +9,15 @@ import androidx.navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentAccountBinding
+import com.example.yarmarka.ui.account.dialog_quit.DialogQuit
+import com.example.yarmarka.ui.account.dialog_quit.OnDialogClickedListener
+import com.example.yarmarka.utils.fm
 
-class AccountFragment : Fragment() {
+class AccountFragment : Fragment(), OnDialogClickedListener {
 
     private val binding by viewBinding(FragmentAccountBinding::bind)
+
+    private lateinit var rootView: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +29,7 @@ class AccountFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        rootView = view
         initListeners(view)
     }
 
@@ -42,10 +48,11 @@ class AccountFragment : Fragment() {
         }
 
         binding.btnAccountQuit.setOnClickListener {
-            view.findNavController().navigate(R.id.action_accountFragment_to_onBoardingFragment)
-            //view.findNavController().clearBackStack(R.id.loginFragment)
-//            view.findNavController().popBackStack()
+            DialogQuit(this).show(fm, "dialog_account_quit")
         }
     }
 
+    override fun onYesClicked() {
+        rootView.findNavController().navigate(R.id.action_accountFragment_to_onBoardingFragment)
+    }
 }

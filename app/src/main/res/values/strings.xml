@@ -87,5 +87,7 @@
     <string name="my_applications">Мои заявки</string>
     <string name="bth_onboarding_text">Войти с помощью Кампуса</string>
 
-
+    <string name="message_text">Вы действительно хотите выйти?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
 </resources>
