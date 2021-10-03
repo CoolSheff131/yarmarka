@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_my_projects_close" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_layout_status"
+        android:id="@+id/constraint_layout_status_positive"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -55,11 +55,40 @@
         app:layout_constraintTop_toBottomOf="@+id/project_title">
 
         <TextView
-            android:id="@+id/tv_status"
+            android:id="@+id/tv_status_positive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/mont_regular"
             android:text="@string/prjInfo_active"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_layout_status_negative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_red_background"
+        android:visibility="invisible"
+        android:elevation="@dimen/app_elevation"
+        android:paddingHorizontal="@dimen/text_padding_horizontal"
+        android:paddingVertical="@dimen/text_padding_vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/constraint_layout_status_positive"
+        app:layout_constraintEnd_toEndOf="@+id/constraint_layout_status_positive"
+        app:layout_constraintStart_toStartOf="@+id/constraint_layout_status_positive"
+        app:layout_constraintTop_toTopOf="@+id/constraint_layout_status_positive">
+
+        <TextView
+            android:id="@+id/tv_status_negative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mont_regular"
+            android:text="@string/prjInfo_inactive"
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -110,8 +139,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:layout_width="392dp"
-        android:layout_height="439dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/submitBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

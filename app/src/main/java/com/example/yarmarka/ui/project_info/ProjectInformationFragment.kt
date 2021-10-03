@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -47,6 +48,16 @@ class ProjectInformationFragment : Fragment() {
         binding.timeText.text = project?.date_start + "-" + project?.date_end
         binding.reqText.text = project?.requirements
         binding.tvMestNumber.text = project?.difficulty.toString()
+
+        when (project?.difficulty) {
+            in 1..4 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(requireContext(), R.drawable.round_green_background)
+            in 5..7 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(requireContext(), R.drawable.round_orange_background)
+            else -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(requireContext(), R.drawable.round_red_background)
+        }
+        if (project?.vacant_places == 0) {
+            binding.constraintLayoutStatusPositive.visibility = View.INVISIBLE
+            binding.constraintLayoutStatusNegative.visibility = View.VISIBLE
+        }
     }
 
     private fun initListeners(view: View) {

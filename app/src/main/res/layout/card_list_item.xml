@@ -41,8 +41,6 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/constraint_layout_total_places"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/card_title" />
 
@@ -170,10 +168,13 @@
         <TextView
             android:id="@+id/tv_supervisor_name"
             style="@style/text_small_black"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/app_margin_small"
+            android:layout_marginHorizontal="@dimen/app_margin_small"
             android:layout_marginTop="@dimen/app_margin_large"
+            android:gravity="start"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_supervisor"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_title_supervisor"
             app:layout_constraintTop_toBottomOf="@+id/tv_description"
             tools:text="Лукьянов Н.Д." />
@@ -195,9 +196,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/app_margin_small"
-            android:layout_marginTop="@dimen/app_margin_small"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_estimated_time"
             app:layout_constraintStart_toEndOf="@+id/tv_title_estimated_time"
-            app:layout_constraintTop_toBottomOf="@+id/tv_supervisor_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_estimated_time"
             tools:text="29.01.21 - 1.06.21" />
 
         <HorizontalScrollView

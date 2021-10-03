@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,7 @@ import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentMainBinding
 import com.example.yarmarka.model.Project
 
-class MainFragment : Fragment() , OnProjectClickListener{
+class MainFragment : Fragment(), OnProjectClickListener {
 
     private val binding by viewBinding(FragmentMainBinding::bind)
 
@@ -30,7 +29,7 @@ class MainFragment : Fragment() , OnProjectClickListener{
             id = 1,
             title = "Платформа для размещения вузовских олимпиад",
             goal = "Создать платформу (страничку) для рекламы олимпиад",
-            difficulty = 5,
+            difficulty = 2,
             places = 6,
             leader = "Лукьянов Никита Дмитриевич"
         ),
@@ -39,13 +38,14 @@ class MainFragment : Fragment() , OnProjectClickListener{
             title = "Платформа для размещения вузовских олимпиад",
             goal = "Создать платформу (страничку) для рекламы олимпиад",
             difficulty = 5,
-            places = 6
+            places = 6,
+            vacant_places = 0
         ),
         Project(
             id = 3,
             title = "Платформа для размещения вузовских олимпиад",
             goal = "Создать платформу (страничку) для рекламы олимпиад",
-            difficulty = 5,
+            difficulty = 8,
             places = 6
         ),
     )
@@ -54,7 +54,7 @@ class MainFragment : Fragment() , OnProjectClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners(view)
-        val projectsAdapter = ProjectsRecyclerAdapter(list , this)
+        val projectsAdapter = ProjectsRecyclerAdapter(list, this, requireContext())
         projectsAdapter.notifyDataSetChanged()
         binding.rcvMainAllProjects.apply {
             layoutManager = LinearLayoutManager(activity)
@@ -86,13 +86,15 @@ class MainFragment : Fragment() , OnProjectClickListener{
     }
 
     override fun onProjectItemClicked(project: Project) {
-        val action : MainFragmentDirections.ActionMainFragmentToProjectInformationFragment = MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
+        val action: MainFragmentDirections.ActionMainFragmentToProjectInformationFragment =
+            MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
         action.project = project
         view?.findNavController()?.navigate(action)
     }
 
     override fun onButtonClicked(project: Project) {
-        val action : MainFragmentDirections.ActionMainFragmentToProjectInformationFragment = MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
+        val action: MainFragmentDirections.ActionMainFragmentToProjectInformationFragment =
+            MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
         action.project = project
         view?.findNavController()?.navigate(action)
     }
