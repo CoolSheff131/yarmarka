@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,7 @@ import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentMainBinding
 import com.example.yarmarka.model.Project
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment() , OnProjectClickListener{
 
     private val binding by viewBinding(FragmentMainBinding::bind)
 
@@ -33,14 +34,14 @@ class MainFragment : Fragment() {
             places = 6
         ),
         Project(
-            id = 1,
+            id = 2,
             title = "Платформа для размещения вузовских олимпиад",
             goal = "Создать платформу (страничку) для рекламы олимпиад",
             difficulty = 5,
             places = 6
         ),
         Project(
-            id = 1,
+            id = 3,
             title = "Платформа для размещения вузовских олимпиад",
             goal = "Создать платформу (страничку) для рекламы олимпиад",
             difficulty = 5,
@@ -52,9 +53,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListeners(view)
+        val projectsAdapter = ProjectsRecyclerAdapter(list , this)
+        projectsAdapter.notifyDataSetChanged()
         binding.rcvMainAllProjects.apply {
             layoutManager = LinearLayoutManager(activity)
-            adapter = ProjectsRecyclerAdapter(list)
+            adapter = projectsAdapter
         }
     }
 
@@ -79,6 +82,12 @@ class MainFragment : Fragment() {
         binding.bthMainMotivation.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_motivationFragment2)
         }
+    }
+
+    override fun onProjectItemClicked(project: Project) {
+        val action : MainFragmentDirections.ActionMainFragmentToProjectInformationFragment = MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
+        action.project = project
+        view?.findNavController()?.navigate(action)
     }
 
 }

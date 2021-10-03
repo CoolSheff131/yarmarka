@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_projectInformationFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
+        <argument
+            android:name="Project"
+            app:argType="com.example.yarmarka.model.Project" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"

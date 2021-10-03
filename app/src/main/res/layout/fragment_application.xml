@@ -8,7 +8,7 @@
     tools:context=".ui.my_projects.MyProjectsFragment">
 
     <ImageButton
-        android:id="@+id/btn_my_projects_close"
+        android:id="@+id/btn_application_back"
         android:layout_width="@dimen/btn_corner_size"
         android:layout_height="@dimen/btn_corner_size"
         android:layout_margin="@dimen/app_margin_xlarge"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/btn_project_information_account"
+        android:id="@+id/btn_application_account"
         android:layout_width="@dimen/btn_corner_size"
         android:layout_height="@dimen/btn_corner_size"
         android:layout_margin="@dimen/app_margin_xlarge"
@@ -41,7 +41,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/req_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_my_projects_close" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_application_back" />
 
     <TextView
         android:id="@+id/roleTitle"
@@ -68,7 +68,7 @@
         android:inputType="textPersonName"
         android:padding="10dp"
         android:paddingStart="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_project_information_account"
+        app:layout_constraintEnd_toEndOf="@+id/btn_application_account"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/roleTitle" />
