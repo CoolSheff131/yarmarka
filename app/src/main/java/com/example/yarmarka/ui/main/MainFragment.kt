@@ -31,7 +31,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
             goal = "Создать платформу (страничку) для рекламы олимпиад",
             difficulty = 2,
             places = 6,
-            leader = "Лукьянов Никита Дмитриевич"
+            leader = "Лукьянов Н.Д."
         ),
         Project(
             id = 2,
@@ -39,14 +39,16 @@ class MainFragment : Fragment(), OnProjectClickListener {
             goal = "Создать платформу (страничку) для рекламы олимпиад",
             difficulty = 5,
             places = 6,
-            vacant_places = 0
+            vacant_places = 0,
+            leader = "Лукьянов Н.Д."
         ),
         Project(
             id = 3,
             title = "Платформа для размещения вузовских олимпиад",
             goal = "Создать платформу (страничку) для рекламы олимпиад",
             difficulty = 8,
-            places = 6
+            places = 6,
+            leader = "Лукьянов Н.Д."
         ),
     )
 
