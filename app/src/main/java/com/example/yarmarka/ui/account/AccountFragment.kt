@@ -17,6 +17,7 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
 
     private val binding by viewBinding(FragmentAccountBinding::bind)
 
+
     private lateinit var rootView: View
 
     override fun onCreateView(
