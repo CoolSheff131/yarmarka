@@ -8,6 +8,7 @@ data class Project(
     var id: Int? = null,
     var title: String? = null,
     var places: Int? = null,
+    var tags: List<Tag>? = null,
     var goal: String? = null,
     var idea: String? = null,
     var difficulty: Int? = null,
@@ -24,5 +25,4 @@ data class Project(
     var user_name: String? = null,
     var vacant_places: Int? = null,
     var state_name: String? = null,
-    var leader: String? = null
 ) : Parcelable

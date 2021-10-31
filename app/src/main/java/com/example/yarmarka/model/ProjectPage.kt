@@ -1,5 +1,9 @@
 package com.example.yarmarka.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class ProjectPage (
     var current_page: Int? = null,
     var first_page_url: String? = null,
@@ -13,4 +17,4 @@ data class ProjectPage (
     var last_page_url: String? = null,
     var last_page: Int? = null,
     var project: Project? = null
-)
+): Parcelable
