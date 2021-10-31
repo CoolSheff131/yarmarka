@@ -1,9 +1,10 @@
-package com.example.yarmarka.network
+package com.example.yarmarka.network.services
 
+import com.example.yarmarka.network.api.CandidatesApi
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiService {
+class ApiServiceCandidates {
 
     companion object {
 
@@ -20,8 +21,8 @@ class ApiService {
         }
 
         @Synchronized
-        fun buildService(): Api {
-            return getInstance().create(Api::class.java)
+        fun buildService(): CandidatesApi {
+            return getInstance().create(CandidatesApi::class.java)
         }
     }
 }
