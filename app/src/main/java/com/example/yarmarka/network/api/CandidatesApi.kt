@@ -16,13 +16,13 @@ interface CandidatesApi {
     )
 
     @GET("/api/skills")
-    fun getSkills(): Observable<Skill>
+    fun getSkills(): Observable<List<Skill>>
 
     @GET("/api/participations/{id}")
     fun getStudentParticipations(
         @Path("id") id: Int,
         @Query("page") page: Int
-    ): Observable<Project>
+    ): Observable<List<Project>>
 
     @DELETE("/api/participations/{id}")
     fun deleteStudentParticipationRequest(
