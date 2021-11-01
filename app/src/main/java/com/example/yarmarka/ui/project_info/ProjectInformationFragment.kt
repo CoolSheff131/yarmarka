@@ -41,7 +41,7 @@ class ProjectInformationFragment : Fragment() {
 
     private fun initData(){
         binding.projectTitle.text = project?.title
-        binding.leaderText.text = project?.leader
+//        binding.leaderText.text = project?.leader
         binding.typePrjText.text = project?.type_name
         binding.goalText.text = project?.goal
         binding.ideaText.text = project?.idea
