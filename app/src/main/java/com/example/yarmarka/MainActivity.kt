@@ -40,39 +40,4 @@ class MainActivity : AppCompatActivity() {
             notificationManager.createNotificationChannel(channel)
         }
     }
-
-    private fun sendNotification(){
-        val builder = NotificationCompat.Builder(this,CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_account)
-            .setContentTitle("Test title")
-            .setContentText("Test description")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-        with(NotificationManagerCompat.from(this)){
-            notify(notificationId,builder.build())
-        }
-
-
-    }
-
-    private fun addNotification(title: String, body: String) {
-        val builder: Notification.Builder? = Notification.Builder(this)
-            .setSmallIcon(R.drawable.launch_screen) //set icon for notification
-            .setContentTitle(title) //set title of notification
-            .setContentText(body) //this is notification message
-        val notificationIntent = Intent(this, MainActivity::class.java)
-        notificationIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        //notification message will get at NotificationView
-        notificationIntent.putExtra("message", body)
-        val pendingIntent = PendingIntent.getActivity(
-            this, 0, notificationIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT
-        )
-        builder?.setContentIntent(pendingIntent)
-        // Add as notification
-        val manager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        manager.notify(0, builder?.build())
-
-    }
 }

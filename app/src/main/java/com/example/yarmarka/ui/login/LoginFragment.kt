@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentLoginBinding
+import com.example.yarmarka.utils.Notifications
 
 class LoginFragment : Fragment() {
 
@@ -22,7 +23,6 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
@@ -37,27 +37,8 @@ class LoginFragment : Fragment() {
             view.findNavController().popBackStack()
         }
         binding.btnRequests.setOnClickListener {
-            sendNotification()
+        //    context?.let { it1 -> Notifications.sendNotification(it1,"s","as") }
             view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
         }
-    }
-
-    private val CHANNEL_ID = "channel_id"
-    private val notificationId = 101
-    private fun sendNotification(){
-        val builder = context?.let {
-            NotificationCompat.Builder(it,CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_account)
-                .setContentTitle("Test title")
-                .setContentText("Test description")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-        }
-        if (builder != null) {
-            with(context?.let { NotificationManagerCompat.from(it) }){
-                this?.notify(notificationId,builder.build())
-            }
-        }
-
-
     }
 }
