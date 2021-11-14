@@ -14,6 +14,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentLoginBinding
 import com.example.yarmarka.utils.Notifications
+import android.content.Intent
+import com.example.yarmarka.utils.MyReceiver
+
 
 class LoginFragment : Fragment() {
 
@@ -37,7 +40,7 @@ class LoginFragment : Fragment() {
             view.findNavController().popBackStack()
         }
         binding.btnRequests.setOnClickListener {
-        //    context?.let { it1 -> Notifications.sendNotification(it1,"s","as") }
+            //context?.sendBroadcast(Intent(context,MyReceiver::class.java))
             view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
         }
     }

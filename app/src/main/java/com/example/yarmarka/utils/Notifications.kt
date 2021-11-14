@@ -1,5 +1,6 @@
 package com.example.yarmarka.utils
 
+import android.app.Notification
 import android.content.Context
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -17,6 +18,7 @@ class Notifications {
                     .setContentTitle(title)
                     .setContentText(content)
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setDefaults(Notification.DEFAULT_ALL)
             }
             if (builder != null) {
                 with(context?.let { NotificationManagerCompat.from(it) }){
