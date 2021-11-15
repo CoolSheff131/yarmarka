@@ -39,7 +39,7 @@
             style="@style/text_medium_blue"
             android:layout_margin="@dimen/app_margin_xlarge"
             android:layout_marginStart="216dp"
-            android:text="@string/filter_projects_status"
+            android:text="@string/project_state"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_filter_close" />
 
@@ -183,7 +183,7 @@
             android:id="@+id/titleTag"
             style="@style/text_medium_blue"
             android:layout_margin="@dimen/app_margin_xlarge"
-            android:text="@string/filter_leader"
+            android:text="@string/tags"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkGovorkov" />
 

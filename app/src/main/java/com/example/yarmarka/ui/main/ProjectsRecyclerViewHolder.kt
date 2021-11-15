@@ -22,7 +22,7 @@ class ProjectsRecyclerViewHolder(
     fun bind(project: Project) {
         binding.cardTitle.text = project.title
         binding.tvDescription.text = project.goal
-//        binding.tvSupervisorName.text = project.leader
+        binding.tvSupervisorName.text = project.supervisor_name
         binding.tvEstimatedTime.text = project.date_start + "-" + project.date_end
         binding.tvTotalPlaces.text = project.places.toString()
         binding.tvDifficulty.text = project.difficulty.toString() + "/10"

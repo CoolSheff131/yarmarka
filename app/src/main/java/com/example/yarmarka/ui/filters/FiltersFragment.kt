@@ -9,11 +9,24 @@ import androidx.navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentFiltersBinding
-import com.example.yarmarka.databinding.FragmentMainBinding
+import com.example.yarmarka.model.FilterObject
 
 class FiltersFragment : Fragment() {
 
     private val binding by viewBinding(FragmentFiltersBinding::bind)
+
+    private val typeCheckBoxes = listOf(
+        binding.checkResearch,
+        binding.checkHard,
+        binding.checkService
+    )
+
+    private val stateCheckBoxes = listOf(
+        binding.checkOpen,
+        binding.checkClose,
+        binding.checkActive
+    //TODO: add one more state
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +48,53 @@ class FiltersFragment : Fragment() {
         }
 
         binding.btnFilterApply.setOnClickListener {
-            
+            val filters = FilterObject(
+                type = getCheckedTypesList(),
+                state = getCheckedStatesList(),
+                supervisor = listOf(),
+            )
         }
+    }
+
+    private fun getCheckedTypesList(): List<Int> {
+        val list = mutableListOf<Int>()
+
+        var num = 1
+        for (i in typeCheckBoxes) {
+           if (i.isChecked) {
+               list.add(num)
+           }
+            num++
+        }
+
+        return list
+    }
+
+    private fun getCheckedStatesList(): List<Int> {
+        val list = mutableListOf<Int>()
+
+        var num = 1
+        for (i in stateCheckBoxes) {
+            if (i.isChecked) {
+                list.add(num)
+            }
+            num++
+        }
+
+        return list
+    }
+
+    private fun getCheckedSupervisorsList(): List<Int> {
+        val list = mutableListOf<Int>()
+
+        var num = 1
+        for (i in stateCheckBoxes) {
+            if (i.isChecked) {
+                list.add(num)
+            }
+            num++
+        }
+
+        return list
     }
 }

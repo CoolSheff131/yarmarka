@@ -13,7 +13,7 @@ class ApiServiceCandidates {
         private fun getInstance(): Retrofit {
             return if (retrofit == null) {
                 retrofit = Retrofit.Builder()
-                    .baseUrl("тут название апи")
+                    .baseUrl("http://projects.tw1.ru/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 retrofit as Retrofit

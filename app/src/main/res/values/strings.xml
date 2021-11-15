@@ -91,4 +91,6 @@
     <string name="message_text">Вы действительно хотите выйти?</string>
     <string name="yes">Да</string>
     <string name="no">Нет</string>
+    <string name="tags">Теги</string>
+    <string name="project_state">Состояние проекта</string>
 </resources>

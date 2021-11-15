@@ -22,7 +22,7 @@ data class Project(
     var updated_at: String? = null,
     var deleted_at: String? = null,
     var type_name: String? = null,
-    var user_name: String? = null,
+    var supervisor_name: String? = null,
     var vacant_places: Int? = null,
     var state_name: String? = null,
 ) : Parcelable
