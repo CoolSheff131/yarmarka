@@ -1,7 +1,6 @@
-package com.example.yarmarka.ui.main
+package com.example.yarmarka.ui.main.projects
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +11,6 @@ class ProjectsRecyclerAdapter(
     private val onProjectClickListener: OnProjectClickListener,
     private val context: Context
 ) : RecyclerView.Adapter<ProjectsRecyclerViewHolder>() {
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProjectsRecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)

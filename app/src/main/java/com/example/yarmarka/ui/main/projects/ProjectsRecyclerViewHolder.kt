@@ -1,4 +1,4 @@
-package com.example.yarmarka.ui.main
+package com.example.yarmarka.ui.main.projects
 
 import android.content.Context
 import android.view.LayoutInflater

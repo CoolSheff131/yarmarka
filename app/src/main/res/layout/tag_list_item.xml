@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:text="Web"
     android:layout_marginHorizontal="@dimen/app_margin_small"
-    android:fontFamily="@font/mont_light"
-    android:textColor="@color/black"
-    android:textSize="12sp"
-    android:elevation="@dimen/app_elevation"
-    android:paddingHorizontal="@dimen/text_padding_horizontal"
-    android:paddingVertical="@dimen/text_padding_vertical"
-    android:background="@drawable/round_white_background"/>
+    android:background="@drawable/round_white_background">
+
+    <TextView
+        android:id="@+id/tv_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/app_margin_small"
+        android:elevation="@dimen/app_elevation"
+        android:fontFamily="@font/mont_light"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Web" />
+
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="@dimen/app_margin_small"
+        android:background="@drawable/ic_delete_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_tag"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

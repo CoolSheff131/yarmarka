@@ -1,4 +1,4 @@
-package com.example.yarmarka.ui.main
+package com.example.yarmarka.ui.main.projects
 
 import com.example.yarmarka.model.Project
 

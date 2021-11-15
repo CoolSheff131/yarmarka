@@ -124,68 +124,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/app_margin_xlarge"
+            android:prompt="@string/supervisor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleLeader" />
-
-        <CheckBox
-            android:id="@+id/checkArshinsky"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_leader_arshinsky"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_supervisor" />
-
-        <CheckBox
-            android:id="@+id/checkOsipova"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_leader_osipova"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkArshinsky" />
-
-        <CheckBox
-            android:id="@+id/checkSereshiva"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_leader_sereshova"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkOsipova" />
-
-        <CheckBox
-            android:id="@+id/checkLukash"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_leader_lukash"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkSereshiva" />
-
-        <CheckBox
-            android:id="@+id/checkMalanova"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_leader_malanova"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkLukash" />
-
-        <CheckBox
-            android:id="@+id/checkGovorkov"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_leader_govorkov"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkMalanova" />
 
         <TextView
             android:id="@+id/titleTag"
@@ -193,67 +134,49 @@
             android:layout_margin="@dimen/app_margin_xlarge"
             android:text="@string/tags"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkGovorkov" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner_supervisor" />
 
-        <CheckBox
-            android:id="@+id/checkUniversity"
+        <Spinner
+            android:id="@+id/spinner_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_tag_univer"
+            android:prompt="@string/tags"
+            android:layout_margin="@dimen/app_margin_xlarge"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTag" />
 
-        <CheckBox
-            android:id="@+id/checkWeb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_tag_web"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkUniversity" />
+        <Button
+            android:id="@+id/btn_add_tag"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:text="Добавить"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner_tag"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spinner_tag"
+            app:layout_constraintTop_toTopOf="@+id/spinner_tag" />
 
-        <CheckBox
-            android:id="@+id/checkII"
-            android:layout_width="wrap_content"
+        <HorizontalScrollView
+            android:id="@+id/rcv_hor_tags"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_tag_ii"
+            android:layout_margin="@dimen/app_margin_large"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkWeb" />
+            app:layout_constraintTop_toBottomOf="@id/spinner_tag">
 
-        <CheckBox
-            android:id="@+id/checkConference"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_tag_conference"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkII" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_tags"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/tag_list_item"
+                android:layout_height="wrap_content"/>
 
-        <CheckBox
-            android:id="@+id/checkScience"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_tag_science"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkConference" />
-
-        <CheckBox
-            android:id="@+id/checkMath"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_tag_math"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkScience" />
+        </HorizontalScrollView>
 
         <TextView
             android:id="@+id/titleTime"
@@ -261,7 +184,7 @@
             android:layout_margin="@dimen/app_margin_xlarge"
             android:text="@string/filter_time"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkMath" />
+            app:layout_constraintTop_toBottomOf="@+id/rcv_hor_tags" />
 
         <EditText
             android:id="@+id/editTextDateStart"
