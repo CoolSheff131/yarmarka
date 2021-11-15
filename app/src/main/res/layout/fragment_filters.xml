@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="24dp"
-    android:scrollbars="none"
-    android:background="@color/bg_color">
+    android:background="@color/bg_color"
+    android:scrollbars="none">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -119,6 +119,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkService" />
 
+        <Spinner
+            android:id="@+id/spinner_supervisor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleLeader" />
+
         <CheckBox
             android:id="@+id/checkArshinsky"
             android:layout_width="wrap_content"
@@ -127,7 +135,7 @@
             android:layout_marginTop="12dp"
             android:text="@string/filter_leader_arshinsky"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleLeader" />
+            app:layout_constraintTop_toBottomOf="@+id/spinner_supervisor" />
 
         <CheckBox
             android:id="@+id/checkOsipova"

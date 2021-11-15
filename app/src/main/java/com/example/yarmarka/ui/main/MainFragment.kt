@@ -92,7 +92,6 @@ class MainFragment : Fragment(), OnProjectClickListener {
                 mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
                 binding.rcvMainAllProjects.adapter = mAdapter
                 mAdapter.notifyDataSetChanged()
-                Log.d("testing", it.toString())
                 Toast.makeText(requireContext(), "Loaded", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()

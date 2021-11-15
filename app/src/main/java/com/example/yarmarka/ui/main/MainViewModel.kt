@@ -1,6 +1,5 @@
 package com.example.yarmarka.ui.main
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.yarmarka.model.Project
@@ -12,12 +11,12 @@ import io.reactivex.schedulers.Schedulers
 
 class MainViewModel : ViewModel() {
 
+    private val api = ApiServiceProjects.buildService()
+
     private var projectListLiveData: MutableLiveData<List<Project>?> = MutableLiveData()
 
     val projectList: MutableLiveData<List<Project>?>
         get() = projectListLiveData
-
-    private val api = ApiServiceProjects.buildService()
 
     fun getProjectList(page: Int = 0) {
         api.getProjects(page)

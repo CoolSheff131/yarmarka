@@ -5,7 +5,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Participation(
+    var id: Int? = null,
     var state: String? = null,
-    var role: String? = null,
-    var skills: List<Skill>? = null
+    var motivation: String? = null,
+    var skills: List<Skill>? = null,
+    var project: Project? = null
 ): Parcelable
