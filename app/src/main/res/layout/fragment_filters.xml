@@ -119,14 +119,62 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/checkService" />
 
-        <Spinner
-            android:id="@+id/spinner_supervisor"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/spinner_supervisor_layout"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/app_margin_xlarge"
+            android:background="@drawable/round_white_background"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/btn_add_supervisor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleLeader">
+
+            <Spinner
+                android:id="@+id/spinner_supervisor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:background="@android:color/transparent"
+                android:gravity="left"
+                android:prompt="@string/supervisor"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:src="@drawable/dropdown" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btn_add_supervisor"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="@dimen/app_margin_large"
+            android:text="Добавить"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner_supervisor_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spinner_supervisor_layout" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_supervisors"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/app_margin_xlarge"
-            android:prompt="@string/supervisor"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleLeader" />
+            app:layout_constraintTop_toBottomOf="@id/spinner_supervisor_layout"
+            tools:listitem="@layout/supervisor_list_item" />
 
         <TextView
             android:id="@+id/titleTag"
@@ -134,16 +182,39 @@
             android:layout_margin="@dimen/app_margin_xlarge"
             android:text="@string/tags"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_supervisor" />
+            app:layout_constraintTop_toBottomOf="@+id/rcv_supervisors" />
 
-        <Spinner
-            android:id="@+id/spinner_tag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:prompt="@string/tags"
+        <RelativeLayout
+            android:id="@+id/spinner_tags_layout"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_margin="@dimen/app_margin_xlarge"
+            android:background="@drawable/round_white_background"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="@+id/btn_add_tag"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTag" />
+            app:layout_constraintTop_toBottomOf="@id/titleTag">
+
+            <Spinner
+                android:id="@+id/spinner_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:background="@android:color/transparent"
+                android:gravity="left"
+                android:prompt="@string/tags"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:src="@drawable/dropdown" />
+
+        </RelativeLayout>
 
         <Button
             android:id="@+id/btn_add_tag"
@@ -151,30 +222,32 @@
             android:layout_height="35dp"
             android:text="Добавить"
             android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="@+id/spinner_tag"
+            android:layout_marginRight="@dimen/app_margin_large"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner_tags_layout"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/spinner_tag"
-            app:layout_constraintTop_toTopOf="@+id/spinner_tag" />
+            app:layout_constraintTop_toTopOf="@+id/spinner_tags_layout" />
 
         <HorizontalScrollView
             android:id="@+id/rcv_hor_tags"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/app_margin_large"
+            android:layout_marginTop="24dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spinner_tag">
+            app:layout_constraintTop_toBottomOf="@id/spinner_tags_layout">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_tags"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:scrollbars="none"
                 android:overScrollMode="never"
+                android:scrollbars="none"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/tag_list_item"
-                android:layout_height="wrap_content"/>
+                tools:listitem="@layout/tag_list_item" />
 
         </HorizontalScrollView>
 
@@ -187,17 +260,17 @@
             app:layout_constraintTop_toBottomOf="@+id/rcv_hor_tags" />
 
         <Button
-            android:id="@+id/editTextDateStart"
+            android:id="@+id/btn_date_start"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
-            android:elevation="@dimen/app_elevation"
-            tools:text="14.06.2001"
-            android:text="01.01.2001"
             android:background="@drawable/round_white_background"
+            android:elevation="@dimen/app_elevation"
+            android:text="08.03.2020"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleTime" />
+            app:layout_constraintTop_toBottomOf="@+id/titleTime"
+            tools:text="14.06.2001" />
 
         <TextView
             android:id="@+id/tv_time_start"
@@ -205,24 +278,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextDateStart"
-            app:layout_constraintStart_toEndOf="@+id/editTextDateStart"
-            app:layout_constraintTop_toTopOf="@+id/editTextDateStart"
-            app:layout_constraintVertical_bias="0.518"
-            android:text="@string/filter_time_start" />
+            android:text="@string/filter_time_start"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_date_start"
+            app:layout_constraintStart_toEndOf="@+id/btn_date_start"
+            app:layout_constraintTop_toTopOf="@+id/btn_date_start"
+            app:layout_constraintVertical_bias="0.518" />
 
         <Button
-            android:id="@+id/editTextDateEnd"
+            android:id="@+id/btn_date_end"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
-            android:elevation="@dimen/app_elevation"
-            tools:text="12.12.2012"
-            android:text="02.02.2002"
             android:background="@drawable/round_white_background"
+            android:elevation="@dimen/app_elevation"
+            android:text="08.03.2022"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDateStart" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_date_start"
+            tools:text="12.12.2012" />
 
         <TextView
             android:id="@+id/tv_time_end"
@@ -230,11 +303,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/editTextDateEnd"
-            app:layout_constraintStart_toEndOf="@+id/editTextDateEnd"
-            app:layout_constraintTop_toTopOf="@+id/editTextDateEnd"
-            app:layout_constraintVertical_bias="0.518"
-            android:text="@string/filter_time_end" />
+            android:text="@string/filter_time_end"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_date_end"
+            app:layout_constraintStart_toEndOf="@+id/btn_date_end"
+            app:layout_constraintTop_toTopOf="@+id/btn_date_end"
+            app:layout_constraintVertical_bias="0.518" />
 
         <TextView
             android:id="@+id/titleDifficulty"
@@ -242,25 +315,25 @@
             android:layout_margin="@dimen/app_margin_xlarge"
             android:text="@string/filter_difficulty"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextDateEnd" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_date_end" />
 
-<!--        <SeekBar-->
-<!--            android:id="@+id/seekBar2"-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="24dp"-->
-<!--            android:layout_marginTop="12dp"-->
-<!--            android:max="3"-->
-<!--            android:progress="3"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/titleDifficulty" />-->
+        <!--        <SeekBar-->
+        <!--            android:id="@+id/seekBar2"-->
+        <!--            android:layout_width="200dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginStart="24dp"-->
+        <!--            android:layout_marginTop="12dp"-->
+        <!--            android:max="3"-->
+        <!--            android:progress="3"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/titleDifficulty" />-->
 
         <CheckBox
             android:id="@+id/check_dif_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/titleDifficulty" />
 
@@ -268,44 +341,44 @@
             android:id="@+id/tv_check_dif_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/check_dif_1"
+            android:text="@string/dif_1"
             app:layout_constraintLeft_toLeftOf="@id/check_dif_1"
             app:layout_constraintRight_toRightOf="@id/check_dif_1"
-            android:text="@string/dif_1"/>
+            app:layout_constraintTop_toBottomOf="@id/check_dif_1" />
 
         <CheckBox
             android:id="@+id/check_dif_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toEndOf="@id/check_dif_1"
             app:layout_constraintTop_toBottomOf="@id/titleDifficulty" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/check_dif_2"
+            android:text="@string/dif_2"
             app:layout_constraintLeft_toLeftOf="@id/check_dif_2"
             app:layout_constraintRight_toRightOf="@id/check_dif_2"
-            android:text="@string/dif_2"/>
+            app:layout_constraintTop_toBottomOf="@id/check_dif_2" />
 
         <CheckBox
             android:id="@+id/check_dif_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toEndOf="@id/check_dif_2"
             app:layout_constraintTop_toBottomOf="@id/titleDifficulty" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/check_dif_3"
+            android:text="@string/dif_3"
             app:layout_constraintLeft_toLeftOf="@id/check_dif_3"
             app:layout_constraintRight_toRightOf="@id/check_dif_3"
-            android:text="@string/dif_3"/>
+            app:layout_constraintTop_toBottomOf="@id/check_dif_3" />
 
         <Button
             android:id="@+id/btn_filter_apply"

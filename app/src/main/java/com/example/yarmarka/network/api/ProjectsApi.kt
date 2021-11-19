@@ -16,16 +16,16 @@ interface ProjectsApi {
 
     @GET("/api/projects/filter")
     fun getFilteredProjects(
-        @Query("type") type: Array<Int>,
-        @Query("state") state: Array<Int>,
-        @Query("supervisor") supervisor: Array<Int>,
-        @Query("tags") tags: Array<Int>,
-        @Query("date_start") date_start: String,
-        @Query("date_end") date_end: String,
-        @Query("difficulty") difficulty: Array<Int>,
-        @Query("title") title: String,
+        @Query("type") type: IntArray?,
+        @Query("state") state: IntArray?,
+        @Query("supervisor") supervisor: IntArray?,
+        @Query("tags") tags: IntArray?,
+        @Query("date_start") date_start: String?,
+        @Query("date_end") date_end: String?,
+        @Query("difficulty") difficulty: IntArray?,
+        @Query("title") title: String?,
         @Query("page") page: Int = 0
-    ): Observable<ProjectPage>
+    ): Observable<List<Project>>
 
     @GET("/api/tags")
     fun getTags(): Observable<List<Tag>>

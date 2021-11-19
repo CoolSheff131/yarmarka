@@ -15,7 +15,6 @@ class TagsRecyclerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagsRecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        Log.d("testing", "=========$tagsList")
         return TagsRecyclerViewHolder(inflater, parent, onTagClickListener)
     }
 

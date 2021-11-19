@@ -1,5 +1,6 @@
 package com.example.yarmarka.ui.filters
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.CheckBox
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -14,12 +16,16 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentFiltersBinding
 import com.example.yarmarka.model.FilterObject
+import com.example.yarmarka.model.SupervisorName
 import com.example.yarmarka.model.Tag
-import com.example.yarmarka.ui.main.MainViewModel
+import com.example.yarmarka.ui.filters.supervisors.OnSupervisorClickListener
+import com.example.yarmarka.ui.filters.supervisors.SupervisorsRecyclerAdapter
 import com.example.yarmarka.ui.main.tags.OnTagClickListener
 import com.example.yarmarka.ui.main.tags.TagsRecyclerAdapter
+import com.example.yarmarka.utils.bundle
+import java.util.*
 
-class FiltersFragment : Fragment(), OnTagClickListener {
+class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListener {
 
     private val binding by viewBinding(FragmentFiltersBinding::bind)
 
@@ -27,21 +33,17 @@ class FiltersFragment : Fragment(), OnTagClickListener {
 
     private var tags = listOf<Tag>()
     private val tagList = mutableListOf<Tag>()
-    private lateinit var rcv: RecyclerView
-    private lateinit var rcvAdapter: TagsRecyclerAdapter
+    private lateinit var rcvTags: RecyclerView
+    private lateinit var rcvTagsAdapter: TagsRecyclerAdapter
 
-//    private val typeCheckBoxes = listOf(
-//        binding.checkResearch,
-//        binding.checkHard,
-//        binding.checkService
-//    )
-//
-//    private val stateCheckBoxes = listOf(
-//        binding.checkOpen,
-//        binding.checkClose,
-//        binding.checkActive
-//    //TODO: add one more state
-//    )
+    private var shortSupervisorNames = mutableMapOf<SupervisorName, String>()
+    private val supervisorList = mutableListOf<SupervisorName>()
+    private lateinit var rcvSupervisors: RecyclerView
+    private lateinit var rcvSupervisorsAdapter: SupervisorsRecyclerAdapter
+
+    private lateinit var typeCheckBoxes: List<CheckBox>
+    private lateinit var stateCheckBoxes: List<CheckBox>
+    private lateinit var difficultyCheckBoxes: List<CheckBox>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,9 +62,32 @@ class FiltersFragment : Fragment(), OnTagClickListener {
     }
 
     private fun init() {
-        rcv = binding.rcvTags
-        rcvAdapter = TagsRecyclerAdapter(tagList, this)
-        rcv.adapter = rcvAdapter
+        rcvTags = binding.rcvTags
+        rcvTagsAdapter = TagsRecyclerAdapter(tagList, this)
+        rcvTags.adapter = rcvTagsAdapter
+
+        rcvSupervisors = binding.rcvSupervisors
+        rcvSupervisorsAdapter = SupervisorsRecyclerAdapter(supervisorList, this)
+        rcvSupervisors.adapter = rcvSupervisorsAdapter
+
+        typeCheckBoxes = listOf(
+            binding.checkResearch,
+            binding.checkHard,
+            binding.checkService
+        )
+
+        stateCheckBoxes = listOf(
+            binding.checkOpen,
+            binding.checkClose,
+            binding.checkActive
+            //TODO: add one more state
+        )
+
+        difficultyCheckBoxes = listOf(
+            binding.checkDif1,
+            binding.checkDif2,
+            binding.checkDif3
+        )
     }
 
     private fun initListeners(view: View) {
@@ -83,18 +108,80 @@ class FiltersFragment : Fragment(), OnTagClickListener {
             if (tag != null && !tagList.contains(tag)) {
                 tagList.add(tag)
 
-                rcvAdapter = TagsRecyclerAdapter(tagList, this)
-                rcv.adapter = rcvAdapter
-                rcvAdapter.notifyDataSetChanged()
+                rcvTags.adapter = null
+                rcvTagsAdapter = TagsRecyclerAdapter(tagList, this)
+                rcvTags.adapter = rcvTagsAdapter
+                rcvTagsAdapter.notifyDataSetChanged()
             }
         }
 
+        binding.btnAddSupervisor.setOnClickListener {
+            var supervisor: SupervisorName? = null
+            for (i in shortSupervisorNames.keys) {
+                if (shortSupervisorNames[i] == binding.spinnerSupervisor.selectedItem.toString()) {
+                    supervisor = i
+                    break
+                }
+            }
+            if (supervisor != null && !supervisorList.contains(supervisor)) {
+                supervisorList.add(supervisor)
+
+                rcvSupervisorsAdapter = SupervisorsRecyclerAdapter(supervisorList, this)
+                rcvSupervisors.adapter = rcvSupervisorsAdapter
+                rcvSupervisorsAdapter.notifyDataSetChanged()
+            }
+        }
+
+        binding.btnDateStart.setOnClickListener {
+            val c = Calendar.getInstance()
+            val curYear = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            val dpd = DatePickerDialog(
+                requireContext(),
+                { _, year, monthOfYear, dayOfMonth ->
+                    binding.btnDateStart.text = "$dayOfMonth.$monthOfYear.$year"
+                },
+                curYear,
+                month,
+                day
+            )
+            dpd.show()
+        }
+
+        binding.btnDateEnd.setOnClickListener {
+            val c = Calendar.getInstance()
+            val curYear = c.get(Calendar.YEAR)
+            val month = c.get(Calendar.MONTH)
+            val day = c.get(Calendar.DAY_OF_MONTH)
+
+            val dpd = DatePickerDialog(
+                requireContext(),
+                { _, year, monthOfYear, dayOfMonth ->
+                    binding.btnDateEnd.text = "$dayOfMonth.$monthOfYear.$year"
+                },
+                curYear,
+                month,
+                day
+            )
+            dpd.show()
+        }
+
         binding.btnFilterApply.setOnClickListener {
-//            val filters = FilterObject(
-//                type = getCheckedTypesList(),
-//                state = getCheckedStatesList(),
-//                supervisor = listOf(),
-//            )
+            val filters = FilterObject(
+                type = getCheckedTypesList(),
+                state = getCheckedStatesList(),
+                supervisor = getChosenSupervisors(),
+                tags = getChosenTags(),
+                date_start = getChosenDateStart(),
+                date_end = getChosenDateEnd(),
+                difficulty = getCheckedDifficulties()
+            )
+            Log.d("testing", filters.toString())
+
+            bundle.putParcelable("filters", filters)
+            view.findNavController().popBackStack()
         }
     }
 
@@ -105,11 +192,19 @@ class FiltersFragment : Fragment(), OnTagClickListener {
 
     private fun loadSupervisors() {
         mViewModel.supervisorsList.observe(viewLifecycleOwner, {
-            val supervisors = mutableListOf<String>()
+            val supervisorNames = mutableListOf<String>()
             if (it != null) {
-                for (i in it) supervisors.add(i.fio!!)
+                for (i in it) {
+                    if (i.fio != null) {
+                        val shortName = i.fio!!.split(" ")[0] + " " +
+                                i.fio!!.split(" ")[1][0] + ". " +
+                                i.fio!!.split(" ")[2][0] + "."
+                        supervisorNames.add(shortName)
+                        shortSupervisorNames[i] = shortName
+                    }
+                }
             }
-            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, supervisors)
+            val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, supervisorNames)
             binding.spinnerSupervisor.adapter = adapter
             adapter.notifyDataSetChanged()
         })
@@ -121,7 +216,11 @@ class FiltersFragment : Fragment(), OnTagClickListener {
             var tagNames = mutableListOf<String>()
             if (it != null) {
                 tags = it
-                for (i in it) tagNames.add(i.tag!!)
+                for (i in it) {
+                    if (i.tag != null) {
+                        tagNames.add(i.tag!!)
+                    }
+                }
             }
             val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, tagNames)
             binding.spinnerTag.adapter = adapter
@@ -132,48 +231,93 @@ class FiltersFragment : Fragment(), OnTagClickListener {
 
     override fun onTagDeleteItemClicked(tag: Tag) {
         tagList.remove(tag)
-        rcvAdapter.notifyDataSetChanged()
+        rcvTagsAdapter.notifyDataSetChanged()
     }
 
-//    private fun getCheckedTypesList(): List<Int> {
-//        val list = mutableListOf<Int>()
-//
-//        var num = 1
-//        for (i in typeCheckBoxes) {
-//           if (i.isChecked) {
-//               list.add(num)
-//           }
-//            num++
-//        }
-//
-//        return list
-//    }
-//
-//    private fun getCheckedStatesList(): List<Int> {
-//        val list = mutableListOf<Int>()
-//
-//        var num = 1
-//        for (i in stateCheckBoxes) {
-//            if (i.isChecked) {
-//                list.add(num)
-//            }
-//            num++
-//        }
-//
-//        return list
-//    }
-//
-//    private fun getCheckedSupervisorsList(): List<Int> {
-//        val list = mutableListOf<Int>()
-//
-//        var num = 1
-//        for (i in stateCheckBoxes) {
-//            if (i.isChecked) {
-//                list.add(num)
-//            }
-//            num++
-//        }
-//
-//        return list
-//    }
+    override fun onSupervisorDeleteItemClicked(supervisor: SupervisorName) {
+        supervisorList.remove(supervisor)
+        rcvSupervisorsAdapter.notifyDataSetChanged()
+    }
+
+    private fun getCheckedTypesList(): List<Int> {
+        val list = mutableListOf<Int>()
+
+        var num = 1
+        for (i in typeCheckBoxes) {
+           if (i.isChecked) {
+               list.add(num)
+           }
+            num++
+        }
+
+        return list
+    }
+
+    private fun getCheckedStatesList(): List<Int> {
+        val list = mutableListOf<Int>()
+
+        var num = 1
+        for (i in stateCheckBoxes) {
+            if (i.isChecked) {
+                list.add(num)
+            }
+            num++
+        }
+
+        return list
+    }
+
+    private fun getChosenSupervisors(): List<Int> {
+        val list = mutableListOf<Int>()
+
+        for (i in supervisorList) {
+            if (i.id != null) {
+                list.add(i.id!!)
+            }
+        }
+
+        return list
+    }
+
+    private fun getChosenTags(): List<Int> {
+        val list = mutableListOf<Int>()
+
+        for (i in tagList) {
+            if (i.id != null) {
+                list.add(i.id!!)
+            }
+        }
+
+        return list
+    }
+
+    private fun getChosenDateStart(): String {
+        var date = binding.btnDateStart.text
+
+        return date.split(".")[2] + "-" +
+                date.split(".")[1] + "-" +
+                date.split(".")[0]
+    }
+
+    private fun getChosenDateEnd(): String {
+        var date = binding.btnDateEnd.text
+
+        return date.split(".")[2] + "-" +
+                date.split(".")[1] + "-" +
+                date.split(".")[0]
+    }
+
+    private fun getCheckedDifficulties(): List<Int> {
+        val list = mutableListOf<Int>()
+
+        var num = 1
+        for (i in difficultyCheckBoxes) {
+            if (i.isChecked) {
+                list.add(num)
+            }
+            num++
+        }
+
+        return list
+    }
 }
