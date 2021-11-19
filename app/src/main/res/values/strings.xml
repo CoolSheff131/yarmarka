@@ -93,4 +93,7 @@
     <string name="no">Нет</string>
     <string name="tags">Теги</string>
     <string name="project_state">Состояние проекта</string>
+    <string name="dif_1">1</string>
+    <string name="dif_2">2</string>
+    <string name="dif_3">3</string>
 </resources>

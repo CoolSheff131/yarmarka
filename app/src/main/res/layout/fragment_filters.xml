@@ -186,14 +186,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rcv_hor_tags" />
 
-        <EditText
+        <Button
             android:id="@+id/editTextDateStart"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="date"
+            android:elevation="@dimen/app_elevation"
+            tools:text="14.06.2001"
+            android:text="01.01.2001"
+            android:background="@drawable/round_white_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleTime" />
 
@@ -202,22 +204,23 @@
             style="@style/text_small_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="24dp"
             app:layout_constraintBottom_toBottomOf="@+id/editTextDateStart"
             app:layout_constraintStart_toEndOf="@+id/editTextDateStart"
             app:layout_constraintTop_toTopOf="@+id/editTextDateStart"
             app:layout_constraintVertical_bias="0.518"
-            tools:text="@string/filter_time_start" />
+            android:text="@string/filter_time_start" />
 
-        <EditText
+        <Button
             android:id="@+id/editTextDateEnd"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="date"
+            android:elevation="@dimen/app_elevation"
+            tools:text="12.12.2012"
+            android:text="02.02.2002"
+            android:background="@drawable/round_white_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextDateStart" />
 
@@ -226,13 +229,12 @@
             style="@style/text_small_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginStart="24dp"
             app:layout_constraintBottom_toBottomOf="@+id/editTextDateEnd"
             app:layout_constraintStart_toEndOf="@+id/editTextDateEnd"
             app:layout_constraintTop_toTopOf="@+id/editTextDateEnd"
             app:layout_constraintVertical_bias="0.518"
-            tools:text="@string/filter_time_end" />
+            android:text="@string/filter_time_end" />
 
         <TextView
             android:id="@+id/titleDifficulty"
@@ -242,17 +244,68 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextDateEnd" />
 
-        <SeekBar
-            android:id="@+id/seekBar2"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:max="100"
-            android:progress="3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleDifficulty" />
+<!--        <SeekBar-->
+<!--            android:id="@+id/seekBar2"-->
+<!--            android:layout_width="200dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="24dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:max="3"-->
+<!--            android:progress="3"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/titleDifficulty" />-->
 
+        <CheckBox
+            android:id="@+id/check_dif_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleDifficulty" />
+
+        <TextView
+            android:id="@+id/tv_check_dif_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/check_dif_1"
+            app:layout_constraintLeft_toLeftOf="@id/check_dif_1"
+            app:layout_constraintRight_toRightOf="@id/check_dif_1"
+            android:text="@string/dif_1"/>
+
+        <CheckBox
+            android:id="@+id/check_dif_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@id/check_dif_1"
+            app:layout_constraintTop_toBottomOf="@id/titleDifficulty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/check_dif_2"
+            app:layout_constraintLeft_toLeftOf="@id/check_dif_2"
+            app:layout_constraintRight_toRightOf="@id/check_dif_2"
+            android:text="@string/dif_2"/>
+
+        <CheckBox
+            android:id="@+id/check_dif_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="24dp"
+            app:layout_constraintStart_toEndOf="@id/check_dif_2"
+            app:layout_constraintTop_toBottomOf="@id/titleDifficulty" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/check_dif_3"
+            app:layout_constraintLeft_toLeftOf="@id/check_dif_3"
+            app:layout_constraintRight_toRightOf="@id/check_dif_3"
+            android:text="@string/dif_3"/>
 
         <Button
             android:id="@+id/btn_filter_apply"
@@ -263,7 +316,7 @@
             android:text="@string/filter_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/seekBar2" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_check_dif_1" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
