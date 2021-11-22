@@ -97,4 +97,5 @@
     <string name="dif_2">2</string>
     <string name="dif_3">3</string>
     <string name="dismiss_filters">Сбросить фильтры</string>
+    <string name="filter_project_status_process">Обработка</string>
 </resources>

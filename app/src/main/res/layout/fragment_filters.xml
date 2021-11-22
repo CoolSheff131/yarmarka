@@ -44,6 +44,16 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_filter_close" />
 
         <CheckBox
+            android:id="@+id/checkProcess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_project_status_process"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleProjects" />
+
+        <CheckBox
             android:id="@+id/checkOpen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,17 +61,7 @@
             android:layout_marginTop="12dp"
             android:text="@string/filter_projects_status_open"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleProjects" />
-
-        <CheckBox
-            android:id="@+id/checkClose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
-            android:text="@string/filter_projects_status_closed"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkOpen" />
+            app:layout_constraintTop_toBottomOf="@+id/checkProcess" />
 
         <CheckBox
             android:id="@+id/checkActive"
@@ -71,7 +71,17 @@
             android:layout_marginTop="12dp"
             android:text="@string/filter_projects_status_active"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkClose" />
+            app:layout_constraintTop_toBottomOf="@+id/checkOpen" />
+
+        <CheckBox
+            android:id="@+id/checkClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_projects_status_closed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkActive" />
 
         <TextView
             android:id="@+id/titleType"
@@ -79,7 +89,7 @@
             android:layout_margin="@dimen/app_margin_xlarge"
             android:text="@string/filter_projects_type"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkActive" />
+            app:layout_constraintTop_toBottomOf="@+id/checkClose" />
 
         <CheckBox
             android:id="@+id/checkResearch"

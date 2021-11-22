@@ -89,10 +89,10 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
         )
 
         stateCheckBoxes = listOf(
+            binding.checkProcess,
             binding.checkOpen,
+            binding.checkActive,
             binding.checkClose,
-            binding.checkActive
-            //TODO: add one more state
         )
 
         difficultyCheckBoxes = listOf(
