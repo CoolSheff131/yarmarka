@@ -14,16 +14,22 @@ import android.content.IntentFilter
 import android.util.Log
 import android.view.View
 import com.example.yarmarka.utils.Notifications
+import java.net.URL
+import android.os.AsyncTask
+import java.net.HttpURLConnection
 
 
 class MainActivity : AppCompatActivity() {
     private val CHANNEL_ID = "channel_id"
+
     private val tickReceiver by lazy { makeBroadcastReceiver() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setTheme(R.style.Theme_Yarmarka)
         setContentView(R.layout.activity_main)
         fm = supportFragmentManager
+//        DownloadFilesTask().execute("http://projects.tw1.ru/campus_auth")
         createNotificationChannel()
     }
     override fun onResume() {
@@ -65,4 +71,25 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+//    private class DownloadFilesTask : AsyncTask<String?, Int?, String>() {
+//        override fun onPostExecute(result: String) {
+//            Log.d("RESULT", result)
+//        }
+//
+//        override fun doInBackground(vararg p0: String?): String {
+//            val count = p0.size
+//            Log.d("RESULT", "get")
+//            var a = ""
+//            for (i in 0 until count) {
+//                p0[i]?.let { Log.d("RESULT", it) }
+//                val connection = URL(p0[i]).openConnection() as HttpURLConnection
+//                val data = connection.inputStream.bufferedReader().readText()
+//                Log.d("RESULT", data + " aas")
+//                a += data
+//            }
+//            Log.d("RESULT", "res")
+//            Log.d("RESULT", a)
+//            return a;
+//        }
+//    }
 }

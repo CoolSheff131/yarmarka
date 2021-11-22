@@ -1,21 +1,23 @@
 package com.example.yarmarka.ui.login
 
+import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.navigation.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentLoginBinding
-import com.example.yarmarka.utils.Notifications
-import android.content.Intent
-import com.example.yarmarka.utils.MyReceiver
+import android.webkit.JavascriptInterface
+import android.webkit.WebView
+
+import android.webkit.WebViewClient
+import com.example.yarmarka.MainActivity
 
 
 class LoginFragment : Fragment() {
@@ -31,17 +33,47 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val USER_AGENT_FAKE =
+            "Mozilla/5.0 (Linux; Android 4.1.1; Galaxy Nexus Build/JRO03C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
+        binding.webView.getSettings().setUserAgentString(USER_AGENT_FAKE);
+        binding.webView.loadUrl("http://projects.tw1.ru/campus_auth");
+        binding.webView.getSettings().setSupportZoom(true);
+        binding.webView.getSettings().setJavaScriptEnabled(true);
+        binding.webView.addJavascriptInterface(object : Any(){
+            @JavascriptInterface
+            fun showHTML(token: String?) {
+                Log.d("AUTH", "TOKEN "+token)
+                val handler = Handler(Looper.getMainLooper())
+                handler.post(Thread {
+                    (activity as MainActivity).runOnUiThread {
+                        view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+                    }
+                })
+            }
+        }, "HtmlViewer")
+        binding.webView.setWebViewClient(object : WebViewClient() {
+            override fun doUpdateVisitedHistory(view: WebView?, url: String?, isReload: Boolean) {
+                if (url != null && url.startsWith("http://projects.tw1.ru/campus_auth?code=")) {
+                    binding.webView.loadUrl("javascript:HtmlViewer.showHTML(document.getElementsByTagName('body')[0].innerHTML.match(/(?<={\"token\":\")(.*?)(?=})/)[0])")
+                }
+                super.doUpdateVisitedHistory(view, url, isReload)
+            }
+        })
         initListeners(view)
     }
 
     private fun initListeners(view: View) {
 
-        binding.btnAccountClose.setOnClickListener {
-            view.findNavController().popBackStack()
-        }
-        binding.btnRequests.setOnClickListener {
+//        binding.btnAccountClose.setOnClickListener {
+//            view.findNavController().popBackStack()
+//        }
+//        binding.btnRequests.setOnClickListener {
+            //view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+
+
             //context?.sendBroadcast(Intent(context,MyReceiver::class.java))
-            view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
-        }
+            //view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+//        }
     }
+
 }
