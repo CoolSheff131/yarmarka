@@ -1,5 +1,7 @@
 package com.example.yarmarka.ui.account
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -50,10 +52,16 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
 
         binding.btnAccountQuit.setOnClickListener {
             DialogQuit(this).show(fm, "dialog_account_quit")
+
         }
     }
 
     override fun onYesClicked() {
+        val preferences: SharedPreferences =
+            (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
+        val editor = preferences.edit()
+        editor.remove("token")
+        editor.apply()
         rootView.findNavController().navigate(R.id.action_accountFragment_to_onBoardingFragment)
     }
 }

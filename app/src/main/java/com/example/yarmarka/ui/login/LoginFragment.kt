@@ -18,6 +18,10 @@ import android.webkit.WebView
 
 import android.webkit.WebViewClient
 import com.example.yarmarka.MainActivity
+import android.content.SharedPreferences
+
+
+
 
 
 class LoginFragment : Fragment() {
@@ -33,6 +37,14 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val preferences: SharedPreferences =
+            (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
+        val token = preferences.getString("token","")
+        if(token != ""){
+            view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
+            return
+        }
+
         val USER_AGENT_FAKE =
             "Mozilla/5.0 (Linux; Android 4.1.1; Galaxy Nexus Build/JRO03C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
         binding.webView.getSettings().setUserAgentString(USER_AGENT_FAKE);
@@ -43,6 +55,16 @@ class LoginFragment : Fragment() {
             @JavascriptInterface
             fun showHTML(token: String?) {
                 Log.d("AUTH", "TOKEN "+token)
+                val preferences: SharedPreferences =
+                    (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
+                if(preferences != null){
+                    var editor = preferences.edit()
+                    editor.putString("token",token)
+                    editor.commit()
+
+                }
+
+
                 val handler = Handler(Looper.getMainLooper())
                 handler.post(Thread {
                     (activity as MainActivity).runOnUiThread {
@@ -52,12 +74,17 @@ class LoginFragment : Fragment() {
             }
         }, "HtmlViewer")
         binding.webView.setWebViewClient(object : WebViewClient() {
-            override fun doUpdateVisitedHistory(view: WebView?, url: String?, isReload: Boolean) {
+            override fun onPageFinished(view: WebView?, url: String?) {
                 if (url != null && url.startsWith("http://projects.tw1.ru/campus_auth?code=")) {
-                    binding.webView.loadUrl("javascript:HtmlViewer.showHTML(document.getElementsByTagName('body')[0].innerHTML.match(/(?<={\"token\":\")(.*?)(?=})/)[0])")
+                    binding.webView.loadUrl("javascript:HtmlViewer.showHTML(document.getElementsByTagName('body')[0].innerHTML.match(/(?<={\"token\":\")(.*?)(?=\"})/)[0])")
                 }
-                super.doUpdateVisitedHistory(view, url, isReload)
             }
+//            override fun doUpdateVisitedHistory(view: WebView?, url: String?, isReload: Boolean) {
+//                if (url != null && url.startsWith("http://projects.tw1.ru/campus_auth?code=")) {
+//                    binding.webView.loadUrl("javascript:HtmlViewer.showHTML(document.getElementsByTagName('body')[0].innerHTML.match(/(?<={\"token\":\")(.*?)(?=\"})/)[0])")
+//                }
+//                super.doUpdateVisitedHistory(view, url, isReload)
+//            }
         })
         initListeners(view)
     }
