@@ -5,4 +5,3 @@ import androidx.fragment.app.FragmentManager
 
 lateinit var fm: FragmentManager
 var bundle: Bundle? = Bundle()
-var error = ""

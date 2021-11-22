@@ -20,8 +20,8 @@ class AccountViewModel: ViewModel() {
         get() = accountDataLiveData
 
 
-    fun getAccountData() {
-        api.getStudentById("de61ecc80827a86a3fd41c53743b3006295161331c587585ec135e209f91008b")
+    fun getAccountData(token: String) {
+        api.getStudentById(token)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getAccountDataObserver())

@@ -29,6 +29,8 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
 
     private var accountData: Candidate? = null
 
+    //lateinit var preferences: SharedPreferences
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +47,8 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
     }
 
     private fun init() {
+        //preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
+
         mViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
         loadAccountData()
     }
@@ -70,8 +74,7 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
     }
 
     override fun onYesClicked() {
-        val preferences: SharedPreferences =
-            (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
+        val preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
         val editor = preferences.edit()
         editor.remove("token")
         editor.apply()
@@ -86,7 +89,11 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
                 setAccountData(it)
             }
         })
-        mViewModel.getAccountData()
+        val preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
+        val token = preferences.getString("token", "")
+        if (token != "") {
+            mViewModel.getAccountData(token!!)
+        }
     }
 
     private fun setAccountData(candidate: Candidate) {

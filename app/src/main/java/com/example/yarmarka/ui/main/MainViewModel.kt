@@ -60,7 +60,6 @@ class MainViewModel : ViewModel() {
             override fun onError(e: Throwable) {
                 Log.d("testing", "here is an error")
                 Log.d("testing", e.message+"")
-                com.example.yarmarka.utils.error = e.message!!
                 projectListLiveData.postValue(null)
             }
 
