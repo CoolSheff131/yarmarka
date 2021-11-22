@@ -10,6 +10,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.CardListItemBinding
 import com.example.yarmarka.model.Project
+import com.example.yarmarka.utils.convertDate
 
 class ProjectsRecyclerViewHolder(
     inflater: LayoutInflater, parent: ViewGroup,
@@ -23,7 +24,7 @@ class ProjectsRecyclerViewHolder(
         binding.cardTitle.text = project.title
         binding.tvDescription.text = project.goal
         binding.tvSupervisorName.text = project.supervisor_name
-        binding.tvEstimatedTime.text = project.date_start + "-" + project.date_end
+        binding.tvEstimatedTime.text = convertDate(project.date_start) + " - " + convertDate(project.date_end)
         binding.tvTotalPlaces.text = project.places.toString()
         binding.tvDifficulty.text = project.difficulty.toString() + "/10"
         when (project.difficulty) {

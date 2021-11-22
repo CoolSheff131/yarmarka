@@ -22,6 +22,7 @@ import com.example.yarmarka.ui.filters.supervisors.OnSupervisorClickListener
 import com.example.yarmarka.ui.filters.supervisors.SupervisorsRecyclerAdapter
 import com.example.yarmarka.ui.main.tags.OnTagClickListener
 import com.example.yarmarka.ui.main.tags.TagsRecyclerAdapter
+import com.example.yarmarka.utils.addZeroToDate
 import com.example.yarmarka.utils.bundle
 import java.util.*
 
@@ -44,6 +45,17 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
     private lateinit var typeCheckBoxes: List<CheckBox>
     private lateinit var stateCheckBoxes: List<CheckBox>
     private lateinit var difficultyCheckBoxes: List<CheckBox>
+
+    val c = Calendar.getInstance()
+
+    var year_start = c.get(Calendar.YEAR)
+    var year_end = c.get(Calendar.YEAR)
+
+    var month_start = c.get(Calendar.MONTH)
+    var month_end = c.get(Calendar.MONTH)
+
+    var day_start = c.get(Calendar.DAY_OF_MONTH)
+    var day_end = c.get(Calendar.DAY_OF_MONTH)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -133,42 +145,40 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
         }
 
         binding.btnDateStart.setOnClickListener {
-            val c = Calendar.getInstance()
-            val curYear = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
             val dpd = DatePickerDialog(
                 requireContext(),
-                { _, year, monthOfYear, dayOfMonth ->
-                    binding.btnDateStart.text = "$dayOfMonth.$monthOfYear.$year"
+                { view, year, month, day ->
+                    binding.btnDateStart.text = "${addZeroToDate(day)}.${addZeroToDate(month+1)}.$year"
+                    year_start = year
+                    month_start = month
+                    day_start = day
                 },
-                curYear,
-                month,
-                day
+                year_start,
+                month_start,
+                day_start
             )
             dpd.show()
         }
 
         binding.btnDateEnd.setOnClickListener {
-            val c = Calendar.getInstance()
-            val curYear = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
-
             val dpd = DatePickerDialog(
                 requireContext(),
-                { _, year, monthOfYear, dayOfMonth ->
-                    binding.btnDateEnd.text = "$dayOfMonth.$monthOfYear.$year"
+                { view, year, month, day ->
+                    binding.btnDateEnd.text = "${addZeroToDate(day)}.${addZeroToDate(month+1)}.$year"
+                    year_end = year
+                    month_end = month
+                    day_end = day
                 },
-                curYear,
-                month,
-                day
+                year_end,
+                month_end,
+                day_end
             )
             dpd.show()
         }
 
         binding.btnFilterApply.setOnClickListener {
+            if (bundle == null) bundle = Bundle()
+
             val filters = FilterObject(
                 type = getCheckedTypesList(),
                 state = getCheckedStatesList(),
@@ -180,7 +190,7 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
             )
             Log.d("testing", filters.toString())
 
-            bundle.putParcelable("filters", filters)
+            bundle?.putParcelable("filters", filters)
             view.findNavController().popBackStack()
         }
     }

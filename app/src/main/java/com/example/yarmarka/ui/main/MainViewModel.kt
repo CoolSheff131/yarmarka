@@ -33,13 +33,13 @@ class MainViewModel : ViewModel() {
 
     fun getFilteredProjectList(filters: FilterObject, page: Int = 0) {
         api.getFilteredProjects(
-            type = filters.type?.toIntArray(),
-            state = filters.state?.toIntArray(),
-            supervisor = filters.supervisor?.toIntArray(),
-            tags = filters.tags?.toIntArray(),
+            type = filters.type,
+            state = filters.state,
+            supervisor = filters.supervisor,
+            tags = filters.tags,
             date_start = filters.date_start,
             date_end = filters.date_end,
-            difficulty = filters.difficulty?.toIntArray(),
+            difficulty = filters.difficulty,
             title = "",
             page = page
         )
@@ -77,6 +77,7 @@ class MainViewModel : ViewModel() {
             }
 
             override fun onError(e: Throwable) {
+                Log.d("testing", "===${e.message}")
                 filteredProjectListLiveData.postValue(null)
             }
 

@@ -1,7 +1,6 @@
 package com.example.yarmarka.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +14,6 @@ import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentMainBinding
 import com.example.yarmarka.model.FilterObject
 import com.example.yarmarka.model.Project
-import com.example.yarmarka.model.SupervisorName
 import com.example.yarmarka.ui.main.projects.OnProjectClickListener
 import com.example.yarmarka.ui.main.projects.ProjectsRecyclerAdapter
 import com.example.yarmarka.utils.bundle
@@ -90,34 +88,34 @@ class MainFragment : Fragment(), OnProjectClickListener {
     }
 
     private fun loadApiData() {
-//        val bundleContent = bundle.getParcelable<FilterObject>("filters")
-//        if (bundleContent == null) {
-//            mViewModel.projectList.observe(viewLifecycleOwner, {
-//                if (it != null) {
-//                    mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
-//                    binding.rcvMainAllProjects.adapter = mAdapter
-//                    mAdapter.notifyDataSetChanged()
-//                    Toast.makeText(requireContext(), "Loaded", Toast.LENGTH_SHORT).show()
-//                } else {
-//                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
-//                }
-//            })
-//            mViewModel.getProjectList()
-//        } else {
-//
-//        }
-
-        mViewModel.filteredProjectList.observe(viewLifecycleOwner, {
-            if (it != null) {
-                mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
-                binding.rcvMainAllProjects.adapter = mAdapter
-                mAdapter.notifyDataSetChanged()
-                Toast.makeText(requireContext(), "Loaded", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
-            }
-        })
-        mViewModel.getFilteredProjectList(FilterObject(supervisor = listOf(1)))
+        val bundleFilters = bundle?.getParcelable<FilterObject>("filters")
+        if (bundleFilters == null) {
+            mViewModel.projectList.observe(viewLifecycleOwner, {
+                if (it != null) {
+                    mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
+                    binding.rcvMainAllProjects.adapter = mAdapter
+                    mAdapter.notifyDataSetChanged()
+                    Toast.makeText(requireContext(), "Loaded", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+                }
+            })
+            mViewModel.getProjectList()
+            binding.btnDismissFilters.visibility = View.GONE
+        } else {
+            mViewModel.filteredProjectList.observe(viewLifecycleOwner, {
+                if (it != null) {
+                    mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
+                    binding.rcvMainAllProjects.adapter = mAdapter
+                    mAdapter.notifyDataSetChanged()
+                    Toast.makeText(requireContext(), "Loaded", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+                }
+            })
+            mViewModel.getFilteredProjectList(bundleFilters)
+            binding.btnDismissFilters.visibility = View.VISIBLE
+        }
     }
 
     private fun initListeners(view: View) {
@@ -135,6 +133,11 @@ class MainFragment : Fragment(), OnProjectClickListener {
 
         binding.bthMainMotivation.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_motivationFragment2)
+        }
+
+        binding.btnDismissFilters.setOnClickListener {
+            bundle = null
+            loadApiData()
         }
     }
 

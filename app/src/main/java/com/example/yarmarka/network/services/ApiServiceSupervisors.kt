@@ -16,7 +16,7 @@ class ApiServiceSupervisors {
         private fun getInstance(): Retrofit {
             return if (retrofit == null) {
                 retrofit = Retrofit.Builder()
-                    .baseUrl("http://projects.tw1.ru/api/")
+                    .baseUrl("http://projects.tw1.ru/")
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()

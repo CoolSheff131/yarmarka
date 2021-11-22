@@ -9,31 +9,31 @@ import retrofit2.http.Query
 
 interface ProjectsApi {
 
-    @GET("/api/projects")
+    @GET("api/projects")
     fun getProjects(
         @Query("page") page: Int = 0
     ): Observable<List<Project>>
 
-    @GET("/api/projects/filter")
+    @GET("api/projects/filter")
     fun getFilteredProjects(
-        @Query("type") type: IntArray?,
-        @Query("state") state: IntArray?,
-        @Query("supervisor") supervisor: IntArray?,
-        @Query("tags") tags: IntArray?,
+        @Query("type[]") type:  List<Int>?,
+        @Query("state[]") state:  List<Int>?,
+        @Query("supervisor[]") supervisor: List<Int>?,
+        @Query("tags[]") tags:  List<Int>?,
         @Query("date_start") date_start: String?,
         @Query("date_end") date_end: String?,
-        @Query("difficulty") difficulty: IntArray?,
+        @Query("difficulty[]") difficulty: List<Int>?,
         @Query("title") title: String?,
         @Query("page") page: Int = 0
     ): Observable<List<Project>>
 
-    @GET("/api/tags")
+    @GET("api/tags")
     fun getTags(): Observable<List<Tag>>
 
-    @GET("/api/types")
+    @GET("api/types")
     fun getTypes(): Observable<List<Type>>
 
-    @GET("/api/states")
+    @GET("api/states")
     fun getStates(): Observable<List<State>>
 
 

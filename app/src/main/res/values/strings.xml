@@ -96,4 +96,5 @@
     <string name="dif_1">1</string>
     <string name="dif_2">2</string>
     <string name="dif_3">3</string>
+    <string name="dismiss_filters">Сбросить фильтры</string>
 </resources>
