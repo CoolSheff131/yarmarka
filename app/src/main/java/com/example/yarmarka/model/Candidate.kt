@@ -14,5 +14,5 @@ data class Candidate (
     var course: Int? = null,
     var training_group:  String? = null,
     var skills: List<Skill>? = null,
-    var experionce: String? = null
+    var experience: List<Int>? = null
 ): Parcelable

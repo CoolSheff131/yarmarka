@@ -31,7 +31,7 @@
     <string name="filter_title">Фильтры</string>
     <string name="filter_projects_status">Проекты:</string>
     <string name="filter_projects_type">Тип проекта:</string>
-    <string name="filter_leader">Руководитель:</string>
+    <string name="filter_leader">Руководители:</string>
     <string name="filter_tag">Теги проекта:</string>
     <string name="filter_time">Сроки реализации:</string>
     <string name="filter_difficulty">Сложность:</string>
@@ -93,4 +93,9 @@
     <string name="no">Нет</string>
     <string name="tags">Теги</string>
     <string name="project_state">Состояние проекта</string>
+    <string name="dif_1">1</string>
+    <string name="dif_2">2</string>
+    <string name="dif_3">3</string>
+    <string name="dismiss_filters">Сбросить фильтры</string>
+    <string name="filter_project_status_process">Обработка</string>
 </resources>

@@ -6,10 +6,10 @@ import io.reactivex.Single
 import retrofit2.http.*
 
 interface CandidatesApi {
-    @GET("api/candidate/{id}")
-    fun getStudentById(@Header("x-api-key") token: String): Single<Candidate>
+    @GET("api/candidate")
+    fun getStudentById(@Header("x-api-key") token: String): Observable<Candidate>
 
-    @PUT("api/candidate/{id}")
+    @PUT("api/candidate")
     fun updateStudentInfo(
         @Header("x-api-key") token: String,
         @Body candidateUpdate: CandidateUpdate
