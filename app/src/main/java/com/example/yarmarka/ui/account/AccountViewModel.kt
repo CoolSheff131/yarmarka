@@ -20,6 +20,7 @@ class AccountViewModel: ViewModel() {
         get() = accountDataLiveData
 
 
+
     fun getAccountData(token: String) {
         api.getStudentById(token)
             .subscribeOn(Schedulers.io())

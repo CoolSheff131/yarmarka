@@ -49,6 +49,7 @@ class LoginFragment : Fragment() {
             "Mozilla/5.0 (Linux; Android 4.1.1; Galaxy Nexus Build/JRO03C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
         binding.webView.getSettings().setUserAgentString(USER_AGENT_FAKE);
         binding.webView.loadUrl("http://projects.tw1.ru/campus_auth");
+
         binding.webView.getSettings().setSupportZoom(true);
         binding.webView.getSettings().setJavaScriptEnabled(true);
         binding.webView.addJavascriptInterface(object : Any(){
@@ -75,6 +76,8 @@ class LoginFragment : Fragment() {
         }, "HtmlViewer")
         binding.webView.setWebViewClient(object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
+                binding.webView.loadUrl("javascript:(function() { " +
+                        "document.getElementsByClassName('login-text login-item')[0].style.display='none'; })()");
                 if (url != null && url.startsWith("http://projects.tw1.ru/campus_auth?code=")) {
                     binding.webView.loadUrl("javascript:HtmlViewer.showHTML(document.getElementsByTagName('body')[0].innerHTML.match(/(?<={\"token\":\")(.*?)(?=\"})/)[0])")
                 }
