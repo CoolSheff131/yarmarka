@@ -257,7 +257,7 @@
                 android:overScrollMode="never"
                 android:scrollbars="none"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/tag_list_item" />
+                tools:listitem="@layout/tag_list_item_horizontal" />
 
         </HorizontalScrollView>
 

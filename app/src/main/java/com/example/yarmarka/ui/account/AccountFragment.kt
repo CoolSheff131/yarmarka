@@ -8,27 +8,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentAccountBinding
 import com.example.yarmarka.model.Candidate
-import com.example.yarmarka.network.services.ApiServiceAuth
-import com.example.yarmarka.network.services.ApiServiceCandidates
+import com.example.yarmarka.model.Tag
 import com.example.yarmarka.ui.account.dialog_quit.DialogQuit
 import com.example.yarmarka.ui.account.dialog_quit.OnDialogClickedListener
-import com.example.yarmarka.ui.filters.FiltersViewModel
+import com.example.yarmarka.ui.main.tags.OnTagClickListener
+import com.example.yarmarka.ui.main.tags.TagsRecyclerHorizontalAdapter
+import com.example.yarmarka.ui.main.tags.TagsRecyclerVerticalAdapter
 import com.example.yarmarka.utils.fm
-import io.reactivex.schedulers.Schedulers
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.google.android.flexbox.AlignItems
 
-class AccountFragment : Fragment(), OnDialogClickedListener {
+import com.google.android.flexbox.FlexDirection
+
+import com.google.android.flexbox.FlexWrap
+
+import com.google.android.flexbox.FlexboxLayoutManager
+
+
+
+
+class AccountFragment : Fragment(), OnDialogClickedListener, OnTagClickListener {
 
     private val binding by viewBinding(FragmentAccountBinding::bind)
 
@@ -38,7 +43,8 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
 
     private var accountData: Candidate? = null
 
-    //lateinit var preferences: SharedPreferences
+    private lateinit var rcv: RecyclerView
+    private lateinit var mAdapter: TagsRecyclerVerticalAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +63,18 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
 
     private fun init() {
         //preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
-
+        mAdapter = TagsRecyclerVerticalAdapter(listOf(Tag(1, "Компьютерное зрение"), Tag(2, "Нейросетевые технологии"),
+            Tag(3, "Веб"), Tag(4, "ООП")), this)
+        rcv = binding.rcvAccountTags
+        val layoutManager = FlexboxLayoutManager()
+        layoutManager.flexWrap = FlexWrap.WRAP
+        layoutManager.flexDirection = FlexDirection.ROW
+        layoutManager.alignItems = AlignItems.STRETCH
+        rcv.setLayoutManager(layoutManager)
+        rcv.adapter = mAdapter
+        mAdapter.notifyDataSetChanged()
+        Log.d("testing", "${mAdapter.itemCount}");
+        Log.d("testing", "${mAdapter.toString()}");
         mViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
         loadAccountData()
     }
@@ -85,29 +102,9 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
     override fun onYesClicked() {
         val preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
         val editor = preferences.edit()
-        Log.d("AUTH","UNAUTHED")
         editor.remove("token")
         editor.apply()
         rootView.findNavController().navigate(R.id.action_accountFragment_to_onBoardingFragment)
-
-//        val api = ApiServiceAuth.buildService()
-//        val token = preferences.getString("token", "")
-//        if (token != "") {
-//            if (token != null) {
-//                Log.d("AUTH", "UNAUTH $token")
-//                api.logout(token).enqueue(object :Callback<Void> {
-//                    override fun onResponse(call: Call<Void>, response: Response<Void>) {
-//
-//                    }
-//
-//                    override fun onFailure(call: Call<Void>, t: Throwable) {
-//                        TODO("Not yet implemented")
-//                    }
-//
-//                })
-//
-//            }
-//        }
     }
 
     private fun loadAccountData() {
@@ -118,7 +115,6 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
                 setAccountData(it)
             }
         })
-
         val preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
         val token = preferences.getString("token", "")
         if (token != "") {
@@ -133,11 +129,7 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
         binding.tvPhone.text = candidate.phone
     }
 
-    private fun getLogoutDataObserver(): Observer<String>{
-        return object : Observer<String> {
-            override fun onChanged(t: String?) {
-                TODO("Not yet implemented")
-            }
-        }
+    override fun onTagDeleteItemClicked(tag: Tag) {
+
     }
 }

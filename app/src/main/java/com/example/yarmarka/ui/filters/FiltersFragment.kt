@@ -21,7 +21,7 @@ import com.example.yarmarka.model.Tag
 import com.example.yarmarka.ui.filters.supervisors.OnSupervisorClickListener
 import com.example.yarmarka.ui.filters.supervisors.SupervisorsRecyclerAdapter
 import com.example.yarmarka.ui.main.tags.OnTagClickListener
-import com.example.yarmarka.ui.main.tags.TagsRecyclerAdapter
+import com.example.yarmarka.ui.main.tags.TagsRecyclerHorizontalAdapter
 import com.example.yarmarka.utils.addZeroToDate
 import com.example.yarmarka.utils.bundle
 import java.util.*
@@ -35,7 +35,7 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
     private var tags = listOf<Tag>()
     private val tagList = mutableListOf<Tag>()
     private lateinit var rcvTags: RecyclerView
-    private lateinit var rcvTagsAdapter: TagsRecyclerAdapter
+    private lateinit var rcvTagsAdapter: TagsRecyclerHorizontalAdapter
 
     private var shortSupervisorNames = mutableMapOf<SupervisorName, String>()
     private val supervisorList = mutableListOf<SupervisorName>()
@@ -75,7 +75,7 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
 
     private fun init() {
         rcvTags = binding.rcvTags
-        rcvTagsAdapter = TagsRecyclerAdapter(tagList, this)
+        rcvTagsAdapter = TagsRecyclerHorizontalAdapter(tagList, this)
         rcvTags.adapter = rcvTagsAdapter
 
         rcvSupervisors = binding.rcvSupervisors
@@ -121,7 +121,7 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
                 tagList.add(tag)
 
                 rcvTags.adapter = null
-                rcvTagsAdapter = TagsRecyclerAdapter(tagList, this)
+                rcvTagsAdapter = TagsRecyclerHorizontalAdapter(tagList, this)
                 rcvTags.adapter = rcvTagsAdapter
                 rcvTagsAdapter.notifyDataSetChanged()
             }
