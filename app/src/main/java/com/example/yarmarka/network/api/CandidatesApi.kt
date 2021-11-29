@@ -13,7 +13,7 @@ interface CandidatesApi {
     fun updateStudentInfo(
         @Header("x-api-key") token: String,
         @Body candidateUpdate: CandidateUpdate
-    )
+    ): Observable<ResponseBody>
 
     @GET("api/skills")
     fun getSkills(): Observable<List<Skill>>

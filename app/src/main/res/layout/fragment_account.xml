@@ -38,109 +38,176 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_account_back" />
 
-    <TextView
-        android:id="@+id/tv_title_name"
-        style="@style/text_medium_blue"
-        android:layout_margin="@dimen/app_margin_xlarge"
-        android:text="@string/name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_profile" />
-
-    <TextView
-        android:id="@+id/tv_name"
-        style="@style/text_small_black"
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
-        android:layout_marginVertical="@dimen/app_margin_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
-        tools:text="Карбушев Иван Владимирович" />
-
-    <TextView
-        android:id="@+id/tv_title_group"
-        style="@style/text_medium_blue"
-        android:layout_margin="@dimen/app_margin_xlarge"
-        android:text="@string/group"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name" />
-
-    <TextView
-        android:id="@+id/tv_group"
-        style="@style/text_small_black"
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
-        android:layout_marginVertical="@dimen/app_margin_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_group"
-        tools:text="ИСТб-19-2" />
-
-    <TextView
-        android:id="@+id/tv_title_email"
-        style="@style/text_medium_blue"
-        android:layout_margin="@dimen/app_margin_xlarge"
-        android:text="@string/email"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_group" />
-
-    <TextView
-        android:id="@+id/tv_email"
-        style="@style/text_small_black"
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
-        android:layout_marginVertical="@dimen/app_margin_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_email"
-        tools:text="Karbushev_Ivan@mail.ru" />
-
-    <TextView
-        android:id="@+id/tv_title_phone"
-        style="@style/text_medium_blue"
-        android:layout_margin="@dimen/app_margin_xlarge"
-        android:text="@string/phone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_email" />
-
-    <TextView
-        android:id="@+id/tv_phone"
-        style="@style/text_small_black"
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
-        android:layout_marginVertical="@dimen/app_margin_small"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title_phone"
-        tools:text="+7-964-656-34-93" />
-
-    <TextView
-        android:id="@+id/tv_tags"
-        style="@style/text_medium_blue"
-        android:layout_margin="@dimen/app_margin_xlarge"
-        android:text="@string/skills"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
-
-    <Button
-        android:id="@+id/btn_account_add_tag"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
-        android:layout_marginVertical="@dimen/app_margin_small"
-        android:background="@drawable/ic_add_circle"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcv_account_tags"
+    <ScrollView
+        android:id="@+id/scroll_view_account"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:spanCount="2"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/app_margin_large"
+        app:layout_constraintBottom_toTopOf="@+id/btn_requests"
+        app:layout_constraintTop_toBottomOf="@+id/tv_profile">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
-        android:layout_marginVertical="@dimen/app_margin_small"
-        tools:listitem="@layout/tag_list_item_vertical"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_tags"
-        />
+            <TextView
+                android:id="@+id/tv_title_name"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_xlarge"
+                android:text="@string/name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                style="@style/text_small_black"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_name"
+                tools:text="Карбушев Иван Владимирович" />
+
+            <TextView
+                android:id="@+id/tv_title_group"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_xlarge"
+                android:text="@string/group"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name" />
+
+            <TextView
+                android:id="@+id/tv_group"
+                style="@style/text_small_black"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_group"
+                tools:text="ИСТб-19-2" />
+
+            <TextView
+                android:id="@+id/tv_title_email"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_xlarge"
+                android:text="@string/email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_group" />
+
+            <TextView
+                android:id="@+id/tv_email"
+                style="@style/text_small_black"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_email"
+                tools:text="Karbushev_Ivan@mail.ru" />
+
+            <TextView
+                android:id="@+id/tv_title_phone"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_xlarge"
+                android:text="@string/phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_email" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                style="@style/text_small_black"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_phone"
+                tools:text="+7-964-656-34-93" />
+
+            <TextView
+                android:id="@+id/tv_tags"
+                style="@style/text_medium_blue"
+                android:layout_margin="@dimen/app_margin_xlarge"
+                android:text="@string/skills"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_phone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_account_tags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_tags"
+                app:spanCount="2"
+                tools:itemCount="2"
+                tools:listitem="@layout/tag_list_item_vertical" />
+
+            <Button
+                android:id="@+id/btn_account_add_skill"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
+                android:background="@drawable/ic_add_circle"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rcv_account_tags" />
+
+            <TextView
+                android:id="@+id/tv_additional_info"
+                style="@style/text_medium_blue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/app_margin_xlarge"
+                android:text="@string/additional_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_account_add_skill" />
+
+            <!--<com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tf_additional_info"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="1232"
+                android:layout_margin="@dimen/app_margin_xlarge"
+                app:boxStrokeColor="@color/main_blue"
+                app:boxStrokeWidth="2dp"
+                app:boxStrokeWidthFocused="@dimen/app_margin_xlarge"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_additional_info">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>-->
+
+            <EditText
+                android:id="@+id/et_additional_info"
+                android:layout_width="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
+                app:layout_constraintTop_toBottomOf="@+id/tv_additional_info"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/btn_admit_account_changes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="применить"
+                app:layout_constraintTop_toBottomOf="@id/et_additional_info"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 
     <Button
         android:id="@+id/btn_requests"
+        style="@style/btn_big_white"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/app_margin_xlarge"
@@ -148,8 +215,7 @@
         android:text="@string/my_requests"
         app:layout_constraintBottom_toTopOf="@+id/btn_projects"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/btn_big_white" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_projects"
