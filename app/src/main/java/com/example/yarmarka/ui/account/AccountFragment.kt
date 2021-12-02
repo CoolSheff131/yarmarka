@@ -119,6 +119,7 @@ class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListene
         binding.btnAccountEdit.setOnClickListener {
             if (!isEditing) {
                 binding.tvAdditionalInfo.visibility = View.GONE
+                //TODO: fix displaying current phone into EditText
                 binding.etAdditionalInfo.setText(binding.tvAdditionalInfo.text.substring(2))
                 binding.etAdditionalInfo.visibility = View.VISIBLE
 
@@ -132,6 +133,8 @@ class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListene
                 mAdapterDeletable.notifyDataSetChanged()
 
                 binding.btnAccountEdit.setBackgroundResource(R.drawable.ic_edit_active)
+                binding.btnAccountQuit.visibility = View.GONE
+                binding.btnAccountAccept.visibility = View.VISIBLE
                 isEditing = true
             } else {
                 binding.tvAdditionalInfo.visibility = View.VISIBLE
@@ -150,6 +153,8 @@ class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListene
                 mAdapter.notifyDataSetChanged()
 
                 binding.btnAccountEdit.setBackgroundResource(R.drawable.ic_edit)
+                binding.btnAccountQuit.visibility = View.VISIBLE
+                binding.btnAccountAccept.visibility = View.GONE
                 isEditing = false
             }
         }
