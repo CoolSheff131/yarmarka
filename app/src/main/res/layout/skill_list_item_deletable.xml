@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/app_margin_small"
-    android:background="@drawable/round_white_background">
+    android:layout_marginVertical="@dimen/app_margin_small"
+    android:layout_marginRight="@dimen/app_margin_small"
+    android:background="@drawable/chip">
 
     <TextView
-        android:id="@+id/tv_tag"
+        android:id="@+id/tv_skill"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/app_margin_small"
+        android:layout_margin="8dp"
         android:elevation="@dimen/app_elevation"
         android:fontFamily="@font/mont_light"
         android:textColor="@color/black"
@@ -29,7 +30,7 @@
         android:background="@drawable/ic_delete_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_tag"
+        app:layout_constraintStart_toEndOf="@id/tv_skill"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

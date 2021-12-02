@@ -6,16 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.yarmarka.model.Skill
 import com.example.yarmarka.model.Tag
 
-class SkillsRecyclerAdapter(
-    private val skillsList: List<Skill>
-) : RecyclerView.Adapter<SkillsRecyclerViewHolder>() {
+class SkillsDeletableRecyclerAdapter(
+    private val skillsList: List<Skill>,
+    private val onSkillClickListener: OnSkillClickListener
+) : RecyclerView.Adapter<SkillsDeletableRecyclerViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SkillsRecyclerViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SkillsDeletableRecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return SkillsRecyclerViewHolder(inflater, parent)
+        return SkillsDeletableRecyclerViewHolder(inflater, parent, onSkillClickListener)
     }
 
-    override fun onBindViewHolder(holder: SkillsRecyclerViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SkillsDeletableRecyclerViewHolder, position: Int) {
         val skill: Skill = skillsList[position]
         holder.bind(skill)
     }

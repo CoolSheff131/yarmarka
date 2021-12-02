@@ -21,6 +21,8 @@ import com.example.yarmarka.model.Skill
 import com.example.yarmarka.model.Tag
 import com.example.yarmarka.ui.account.dialog_quit.DialogQuit
 import com.example.yarmarka.ui.account.dialog_quit.OnDialogClickedListener
+import com.example.yarmarka.ui.account.skills.OnSkillClickListener
+import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
 import com.example.yarmarka.ui.account.skills.SkillsRecyclerAdapter
 import com.example.yarmarka.ui.main.tags.OnTagClickListener
 import com.example.yarmarka.ui.main.tags.TagsRecyclerVerticalAdapter
@@ -31,7 +33,7 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 
 
-class AccountFragment : Fragment(), OnDialogClickedListener {
+class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListener {
 
     private val binding by viewBinding(FragmentAccountBinding::bind)
 
@@ -43,6 +45,9 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
 
     private lateinit var rcv: RecyclerView
     private lateinit var mAdapter: SkillsRecyclerAdapter
+    private lateinit var mAdapterDeletable: SkillsDeletableRecyclerAdapter
+
+    private var isEditing = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,6 +67,7 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
     private fun init() {
         //preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
         mAdapter = SkillsRecyclerAdapter(emptyList())
+        mAdapterDeletable = SkillsDeletableRecyclerAdapter(emptyList(), this)
         rcv = binding.rcvAccountTags
         val layoutManager = FlexboxLayoutManager()
         layoutManager.flexWrap = FlexWrap.WRAP
@@ -95,18 +101,56 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
             DialogQuit(this).show(fm, "dialog_account_quit")
         }
 
-        binding.btnAdmitAccountChanges.setOnClickListener {
-            val preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-                ?: null) as SharedPreferences
-            val token = preferences.getString("token", "")
-            Log.d("testing", "$token")
-            if (token != "") {
-                mViewModel.updateAccountData(token!!, CandidateUpdate(
-                    binding.etAdditionalInfo.text.toString(),
-                    "04en krutoi telefon",
-                    mAdapter.getSkillsIds()
-                ))
-                mViewModel.getAccountData(token)
+//        binding.btnAdmitAccountChanges.setOnClickListener {
+//            val preferences = (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE)
+//                ?: null) as SharedPreferences
+//            val token = preferences.getString("token", "")
+//            Log.d("testing", "$token")
+//            if (token != "") {
+//                mViewModel.updateAccountData(token!!, CandidateUpdate(
+//                    binding.etAdditionalInfo.text.toString(),
+//                    "04en krutoi telefon",
+//                    mAdapter.getSkillsIds()
+//                ))
+//                mViewModel.getAccountData(token)
+//            }
+//        }
+
+        binding.btnAccountEdit.setOnClickListener {
+            if (!isEditing) {
+                binding.tvAdditionalInfo.visibility = View.GONE
+                binding.etAdditionalInfo.setText(binding.tvAdditionalInfo.text.substring(2))
+                binding.etAdditionalInfo.visibility = View.VISIBLE
+
+                binding.tvPhone.visibility = View.INVISIBLE
+                binding.etPhone.setText(binding.tvPhone.text)
+                binding.etPhone.visibility = View.VISIBLE
+
+                binding.btnAccountAddSkill.visibility = View.VISIBLE
+                mAdapterDeletable = SkillsDeletableRecyclerAdapter(mAdapter.getSkills(), this)
+                rcv.adapter = mAdapterDeletable
+                mAdapterDeletable.notifyDataSetChanged()
+
+                binding.btnAccountEdit.setBackgroundResource(R.drawable.ic_edit_active)
+                isEditing = true
+            } else {
+                binding.tvAdditionalInfo.visibility = View.VISIBLE
+                //binding.etAdditionalInfo.setText(binding.tvAdditionalInfo.text)
+                binding.tvAdditionalInfo.text = binding.etAdditionalInfo.text
+                binding.etAdditionalInfo.visibility = View.GONE
+
+                binding.tvPhone.visibility = View.VISIBLE
+                //binding.etPhone.setText(binding.tvPhone.text)
+                binding.tvPhone.text = binding.etPhone.text
+                binding.etPhone.visibility = View.GONE
+
+                binding.btnAccountAddSkill.visibility = View.GONE
+                mAdapter = SkillsRecyclerAdapter(mAdapterDeletable.getSkills())
+                rcv.adapter = mAdapter
+                mAdapter.notifyDataSetChanged()
+
+                binding.btnAccountEdit.setBackgroundResource(R.drawable.ic_edit)
+                isEditing = false
             }
         }
 
@@ -157,7 +201,12 @@ class AccountFragment : Fragment(), OnDialogClickedListener {
             rcv.adapter = mAdapter
             mAdapter.notifyDataSetChanged()
         }
-        binding.etAdditionalInfo.setText(candidate.about)
+        //binding.etAdditionalInfo.setText(candidate.about)
+        binding.tvAdditionalInfo.text = candidate.about
+    }
+
+    override fun onSkillDeleteItemClicked(skill: Skill) {
+        //TODO: delete skill from list and refresh adapters with lists
     }
 
 }
