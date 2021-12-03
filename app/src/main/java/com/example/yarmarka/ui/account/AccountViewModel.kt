@@ -27,10 +27,11 @@ class AccountViewModel: ViewModel() {
     val skills: MutableLiveData<List<Skill>?>
         get() = skillsLiveData
 
-    fun getAccountData(token: String) {
+    fun getAccountData(token: String, onNext: () -> Unit) {
         candidateApi.getStudentById(token)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doAfterTerminate(onNext)
             .subscribe(getAccountDataObserver())
     }
 
@@ -41,10 +42,11 @@ class AccountViewModel: ViewModel() {
             .subscribe(getSkillsObserver())
     }
 
-    fun updateAccountData(token: String, candidateUpdate: CandidateUpdate) {
+    fun updateAccountData(token: String, candidateUpdate: CandidateUpdate, onNext: () -> Unit) {
         candidateApi.updateStudentInfo(token, candidateUpdate)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+            .doAfterTerminate(onNext)
             .subscribe(updateAccountDataObserver())
     }
 
@@ -55,7 +57,6 @@ class AccountViewModel: ViewModel() {
             }
 
             override fun onNext(t: Candidate) {
-                Log.d("testing", "===$t")
                 accountDataLiveData.postValue(t)
             }
 

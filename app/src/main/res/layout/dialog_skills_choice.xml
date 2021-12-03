@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="right"
-    android:orientation="vertical"
-    android:layout_margin="@dimen/app_margin_large">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView1"
@@ -22,38 +21,49 @@
     <EditText
         android:id="@+id/et_skills_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@drawable/edt_search_style"
+        android:drawableStart="@drawable/ic_search"
+        android:drawablePadding="16dp"
+        android:layout_margin="@dimen/app_margin_small"
+        android:elevation="@dimen/app_elevation"
+        android:fontFamily="@font/mont_light"
+        android:hint="@string/edt_main_hint"
+        android:inputType="text"
+        android:textColor="@color/light_grey" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_chosen_skills"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/light_grey"
         android:orientation="horizontal"
-        tools:listitem="@layout/skill_list_item_deletable"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/skill_list_item_deletable" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcv_dialog_skills_choice"
         android:layout_width="match_parent"
+        android:padding="@dimen/app_margin_small"
         android:layout_height="300dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_account_dialog_skills_admit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Принять"/>
+            android:text="Принять" />
 
         <Button
             android:id="@+id/btn_account_dialog_skills_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Отменить"/>
+            android:text="Отменить" />
 
     </LinearLayout>
 

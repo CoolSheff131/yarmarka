@@ -7,12 +7,13 @@ import com.example.yarmarka.model.Skill
 import com.example.yarmarka.model.Tag
 
 class SkillsRecyclerAdapter(
-    private val skillsList: List<Skill>
+    private val skillsList: List<Skill>,
+    private val onSkillClickListener: OnSkillClickListener?
 ) : RecyclerView.Adapter<SkillsRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SkillsRecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return SkillsRecyclerViewHolder(inflater, parent)
+        return SkillsRecyclerViewHolder(inflater, parent, onSkillClickListener)
     }
 
     override fun onBindViewHolder(holder: SkillsRecyclerViewHolder, position: Int) {

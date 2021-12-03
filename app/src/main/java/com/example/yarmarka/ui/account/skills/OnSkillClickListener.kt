@@ -6,5 +6,7 @@ import com.example.yarmarka.model.Tag
 
 interface OnSkillClickListener {
 
+    fun onSkillTappedListener(skill: Skill)
+
     fun onSkillDeleteItemClicked(skill: Skill)
 }
