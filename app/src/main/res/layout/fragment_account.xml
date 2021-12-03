@@ -177,7 +177,7 @@
                 tools:itemCount="2"
                 tools:listitem="@layout/tag_list_item_vertical" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_account_add_skill"
                 android:layout_width="30dp"
                 android:layout_height="30dp"

@@ -18,6 +18,11 @@ interface CandidatesApi {
     @GET("api/skills")
     fun getSkills(): Observable<List<Skill>>
 
+    @GET("api/skills")
+    fun searchSkills(
+        @Query("name") name: String
+    ): Observable<List<Skill>>
+
     @GET("api/candidate/skills")
     fun getStudentSkills(@Header("x-api-key") token: String): Observable<List<Skill>>
 

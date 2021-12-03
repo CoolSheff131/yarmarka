@@ -1,21 +1,18 @@
 package com.example.yarmarka.ui.account.dialog_quit
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.DialogFragment
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
-import android.content.SharedPreferences
+import com.example.yarmarka.databinding.DialogAccountQuitBinding
 
-import android.preference.PreferenceManager
+class DialogQuit(private val onDialogClickedListener: OnQuitDialogClickedListener): DialogFragment() {
 
-
-
-
-class DialogQuit(private val onDialogClickedListener: OnDialogClickedListener): DialogFragment() {
+    private val binding by viewBinding(DialogAccountQuitBinding::bind)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,19 +20,19 @@ class DialogQuit(private val onDialogClickedListener: OnDialogClickedListener): 
         savedInstanceState: Bundle?
     ): View? {
 
-        val rootView = inflater.inflate(R.layout.dialog_account_quit, container)
+        return inflater.inflate(R.layout.dialog_account_quit, container, false)
+    }
 
-        rootView.findViewById<Button>(R.id.btnYes).setOnClickListener {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-
+        binding.btnYes.setOnClickListener {
             onDialogClickedListener.onYesClicked()
             dismiss()
         }
 
-        rootView.findViewById<Button>(R.id.btnNo).setOnClickListener {
+        binding.btnNo.setOnClickListener {
             dismiss()
         }
-
-        return rootView
     }
 }

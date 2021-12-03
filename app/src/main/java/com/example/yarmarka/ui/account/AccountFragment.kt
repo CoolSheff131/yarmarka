@@ -7,25 +7,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
+import com.example.yarmarka.databinding.DialogSkillsChoiceBinding
 import com.example.yarmarka.databinding.FragmentAccountBinding
 import com.example.yarmarka.model.Candidate
-import com.example.yarmarka.model.CandidateUpdate
 import com.example.yarmarka.model.Skill
-import com.example.yarmarka.model.Tag
 import com.example.yarmarka.ui.account.dialog_quit.DialogQuit
-import com.example.yarmarka.ui.account.dialog_quit.OnDialogClickedListener
+import com.example.yarmarka.ui.account.dialog_quit.OnQuitDialogClickedListener
+import com.example.yarmarka.ui.account.dialog_skills_choice.DialogSkills
+import com.example.yarmarka.ui.account.dialog_skills_choice.OnSkillsDialogClickedListener
 import com.example.yarmarka.ui.account.skills.OnSkillClickListener
 import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
 import com.example.yarmarka.ui.account.skills.SkillsRecyclerAdapter
-import com.example.yarmarka.ui.main.tags.OnTagClickListener
-import com.example.yarmarka.ui.main.tags.TagsRecyclerVerticalAdapter
 import com.example.yarmarka.utils.fm
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
@@ -33,7 +32,7 @@ import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
 
 
-class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListener {
+class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickListener, OnSkillsDialogClickedListener {
 
     private val binding by viewBinding(FragmentAccountBinding::bind)
 
@@ -88,14 +87,14 @@ class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListene
             view.findNavController().popBackStack()
         }
 
-        binding.btnProjects.setOnClickListener {
-            view.findNavController().navigate(R.id.action_accountFragment_to_myProjectsFragment)
-        }
-
-        binding.btnRequests.setOnClickListener {
-            view.findNavController()
-                .navigate(R.id.action_accountFragment_to_myApplicationsFragment2)
-        }
+//        binding.btnProjects.setOnClickListener {
+//            view.findNavController().navigate(R.id.action_accountFragment_to_myProjectsFragment)
+//        }
+//
+//        binding.btnRequests.setOnClickListener {
+//            view.findNavController()
+//                .navigate(R.id.action_accountFragment_to_myApplicationsFragment2)
+//        }
 
         binding.btnAccountQuit.setOnClickListener {
             DialogQuit(this).show(fm, "dialog_account_quit")
@@ -132,7 +131,8 @@ class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListene
                 rcv.adapter = mAdapterDeletable
                 mAdapterDeletable.notifyDataSetChanged()
 
-                binding.btnAccountEdit.setBackgroundResource(R.drawable.ic_edit_active)
+                //binding.btnAccountEdit.setBackgroundResource(R.drawable.ic_edit_active)
+                binding.btnAccountEdit.setImageResource(R.drawable.ic_edit_active)
                 binding.btnAccountQuit.visibility = View.GONE
                 binding.btnAccountAccept.visibility = View.VISIBLE
                 isEditing = true
@@ -152,7 +152,7 @@ class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListene
                 rcv.adapter = mAdapter
                 mAdapter.notifyDataSetChanged()
 
-                binding.btnAccountEdit.setBackgroundResource(R.drawable.ic_edit)
+                binding.btnAccountEdit.setImageResource(R.drawable.ic_edit)
                 binding.btnAccountQuit.visibility = View.VISIBLE
                 binding.btnAccountAccept.visibility = View.GONE
                 isEditing = false
@@ -160,7 +160,7 @@ class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListene
         }
 
         binding.btnAccountAddSkill.setOnClickListener {
-
+            DialogSkills(this).show(fm, "dialog_account_skills")
         }
     }
 
@@ -212,6 +212,10 @@ class AccountFragment : Fragment(), OnDialogClickedListener, OnSkillClickListene
 
     override fun onSkillDeleteItemClicked(skill: Skill) {
         //TODO: delete skill from list and refresh adapters with lists
+    }
+
+    override fun onAdmitClicked() {
+        TODO("Not yet implemented")
     }
 
 }

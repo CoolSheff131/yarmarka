@@ -44,6 +44,9 @@ android {
 }
 
 dependencies {
+    //RxBinding
+    implementation 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
+
     //MaskedEditText
     implementation 'ru.egslava:MaskedEditText:1.0.5'
 
