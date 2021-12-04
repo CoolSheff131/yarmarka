@@ -253,11 +253,11 @@
                 android:id="@+id/rcv_tags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:overScrollMode="never"
                 android:scrollbars="none"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/tag_list_item_horizontal" />
+                tools:listitem="@layout/tag_list_item_deletable" />
 
         </HorizontalScrollView>
 

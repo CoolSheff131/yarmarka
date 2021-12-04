@@ -10,6 +10,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.CardListItemBinding
 import com.example.yarmarka.model.Project
+import com.example.yarmarka.model.Tag
+import com.example.yarmarka.ui.main.tags.OnTagClickListener
+import com.example.yarmarka.ui.main.tags.TagsRecyclerAdapter
+import com.example.yarmarka.ui.main.tags.TagsRecyclerDeletableAdapter
 import com.example.yarmarka.utils.convertDate
 
 class ProjectsRecyclerViewHolder(
@@ -20,6 +24,8 @@ class ProjectsRecyclerViewHolder(
 
     private val binding by viewBinding(CardListItemBinding::bind)
 
+    private lateinit var mAdapter: TagsRecyclerAdapter
+
     fun bind(project: Project) {
         binding.cardTitle.text = project.title
         binding.tvDescription.text = project.goal
@@ -28,17 +34,21 @@ class ProjectsRecyclerViewHolder(
         binding.tvTotalPlaces.text = project.places.toString()
         binding.tvDifficulty.text = project.difficulty.toString() + "/10"
         when (project.difficulty) {
-            in 1..4 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(context, R.drawable.round_green_background)
-            in 5..7 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(context, R.drawable.round_orange_background)
+            1 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(context, R.drawable.round_green_background)
+            2 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(context, R.drawable.round_orange_background)
             else -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(context, R.drawable.round_red_background)
         }
         if (project.vacant_places == 0) {
             binding.tvRecruitmentOpen.visibility = View.INVISIBLE
             binding.tvRecruitmentClose.visibility = View.VISIBLE
         }
+        if (project.tags != null) {
+            mAdapter = TagsRecyclerAdapter(project.tags!!)
+            binding.rcvCardTags.adapter = mAdapter
+            mAdapter.notifyDataSetChanged()
+        }
         binding.btnProjects.setOnClickListener {
             onProjectClickListener.onButtonClicked(project)
         }
     }
-
 }

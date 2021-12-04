@@ -34,25 +34,25 @@
         android:id="@+id/btn_account_edit"
         android:layout_width="25dp"
         android:layout_height="25dp"
+        android:layout_marginLeft="@dimen/app_margin_large"
         android:background="@drawable/btn_small_white"
         android:elevation="@dimen/app_elevation"
-        android:layout_marginLeft="@dimen/app_margin_large"
         android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="@id/tv_profile"
         app:layout_constraintStart_toEndOf="@id/tv_profile"
-        app:layout_constraintTop_toTopOf="@id/tv_profile"
-        app:layout_constraintBottom_toBottomOf="@id/tv_profile"/>
+        app:layout_constraintTop_toTopOf="@id/tv_profile" />
 
     <ImageButton
         android:id="@+id/btn_account_accept"
         android:layout_width="@dimen/btn_corner_size"
         android:layout_height="@dimen/btn_corner_size"
-        android:visibility="gone"
         android:layout_margin="@dimen/app_margin_xlarge"
         android:background="@drawable/btn_small_white"
         android:elevation="@dimen/app_elevation"
         android:src="@drawable/ic_accept"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_profile"
@@ -144,16 +144,16 @@
 
             <br.com.sapereaude.maskedEditText.MaskedEditText
                 android:id="@+id/et_phone"
-                android:layout_height="40dp"
                 style="@style/text_small_black"
                 android:layout_width="200dp"
-                android:visibility="gone"
+                android:layout_height="40dp"
                 android:layout_marginHorizontal="@dimen/app_margin_xlarge"
                 android:layout_marginVertical="@dimen/app_margin_small"
+                android:hint="##########"
+                android:visibility="gone"
+                app:keep_hint="true"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_phone"
-                android:hint="##########"
-                app:keep_hint="true"
                 app:mask="+7 (###) ###-##-##" />
 
             <TextView
@@ -174,17 +174,17 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_tags"
                 app:spanCount="2"
-                tools:itemCount="2"
-                tools:listitem="@layout/tag_list_item_vertical" />
+                tools:itemCount="4"
+                tools:listitem="@layout/tag_list_item" />
 
             <ImageButton
                 android:id="@+id/btn_account_add_skill"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:visibility="gone"
                 android:layout_marginHorizontal="@dimen/app_margin_xlarge"
                 android:layout_marginVertical="@dimen/app_margin_small"
                 android:background="@drawable/ic_add_circle"
+                android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rcv_account_tags" />
 
@@ -221,24 +221,24 @@
             <TextView
                 android:id="@+id/tv_additional_info"
                 android:layout_width="0dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                tools:text="Additional info about student"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/app_margin_xlarge"
                 android:layout_marginVertical="@dimen/app_margin_small"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_title_additional_info"
-                android:layout_height="wrap_content"/>
+                tools:text="Additional info about student" />
 
             <EditText
                 android:id="@+id/et_additional_info"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+                android:layout_marginVertical="@dimen/app_margin_small"
                 android:visibility="gone"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                android:layout_marginHorizontal="@dimen/app_margin_xlarge"
-                android:layout_marginVertical="@dimen/app_margin_small"
-                app:layout_constraintTop_toBottomOf="@+id/tv_additional_info"
-                android:layout_height="wrap_content"/>
+                app:layout_constraintTop_toBottomOf="@+id/tv_additional_info" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -249,11 +249,13 @@
         style="@style/btn_big_white"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
         android:layout_marginVertical="@dimen/app_margin_large"
+        android:layout_marginHorizontal="@dimen/app_margin_large"
         android:text="@string/my_requests"
-        app:layout_constraintBottom_toTopOf="@+id/btn_projects"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_projects"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -261,11 +263,12 @@
         style="@style/btn_big_blue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginRight="@dimen/app_margin_large"
         android:layout_marginBottom="16dp"
         android:text="@string/my_projects"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btn_requests" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

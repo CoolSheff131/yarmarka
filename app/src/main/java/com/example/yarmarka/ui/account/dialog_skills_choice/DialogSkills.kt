@@ -13,13 +13,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.DialogSkillsChoiceBinding
 import com.example.yarmarka.model.Skill
-import com.example.yarmarka.model.Tag
 import com.example.yarmarka.ui.account.AccountViewModel
 import com.example.yarmarka.ui.account.skills.OnSkillClickListener
 import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
 import com.example.yarmarka.ui.account.skills.SkillsRecyclerAdapter
-import com.example.yarmarka.ui.main.tags.OnTagClickListener
-import com.example.yarmarka.ui.main.tags.TagsRecyclerVerticalAdapter
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

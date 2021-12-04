@@ -5,17 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yarmarka.model.Tag
 
-class TagsRecyclerVerticalAdapter(
+class TagsRecyclerDeletableAdapter(
     private val tagsList: List<Tag>,
     private val onTagClickListener: OnTagClickListener
-) : RecyclerView.Adapter<TagsRecyclerVerticalViewHolder>() {
+) : RecyclerView.Adapter<TagsRecyclerDeletableViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagsRecyclerVerticalViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TagsRecyclerDeletableViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return TagsRecyclerVerticalViewHolder(inflater, parent, onTagClickListener)
+        return TagsRecyclerDeletableViewHolder(inflater, parent, onTagClickListener)
     }
 
-    override fun onBindViewHolder(holder: TagsRecyclerVerticalViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TagsRecyclerDeletableViewHolder, position: Int) {
         val tag: Tag = tagsList[position]
         holder.bind(tag)
     }
