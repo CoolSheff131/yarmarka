@@ -1,5 +1,6 @@
 package com.example.yarmarka.ui.filters
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.yarmarka.model.SupervisorName
@@ -59,10 +60,12 @@ class FiltersViewModel : ViewModel() {
             override fun onSubscribe(d: Disposable) {}
 
             override fun onNext(t: List<Tag>) {
+                Log.d("filters", "$t")
                 tagsLiveData.postValue(t)
             }
 
             override fun onError(e: Throwable) {
+                Log.d("filters", "${e.message}")
                 tagsLiveData.postValue(null)
             }
 

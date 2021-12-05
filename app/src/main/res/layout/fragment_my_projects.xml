@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.my_projects.MyProjectsFragment">
 
     <ImageButton
@@ -29,13 +29,14 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_my_projects_close" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_my_projects"
+        android:id="@+id/rcv_my_projects"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        tools:listitem="@layout/card_list_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_onboarding_subtitle" />
+        app:layout_constraintTop_toBottomOf="@+id/txt_onboarding_subtitle"
+        tools:listitem="@layout/card_list_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

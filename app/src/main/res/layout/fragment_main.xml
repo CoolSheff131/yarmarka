@@ -72,22 +72,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/bth_main_my_application"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/btn_corner_size"
-        android:layout_marginRight="@dimen/app_margin_large"
-        android:background="@drawable/btn_small_white_text"
-        android:elevation="@dimen/app_elevation"
-        android:fontFamily="@font/mont_regular"
-        android:text="@string/my_applications"
-        android:textAllCaps="false"
-        android:textColor="@color/main_blue"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/bth_main_account"
-        app:layout_constraintEnd_toStartOf="@+id/bth_main_account"
-        app:layout_constraintTop_toTopOf="@+id/bth_main_account" />
-
-    <Button
         android:id="@+id/bth_main_motivation"
         android:layout_width="20dp"
         android:layout_height="20dp"
@@ -119,6 +103,7 @@
         android:id="@+id/rcv_main_all_projects"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="@dimen/app_margin_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

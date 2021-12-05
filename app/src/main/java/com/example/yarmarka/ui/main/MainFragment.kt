@@ -1,6 +1,7 @@
 package com.example.yarmarka.ui.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -84,20 +85,18 @@ class MainFragment : Fragment(), OnProjectClickListener {
 
     override fun onResume() {
         super.onResume()
-        loadApiData()
+        //loadApiData()
     }
 
     private fun loadApiData() {
         val bundleFilters = bundle?.getParcelable<FilterObject>("filters")
+        Log.d("filters", "$bundleFilters")
         if (bundleFilters == null) {
             mViewModel.projectList.observe(viewLifecycleOwner, {
                 if (it != null) {
                     mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()
-                    Toast.makeText(requireContext(), "Loaded", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                 }
             })
             mViewModel.getProjectList()
@@ -105,14 +104,16 @@ class MainFragment : Fragment(), OnProjectClickListener {
         } else {
             mViewModel.filteredProjectList.observe(viewLifecycleOwner, {
                 if (it != null) {
+                    Log.d("filters", "${it}")
                     mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()
-                    Toast.makeText(requireContext(), "Loaded", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
                 }
             })
+            val filter = FilterObject(supervisor = listOf(4))
+            Log.d("filter", "${filter==bundleFilters}")
+            Log.d("filter", "${filter}")
+            Log.d("filter", "${bundleFilters}")
             mViewModel.getFilteredProjectList(bundleFilters)
             binding.btnDismissFilters.visibility = View.VISIBLE
         }
@@ -124,7 +125,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
         }
 
         binding.bthMainMyApplication.setOnClickListener {
-            view.findNavController().navigate(R.id.action_mainFragment_to_myApplicationsFragment2)
+            view.findNavController().navigate(R.id.action_mainFragment_to_myApplicationsFragment)
         }
 
         binding.btnMainFilter.setOnClickListener {
@@ -132,7 +133,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
         }
 
         binding.bthMainMotivation.setOnClickListener {
-            view.findNavController().navigate(R.id.action_mainFragment_to_motivationFragment2)
+            view.findNavController().navigate(R.id.action_mainFragment_to_motivationFragment)
         }
 
         binding.btnDismissFilters.setOnClickListener {

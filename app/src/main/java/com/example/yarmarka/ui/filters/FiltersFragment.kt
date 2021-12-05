@@ -249,12 +249,15 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
         rcvSupervisorsAdapter.notifyDataSetChanged()
     }
 
-    private fun getCheckedTypesList(): List<Int> {
-        val list = mutableListOf<Int>()
+    private fun getCheckedTypesList(): List<Int>? {
+        var list: MutableList<Int>? = null
 
         var num = 1
         for (i in typeCheckBoxes) {
            if (i.isChecked) {
+               if (list == null) {
+                   list = mutableListOf()
+               }
                list.add(num)
            }
             num++
@@ -263,12 +266,15 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
         return list
     }
 
-    private fun getCheckedStatesList(): List<Int> {
-        val list = mutableListOf<Int>()
+    private fun getCheckedStatesList(): List<Int>? {
+        var list: MutableList<Int>? = null
 
         var num = 1
         for (i in stateCheckBoxes) {
             if (i.isChecked) {
+                if (list == null) {
+                    list = mutableListOf()
+                }
                 list.add(num)
             }
             num++
@@ -277,10 +283,11 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
         return list
     }
 
-    private fun getChosenSupervisors(): List<Int> {
-        val list = mutableListOf<Int>()
+    private fun getChosenSupervisors(): List<Int>? {
+        var list: MutableList<Int>? = null
 
         for (i in supervisorList) {
+            list = mutableListOf()
             if (i.id != null) {
                 list.add(i.id!!)
             }
@@ -289,10 +296,11 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
         return list
     }
 
-    private fun getChosenTags(): List<Int> {
-        val list = mutableListOf<Int>()
+    private fun getChosenTags(): List<Int>? {
+        var list: MutableList<Int>? = null
 
         for (i in tagList) {
+            list = mutableListOf()
             if (i.id != null) {
                 list.add(i.id!!)
             }
@@ -317,12 +325,15 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
                 date.split(".")[0]
     }
 
-    private fun getCheckedDifficulties(): List<Int> {
-        val list = mutableListOf<Int>()
+    private fun getCheckedDifficulties(): List<Int>? {
+        var list: MutableList<Int>? = null
 
         var num = 1
         for (i in difficultyCheckBoxes) {
             if (i.isChecked) {
+                if (list == null) {
+                    list = mutableListOf()
+                }
                 list.add(num)
             }
             num++

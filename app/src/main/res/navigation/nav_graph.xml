@@ -38,13 +38,13 @@
             android:id="@+id/action_mainFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_motivationFragment2"
+            android:id="@+id/action_mainFragment_to_motivationFragment"
             app:destination="@id/motivationFragment" />
         <action
             android:id="@+id/action_mainFragment_to_filtersFragment"
             app:destination="@id/filtersFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_myApplicationsFragment2"
+            android:id="@+id/action_mainFragment_to_myApplicationsFragment"
             app:destination="@id/myApplicationsFragment" />
     </fragment>
     <fragment
@@ -68,7 +68,7 @@
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" >
         <action
-            android:id="@+id/action_accountFragment_to_myApplicationsFragment2"
+            android:id="@+id/action_accountFragment_to_myApplicationsFragment"
             app:destination="@id/myApplicationsFragment" />
         <action
             android:id="@+id/action_accountFragment_to_myProjectsFragment"

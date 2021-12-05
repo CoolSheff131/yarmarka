@@ -86,14 +86,14 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
             view.findNavController().popBackStack()
         }
 
-//        binding.btnProjects.setOnClickListener {
-//            view.findNavController().navigate(R.id.action_accountFragment_to_myProjectsFragment)
-//        }
-//
-//        binding.btnRequests.setOnClickListener {
-//            view.findNavController()
-//                .navigate(R.id.action_accountFragment_to_myApplicationsFragment2)
-//        }
+        binding.btnProjects.setOnClickListener {
+            view.findNavController().navigate(R.id.action_accountFragment_to_myProjectsFragment)
+        }
+
+        binding.btnRequests.setOnClickListener {
+            view.findNavController()
+                .navigate(R.id.action_accountFragment_to_myApplicationsFragment)
+        }
 
         binding.btnAccountQuit.setOnClickListener {
             DialogQuit(this).show(fm, "dialog_account_quit")

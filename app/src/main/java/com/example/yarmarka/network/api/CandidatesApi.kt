@@ -27,10 +27,16 @@ interface CandidatesApi {
     fun getStudentSkills(@Header("x-api-key") token: String): Observable<List<Skill>>
 
     @GET("api/participations")
+    fun getStudentApplications(
+        @Query("page") page: Int,
+        @Header("x-api-key") token: String
+    ): Observable<List<Participation>>
+
+    @GET("api/participations/projects")
     fun getStudentParticipations(
         @Query("page") page: Int,
         @Header("x-api-key") token: String
-    ): Observable<List<Project>>
+    ): Observable<List<Participation>>
 
     @DELETE("api/participations/{id}")
     fun deleteStudentParticipationRequest(

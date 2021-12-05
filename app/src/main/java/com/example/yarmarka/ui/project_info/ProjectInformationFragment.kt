@@ -13,11 +13,13 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentProjectInformationBinding
 import com.example.yarmarka.model.Project
+import com.example.yarmarka.ui.main.tags.TagsRecyclerAdapter
 
 class ProjectInformationFragment : Fragment() {
 
     private val binding by viewBinding(FragmentProjectInformationBinding::bind)
 
+    private lateinit var mAdapter: TagsRecyclerAdapter
     private var project: Project? = null
 
     override fun onCreateView(
@@ -50,9 +52,15 @@ class ProjectInformationFragment : Fragment() {
         binding.tvMestNumber.text = project?.difficulty.toString()
 
         when (project?.difficulty) {
-            in 1..4 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(requireContext(), R.drawable.round_green_background)
-            in 5..7 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(requireContext(), R.drawable.round_orange_background)
+            1 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(requireContext(), R.drawable.round_green_background)
+            2 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(requireContext(), R.drawable.round_orange_background)
             else -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(requireContext(), R.drawable.round_red_background)
+        }
+        mAdapter = TagsRecyclerAdapter(listOf())
+        if (project?.tags != null) {
+            mAdapter = TagsRecyclerAdapter(project?.tags!!)
+            binding.rcvCardTags.adapter = mAdapter
+            mAdapter.notifyDataSetChanged()
         }
         if (project?.vacant_places == 0) {
             binding.constraintLayoutStatusPositive.visibility = View.INVISIBLE
