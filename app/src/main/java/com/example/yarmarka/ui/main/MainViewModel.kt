@@ -71,12 +71,12 @@ class MainViewModel : ViewModel() {
             override fun onSubscribe(d: Disposable) {}
 
             override fun onNext(t: List<Project>) {
-                Log.d("filters", "$t")
+                Log.d("mainSearch", "$t")
                 filteredProjectListLiveData.postValue(t)
             }
 
             override fun onError(e: Throwable) {
-                Log.d("testing", "===${e.message}")
+                Log.d("mainSearch", "===${e.message}")
                 filteredProjectListLiveData.postValue(null)
             }
 

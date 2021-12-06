@@ -15,6 +15,7 @@ import com.example.yarmarka.databinding.FragmentMyApplicationsBinding
 import com.example.yarmarka.model.Project
 import com.example.yarmarka.ui.main.MainFragmentDirections
 import com.example.yarmarka.ui.main.MainViewModel
+import com.example.yarmarka.ui.main.applications.ApplicationsRecyclerAdapter
 import com.example.yarmarka.ui.main.projects.OnProjectClickListener
 import com.example.yarmarka.ui.main.projects.ProjectsRecyclerAdapter
 
@@ -24,7 +25,7 @@ class MyApplicationsFragment : Fragment(), OnProjectClickListener {
 
     private lateinit var mViewModel: MyApplicationsViewModel
 
-    private lateinit var mAdapter: ProjectsRecyclerAdapter
+    private lateinit var mAdapter: ApplicationsRecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +44,7 @@ class MyApplicationsFragment : Fragment(), OnProjectClickListener {
 
     private fun init() {
         mViewModel = ViewModelProvider(this).get(MyApplicationsViewModel::class.java)
-        mAdapter = ProjectsRecyclerAdapter(listOf(), this, requireContext())
+        mAdapter = ApplicationsRecyclerAdapter(listOf(), this)
     }
 
     private fun initListeners(view: View) {
@@ -55,11 +56,7 @@ class MyApplicationsFragment : Fragment(), OnProjectClickListener {
     private fun loadData() {
         mViewModel.applicationsList.observe(viewLifecycleOwner, {
             if (it != null) {
-                val list = mutableListOf<Project>()
-                for (i in it) {
-                    list.add(i.project!!)
-                }
-                mAdapter = ProjectsRecyclerAdapter(list, this, requireContext())
+                mAdapter = ApplicationsRecyclerAdapter(it, this)
                 binding.rcvMyApplications.adapter = mAdapter
                 mAdapter.notifyDataSetChanged()
             }
@@ -73,15 +70,15 @@ class MyApplicationsFragment : Fragment(), OnProjectClickListener {
     }
 
     override fun onProjectItemClicked(project: Project) {
-        val action: MainFragmentDirections.ActionMainFragmentToProjectInformationFragment =
-            MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
+        val action: MyApplicationsFragmentDirections.ActionMyApplicationsFragmentToProjectInformationFragment =
+            MyApplicationsFragmentDirections.actionMyApplicationsFragmentToProjectInformationFragment(project)
         action.project = project
         view?.findNavController()?.navigate(action)
     }
 
     override fun onButtonClicked(project: Project) {
-        val action: MainFragmentDirections.ActionMainFragmentToProjectInformationFragment =
-            MainFragmentDirections.actionMainFragmentToProjectInformationFragment(project)
+        val action: MyApplicationsFragmentDirections.ActionMyApplicationsFragmentToProjectInformationFragment =
+            MyApplicationsFragmentDirections.actionMyApplicationsFragmentToProjectInformationFragment(project)
         action.project = project
         view?.findNavController()?.navigate(action)
     }

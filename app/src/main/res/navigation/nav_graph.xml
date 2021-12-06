@@ -88,7 +88,11 @@
         android:id="@+id/myProjectsFragment"
         android:name="com.example.yarmarka.ui.my_projects.MyProjectsFragment"
         android:label="fragment_my_projects"
-        tools:layout="@layout/fragment_my_projects" />
+        tools:layout="@layout/fragment_my_projects" >
+        <action
+            android:id="@+id/action_myProjectsFragment_to_projectInformationFragment"
+            app:destination="@id/projectInformationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/applicationFragment"
         android:name="com.example.yarmarka.ui.application.ApplicationFragment"
@@ -107,5 +111,9 @@
         android:id="@+id/myApplicationsFragment"
         android:name="com.example.yarmarka.ui.my_applications.MyApplicationsFragment"
         android:label="fragment_my_applications"
-        tools:layout="@layout/fragment_my_applications" />
+        tools:layout="@layout/fragment_my_applications" >
+        <action
+            android:id="@+id/action_myApplicationsFragment_to_projectInformationFragment"
+            app:destination="@id/projectInformationFragment" />
+    </fragment>
 </navigation>
