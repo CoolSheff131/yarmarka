@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentMainBinding
@@ -25,7 +26,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
 
     lateinit var mViewModel: MainViewModel
     lateinit var mAdapter: ProjectsRecyclerAdapter
-
+    private var page: Int = 1;
     //private var mCompositeDisposable: CompositeDisposable? = null
 
     override fun onCreateView(
@@ -33,6 +34,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        page = 1
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
@@ -81,6 +83,18 @@ class MainFragment : Fragment(), OnProjectClickListener {
             layoutManager = LinearLayoutManager(activity)
             adapter = mAdapter
         }
+        binding.rcvMainAllProjects.addOnScrollListener(object :  RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                val l = binding.rcvMainAllProjects.layoutManager as LinearLayoutManager
+                Log.d("PAGINATION",""+l.findLastVisibleItemPosition()+" "+ mAdapter.getItemCount())
+                if (l.findLastVisibleItemPosition() >= mAdapter.getItemCount()-1) {
+                    Log.d("PAGINATION","MOOOORE")
+                    page++;
+                    loadApiData();
+                }
+            }
+        })
     }
 
     override fun onResume() {
@@ -93,18 +107,21 @@ class MainFragment : Fragment(), OnProjectClickListener {
         Log.d("filters", "$bundleFilters")
         if (bundleFilters == null) {
             mViewModel.projectList.observe(viewLifecycleOwner, {
-                if (it != null) {
-                    mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
+                if (it != null && it.size != 0) {
+                    val col = mAdapter.getList().toMutableList()
+                    col.addAll(it)
+                    mAdapter = ProjectsRecyclerAdapter(col, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()
                 }
             })
-            mViewModel.getProjectList()
+            mViewModel.getProjectList(page)
             binding.btnDismissFilters.visibility = View.GONE
         } else {
             mViewModel.filteredProjectList.observe(viewLifecycleOwner, {
                 if (it != null) {
                     Log.d("filters", "${it}")
+
                     mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()
