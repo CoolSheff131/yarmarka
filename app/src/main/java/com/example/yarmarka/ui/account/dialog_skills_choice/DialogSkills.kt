@@ -17,6 +17,7 @@ import com.example.yarmarka.ui.account.AccountViewModel
 import com.example.yarmarka.ui.account.skills.OnSkillClickListener
 import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
 import com.example.yarmarka.ui.account.skills.SkillsRecyclerAdapter
+import com.example.yarmarka.utils.skills
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -87,7 +88,11 @@ class DialogSkills(private val onDialogClickedListener: OnSkillsDialogClickedLis
     private fun loadSkills(searchPart: String) {
         mViewModel.skills.observe(viewLifecycleOwner, {
             if (it != null) {
-                mAdapterSkills = SkillsRecyclerAdapter(it.sortedBy { it -> it.skill }, this)
+                val list = mutableListOf<Skill>()
+                for (i in it) {
+                    if (!skills.contains(i.id)) list.add(i)
+                }
+                mAdapterSkills = SkillsRecyclerAdapter(list.sortedBy { it -> it.id }, this)
                 binding.rcvDialogSkillsChoice.adapter = mAdapterSkills
                 mAdapterSkills.notifyDataSetChanged()
             }

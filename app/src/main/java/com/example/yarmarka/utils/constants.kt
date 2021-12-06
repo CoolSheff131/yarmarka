@@ -7,6 +7,8 @@ import com.example.yarmarka.R
 lateinit var fm: FragmentManager
 var bundle: Bundle? = Bundle()
 
+lateinit var skills: List<Int>
+
 val consideration_state = R.drawable.state_consideration
 val consideration_color = R.color.orange
 

@@ -24,7 +24,9 @@ import com.example.yarmarka.ui.account.dialog_skills_choice.OnSkillsDialogClicke
 import com.example.yarmarka.ui.account.skills.OnSkillClickListener
 import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
 import com.example.yarmarka.ui.account.skills.SkillsRecyclerAdapter
+import com.example.yarmarka.utils.bundle
 import com.example.yarmarka.utils.fm
+import com.example.yarmarka.utils.skills
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -131,10 +133,12 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
                 setEditMode()
             } else {
                 removeEditMode()
+                cancelEdit()
             }
         }
 
         binding.btnAccountAddSkill.setOnClickListener {
+            skills = accountData?.skills?.map { it.id!! }!!
             DialogSkills(this).show(fm, "dialog_account_skills")
         }
     }
@@ -164,8 +168,6 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
         binding.btnAccountQuit.visibility = View.GONE
         binding.btnAccountAccept.visibility = View.VISIBLE
         isEditing = true
-
-        val a = "123".replace("3", "")
     }
 
     private fun removeEditMode() {
@@ -261,6 +263,19 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
         }
     }
 
+    private fun cancelEdit() {
+        val list: MutableList<Skill> = mAdapterDeletable.getSkills().toMutableList()
+        list.addAll(skillsToDelete)
+        skillsToDelete.clear()
+        mAdapter = SkillsRecyclerAdapter(list.sortedBy { it.id }, this)
+        rcv.adapter = mAdapter
+        mAdapter.notifyDataSetChanged()
+
+        binding.tvPhone.text = accountData?.phone
+
+        binding.tvAdditionalInfo.text = accountData?.about
+    }
+
     override fun onSkillTappedListener(skill: Skill) {}
 
     override fun onSkillDeleteItemClicked(skill: Skill) {
@@ -274,11 +289,14 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
     }
 
     override fun onAdmitClicked(chosenSkills: List<Skill>) {
+        Log.d("skills", "${accountData?.skills}")
         var ids = mutableListOf<Int>()
         ids.addAll(chosenSkills.map { it.id!! })
         ids.removeAll(skillsToDelete.map { it.id })
+        Log.d("skills", "${ids}")
         skillsToDelete.clear()
         accountData?.skills?.map { it.id!! }?.let { ids.addAll(it) }
+        ids.sort()
 
         updateAccountInfo(ids)
     }
