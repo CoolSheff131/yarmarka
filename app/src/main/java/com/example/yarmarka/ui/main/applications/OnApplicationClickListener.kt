@@ -1,11 +1,8 @@
 package com.example.yarmarka.ui.main.applications
 
-import com.example.yarmarka.model.Project
+import com.example.yarmarka.model.Participation
 
 interface OnApplicationClickListener {
 
-    fun onProjectItemClicked(project:Project)
-
-    fun onButtonClicked(project: Project)
-
+    fun onButtonClicked(participation: Participation)
 }

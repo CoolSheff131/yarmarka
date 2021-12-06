@@ -32,7 +32,7 @@ class ProjectsRecyclerViewHolder(
         binding.tvSupervisorName.text = project.supervisor_name
         binding.tvEstimatedTime.text = convertDate(project.date_start) + " - " + convertDate(project.date_end)
         binding.tvTotalPlaces.text = project.places.toString()
-        binding.tvDifficulty.text = project.difficulty.toString() + "/10"
+        binding.tvDifficulty.text = project.difficulty.toString() + "/3"
         when (project.difficulty) {
             1 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(context, R.drawable.round_green_background)
             2 -> binding.constraintLayoutDifficulty.background = AppCompatResources.getDrawable(context, R.drawable.round_orange_background)

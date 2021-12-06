@@ -4,26 +4,27 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.yarmarka.model.Participation
 import com.example.yarmarka.model.Project
+import com.example.yarmarka.ui.main.projects.OnProjectClickListener
 
 class ApplicationsRecyclerAdapter(
-    private val projectsList: List<Project>,
-    private val onProjectClickListener: OnApplicationClickListener,
-    private val context: Context
+    private val participationList: List<Participation>,
+    private val onApplicationClickListener: OnProjectClickListener
 ) : RecyclerView.Adapter<ApplicationsRecyclerViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ApplicationsRecyclerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        return ApplicationsRecyclerViewHolder(inflater, parent, onProjectClickListener, context)
+        return ApplicationsRecyclerViewHolder(inflater, parent, onApplicationClickListener)
     }
 
     override fun onBindViewHolder(holder: ApplicationsRecyclerViewHolder, position: Int) {
-        val project: Project = projectsList[position]
-        holder.bind(project)
+        val participation = participationList[position]
+        holder.bind(participation)
         holder.itemView.setOnClickListener {
-            onProjectClickListener.onProjectItemClicked(project)
+            onApplicationClickListener.onButtonClicked(participation.project!!)
         }
     }
 
-    override fun getItemCount(): Int = projectsList.size
+    override fun getItemCount(): Int = participationList.size
 }
