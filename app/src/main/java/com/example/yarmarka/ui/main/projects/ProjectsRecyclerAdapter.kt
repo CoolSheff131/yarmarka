@@ -26,4 +26,5 @@ class ProjectsRecyclerAdapter(
     }
 
     override fun getItemCount(): Int = projectsList.size
+    public fun getList(): List<Project> = projectsList
 }
