@@ -124,10 +124,6 @@ class MainFragment : Fragment(), OnProjectClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_accountFragment)
         }
 
-        binding.bthMainMyApplication.setOnClickListener {
-            view.findNavController().navigate(R.id.action_mainFragment_to_myApplicationsFragment)
-        }
-
         binding.btnMainFilter.setOnClickListener {
             view.findNavController().navigate(R.id.action_mainFragment_to_filtersFragment)
         }

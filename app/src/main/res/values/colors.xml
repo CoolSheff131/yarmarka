@@ -4,8 +4,10 @@
     <color name="bg_color">#FBFAFF</color>
     <color name="green">#4BEB5B</color>
     <color name="red">#F18585</color>
-    <color name="orange">#F2D05C</color>
+    <color name="orange">#F29D1C</color>
     <color name="light_grey">#D3D3D3</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="brown">#a0522d</color>
+    <color name="yellow">#DAD871</color>
 </resources>

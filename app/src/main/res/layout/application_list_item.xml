@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/app_margin_xlarge"
+    android:layout_marginEnd="@dimen/app_margin_xlarge"
+    android:layout_marginBottom="@dimen/app_margin_large"
+    android:layout_marginTop="10dp"
+    app:cardCornerRadius="@dimen/corner_radius"
+    app:cardElevation="@dimen/app_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="0dp"
+            tools:background="@color/orange"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/card_title"
+            style="@style/text_card_title_blue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/app_margin_large"
+            android:layout_marginTop="@dimen/app_margin_large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Платформа для размещения вузовских олимпиад" />
+
+        <TextView
+            android:id="@+id/tv_state"
+            style="@style/text_small_black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/app_margin_large"
+            tools:text="Ожидает рассмотрение"
+            android:gravity="left"
+            android:drawableLeft="@drawable/state_consideration"
+            android:drawablePadding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_title" />
+
+        <TextView
+            android:id="@+id/tv_title_supervisor"
+            style="@style/text_small_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/app_margin_large"
+            android:layout_marginTop="@dimen/app_margin_large"
+            android:text="@string/supervisor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_state" />
+
+        <TextView
+            android:id="@+id/tv_supervisor_name"
+            style="@style/text_small_black"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/app_margin_small"
+            android:gravity="start"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_title_supervisor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_title_supervisor"
+            app:layout_constraintTop_toTopOf="@+id/tv_title_supervisor"
+            tools:text="Лукьянов Н.Д." />
+
+        <Button
+            android:id="@+id/btn_projects"
+            style="@style/btn_card"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/app_margin_large"
+            android:text="@string/detail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title_supervisor" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
