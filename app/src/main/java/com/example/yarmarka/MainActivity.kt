@@ -1,5 +1,7 @@
 package com.example.yarmarka
 
+import android.app.Activity
+import android.app.Dialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
@@ -16,6 +18,8 @@ import android.view.View
 import com.example.yarmarka.utils.Notifications
 import java.net.URL
 import android.os.AsyncTask
+import androidx.compose.ui.window.Dialog
+import com.example.yarmarka.ui.loading.Loading
 import java.net.HttpURLConnection
 
 
@@ -33,6 +37,7 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
     }
     override fun onResume() {
+        Loading(this).execute()
         super.onResume()
         //dateTimeTextView.text = getCurrentTimeStamp()
         Toast.makeText(this,"asd",Toast.LENGTH_LONG).show()
