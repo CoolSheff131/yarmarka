@@ -101,4 +101,5 @@
     <string name="tags_with_double_dots">Теги:</string>
     <string name="skills">Навыки:</string>
     <string name="additional_info">Дополнительная информация</string>
+    <string name="loading">Загрузка...</string>
 </resources>

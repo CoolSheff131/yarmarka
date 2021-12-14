@@ -69,6 +69,10 @@ class MainFragment : Fragment(), OnProjectClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //Toast.makeText(context, "THIS", Toast.LENGTH_SHORT).show()
+
+
+
         mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         initListeners(view)
 //        val projectsAdapter = ProjectsRecyclerAdapter(list, this, requireContext())
