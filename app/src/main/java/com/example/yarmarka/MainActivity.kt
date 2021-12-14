@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
     }
     override fun onResume() {
-        //Loading(this).execute()
+        Loading(this).execute()
         super.onResume()
         //dateTimeTextView.text = getCurrentTimeStamp()
         Toast.makeText(this,"asd",Toast.LENGTH_LONG).show()
