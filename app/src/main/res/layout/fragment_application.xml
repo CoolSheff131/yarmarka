@@ -44,80 +44,51 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_application_back" />
 
     <TextView
-        android:id="@+id/roleTitle"
-        style="@style/text_medium_blue"
-        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
-        android:layout_marginVertical="@dimen/app_margin_large"
-        android:text="@string/req_role_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reqTitle" />
-
-    <EditText
-        android:id="@+id/editTextRole"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round_input_without_border"
-        android:drawableLeft="@drawable/ic_resource_case"
-        android:drawablePadding="12dp"
-        android:elevation="@dimen/app_elevation"
-        android:ems="10"
-
-        android:hint="@string/req_role_field"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:paddingStart="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_application_account"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roleTitle" />
-
-    <TextView
         android:id="@+id/skilsTitle"
         style="@style/text_medium_blue"
         android:layout_marginHorizontal="@dimen/app_margin_xlarge"
         android:layout_marginVertical="@dimen/app_margin_large"
         android:text="@string/req_skils_title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextRole" />
+        app:layout_constraintTop_toBottomOf="@+id/reqTitle" />
 
-    <EditText
-        android:id="@+id/editTextSkils"
-        android:layout_width="0dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_application_skills"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/round_input_without_border"
-        android:drawableLeft="@drawable/ic_skills"
-
-        android:drawablePadding="12dp"
-        android:elevation="@dimen/app_elevation"
-        android:ems="10"
-        android:hint="@string/req_skils_field"
-        android:inputType="textPersonName"
-        android:padding="10dp"
-        android:paddingStart="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextRole"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/skilsTitle" />
+        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginVertical="@dimen/app_margin_small"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/skilsTitle"
+        app:spanCount="2"
+        tools:itemCount="4"
+        tools:listitem="@layout/tag_list_item" />
 
     <TextView
         android:id="@+id/expTitle"
         style="@style/text_medium_blue"
         android:layout_marginHorizontal="@dimen/app_margin_xlarge"
         android:layout_marginVertical="@dimen/app_margin_large"
-        android:text="@string/req_exp_title"
+        android:text="Дополнительная информация"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextSkils" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_account_add_skill" />
+
+    <ImageButton
+        android:id="@+id/btn_account_add_skill"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginVertical="@dimen/app_margin_small"
+        android:background="@drawable/ic_add_circle"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rcv_application_skills" />
 
     <EditText
         android:id="@+id/editTextExp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="24dp"
         android:background="@drawable/round_input_without_border"
         android:drawableLeft="@drawable/ic_experience"
 
@@ -129,7 +100,7 @@
         android:padding="10dp"
 
         android:paddingStart="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextSkils"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expTitle" />
@@ -147,18 +118,13 @@
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="132dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:background="@drawable/round_input_without_border"
         android:button="@drawable/ic_check"
         android:elevation="@dimen/app_elevation"
-
-        android:gravity="center"
-        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/dataTitle"
         app:layout_constraintEnd_toEndOf="@+id/editTextExp"
-        app:layout_constraintStart_toEndOf="@+id/dataTitle"
         app:layout_constraintTop_toTopOf="@+id/dataTitle"
         app:layout_constraintVertical_bias="1.0" />
 
