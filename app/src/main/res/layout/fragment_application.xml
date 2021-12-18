@@ -59,6 +59,7 @@
         android:layout_marginHorizontal="@dimen/app_margin_xlarge"
         android:layout_marginVertical="@dimen/app_margin_small"
         android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/skilsTitle"
         app:spanCount="2"
@@ -72,10 +73,10 @@
         android:layout_marginVertical="@dimen/app_margin_large"
         android:text="Дополнительная информация"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_account_add_skill" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_application_add_skill" />
 
     <ImageButton
-        android:id="@+id/btn_account_add_skill"
+        android:id="@+id/btn_application_add_skill"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginHorizontal="@dimen/app_margin_xlarge"

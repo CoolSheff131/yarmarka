@@ -86,7 +86,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
                 if (it != null) {
                     Log.d("mainSearch", "filtered")
 
-                    mAdapter = ProjectsRecyclerAdapter(it.data!!, this, requireContext())
+                    mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()
                 }

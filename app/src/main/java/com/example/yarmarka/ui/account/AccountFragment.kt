@@ -26,7 +26,6 @@ import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
 import com.example.yarmarka.ui.account.skills.SkillsRecyclerAdapter
 import com.example.yarmarka.utils.bundle
 import com.example.yarmarka.utils.fm
-import com.example.yarmarka.utils.skills
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -138,8 +137,9 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
         }
 
         binding.btnAccountAddSkill.setOnClickListener {
-            skills = accountData?.skills?.map { it.id!! }!!
-            DialogSkills(this).show(fm, "dialog_account_skills")
+            //skills = accountData?.skills?.map { it.id!! }!!
+            val skills = accountData?.skills
+            DialogSkills(this, skills).show(fm, "dialog_account_skills")
         }
     }
 
