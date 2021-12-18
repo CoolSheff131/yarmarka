@@ -122,12 +122,11 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/round_input_without_border"
-        android:button="@drawable/ic_check"
+        android:buttonTint="@color/main_blue"
         android:elevation="@dimen/app_elevation"
         app:layout_constraintBottom_toBottomOf="@+id/dataTitle"
         app:layout_constraintEnd_toEndOf="@+id/editTextExp"
-        app:layout_constraintTop_toTopOf="@+id/dataTitle"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/dataTitle" />
 
     <TextView
         android:id="@+id/typePrjText"
@@ -145,8 +144,22 @@
         app:layout_constraintTop_toBottomOf="@+id/dataTitle"
         app:lineHeight="30dp" />
 
+    <TextView
+        android:id="@+id/tv_error"
+        android:layout_width="0dp"
+        android:layout_marginHorizontal="@dimen/app_margin_xlarge"
+        android:layout_marginBottom="@dimen/app_margin_large"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:visibility="invisible"
+        android:text="@string/require_enter_all_fields"
+        app:layout_constraintBottom_toTopOf="@+id/btn_send_participation_request"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
-        android:id="@+id/motivationBtn"
+        android:id="@+id/btn_send_participation_request"
         style="@style/btn_big_blue"
         android:layout_width="0dp"
         android:layout_height="50dp"

@@ -48,7 +48,7 @@ interface CandidatesApi {
     @POST("api/participations/{id}")
     fun createProjectRequest(
         @Path("id") id: Int,
-        @Path("x-api-key") token: String,
+        @Header("x-api-key") token: String,
         @Body participate: ParticipationCreate
     ): Observable<ResponseBody>
 }

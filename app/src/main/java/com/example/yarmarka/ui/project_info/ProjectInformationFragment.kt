@@ -13,6 +13,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentProjectInformationBinding
 import com.example.yarmarka.model.Project
+import com.example.yarmarka.ui.main.MainFragmentDirections
 import com.example.yarmarka.ui.main.tags.TagsRecyclerAdapter
 
 class ProjectInformationFragment : Fragment() {
@@ -75,13 +76,14 @@ class ProjectInformationFragment : Fragment() {
         }
 
         binding.submitBtn.setOnClickListener {
-            view.findNavController().navigate(R.id.action_projectInformationFragment_to_applicationFragment)
+            val action: ProjectInformationFragmentDirections.ActionProjectInformationFragmentToApplicationFragment =
+                ProjectInformationFragmentDirections.actionProjectInformationFragmentToApplicationFragment(project!!)
+            action.project = project!!
+            view.findNavController().navigate(action)
         }
 
         binding.btnProjectInformationAccount.setOnClickListener {
             view.findNavController().navigate(R.id.action_projectInformationFragment_to_accountFragment)
         }
     }
-
-
 }
