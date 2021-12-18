@@ -21,7 +21,6 @@ import com.example.yarmarka.ui.account.dialog_skills_choice.DialogSkills
 import com.example.yarmarka.ui.account.dialog_skills_choice.OnSkillsDialogClickedListener
 import com.example.yarmarka.ui.account.skills.OnSkillClickListener
 import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
-import com.example.yarmarka.ui.project_info.ProjectInformationFragmentArgs
 import com.example.yarmarka.utils.fm
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection

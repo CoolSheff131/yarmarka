@@ -17,7 +17,6 @@ import com.example.yarmarka.ui.main.MainFragmentDirections
 import com.example.yarmarka.ui.main.applications.ApplicationsRecyclerAdapter
 import com.example.yarmarka.ui.main.projects.OnProjectClickListener
 import com.example.yarmarka.ui.main.projects.ProjectsRecyclerAdapter
-import com.example.yarmarka.ui.my_applications.MyApplicationsViewModel
 
 class MyProjectsFragment : Fragment(), OnProjectClickListener {
 
