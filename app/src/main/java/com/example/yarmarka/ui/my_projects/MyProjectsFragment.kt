@@ -13,7 +13,6 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentMyProjectsBinding
 import com.example.yarmarka.model.Project
-import com.example.yarmarka.ui.loading.Loading
 import com.example.yarmarka.ui.main.MainFragmentDirections
 import com.example.yarmarka.ui.main.applications.ApplicationsRecyclerAdapter
 import com.example.yarmarka.ui.main.projects.OnProjectClickListener
