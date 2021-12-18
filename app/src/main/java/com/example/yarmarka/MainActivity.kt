@@ -18,8 +18,7 @@ import android.view.View
 import com.example.yarmarka.utils.Notifications
 import java.net.URL
 import android.os.AsyncTask
-import androidx.compose.ui.window.Dialog
-import com.example.yarmarka.ui.loading.Loading
+import com.example.yarmarka.utils.bundle
 import java.net.HttpURLConnection
 
 
@@ -97,4 +96,9 @@ class MainActivity : AppCompatActivity() {
 //            return a;
 //        }
 //    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        bundle = null
+    }
 }
