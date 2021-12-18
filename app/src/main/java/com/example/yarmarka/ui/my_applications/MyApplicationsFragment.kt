@@ -65,7 +65,7 @@ class MyApplicationsFragment : Fragment(), OnProjectClickListener {
             ?: null) as SharedPreferences
         val token: String = preferences.getString("token", "").toString()
         if (token != "") {
-            mViewModel.getApplicationsList(token = "1234")
+            mViewModel.getApplicationsList(token = token)
         }
     }
 

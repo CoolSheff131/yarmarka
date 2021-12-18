@@ -21,20 +21,16 @@ class ApplicationViewModel: ViewModel() {
     private var studentSkillsLiveData: MutableLiveData<List<Skill>?> = MutableLiveData()
     private var allSkillsLiveData: MutableLiveData<List<Skill>?> = MutableLiveData()
 
-    val accountData: MutableLiveData<ResponseBody>
-        get() = participationCreateLiveData
-
     val studentSkills: MutableLiveData<List<Skill>?>
         get() = studentSkillsLiveData
 
     val allSkills: MutableLiveData<List<Skill>?>
         get() = allSkillsLiveData
 
-    fun sendParticipationRequest(projectId: Int, token: String, participationCreate: ParticipationCreate, onNext: () -> Unit) {
+    fun sendParticipationRequest(projectId: Int, token: String, participationCreate: ParticipationCreate) {
         candidateApi.createProjectRequest(projectId, token, participationCreate)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doAfterTerminate(onNext)
             .subscribe(sendParticipationRequestObserver())
     }
 

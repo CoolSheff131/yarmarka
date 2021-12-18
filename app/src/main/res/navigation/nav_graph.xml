@@ -101,6 +101,9 @@
         <action
             android:id="@+id/action_applicationFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
+        <argument
+            android:name="project"
+            app:argType="com.example.yarmarka.model.Project" />
     </fragment>
     <fragment
         android:id="@+id/motivationFragment"
