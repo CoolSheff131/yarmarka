@@ -1,25 +1,18 @@
 package com.example.yarmarka
 
-import android.app.Activity
-import android.app.Dialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.yarmarka.utils.fm
-import android.content.IntentFilter
-import android.util.Log
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.yarmarka.utils.Notifications
-import java.net.URL
-import android.os.AsyncTask
 import com.example.yarmarka.utils.bundle
-import java.net.HttpURLConnection
+import com.example.yarmarka.utils.fm
 
 
 class MainActivity : AppCompatActivity() {
@@ -35,11 +28,11 @@ class MainActivity : AppCompatActivity() {
 //        DownloadFilesTask().execute("http://projects.tw1.ru/campus_auth")
         createNotificationChannel()
     }
+
     override fun onResume() {
-        Loading(this).execute()
         super.onResume()
         //dateTimeTextView.text = getCurrentTimeStamp()
-        Toast.makeText(this,"asd",Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "asd", Toast.LENGTH_LONG).show()
         registerReceiver(tickReceiver, IntentFilter(Intent.ACTION_TIME_TICK))
     }
 
@@ -56,21 +49,23 @@ class MainActivity : AppCompatActivity() {
         return object : BroadcastReceiver() {
             override fun onReceive(context: Context, intent: Intent?) {
                 if (intent?.action == Intent.ACTION_TIME_TICK) {
-                    Notifications.sendNotification(context,"aa","ss")
+                    Notifications.sendNotification(context, "aa", "ss")
                     //dateTimeTextView.text = getCurrentTimeStamp()
                 }
             }
         }
     }
-    private fun createNotificationChannel(){
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+
+    private fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Notification Title"
             val descriptionText = "Description"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
-                description= descriptionText
+                description = descriptionText
             }
-            val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(channel)
 
         }
