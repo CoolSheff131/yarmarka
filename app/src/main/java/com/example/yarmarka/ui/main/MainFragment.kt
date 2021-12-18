@@ -86,7 +86,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
                 if (it != null) {
                     Log.d("mainSearch", "filtered")
 
-                    mAdapter = ProjectsRecyclerAdapter(it, this, requireContext())
+                    mAdapter = ProjectsRecyclerAdapter(it.data, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()
                 }
@@ -139,11 +139,15 @@ class MainFragment : Fragment(), OnProjectClickListener {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                if (bundle == null) bundle = Bundle()
-                val bundleFilters = bundle?.getParcelable<FilterObject>("filters")
-                bundleFilters?.title = it.toString()
-                bundle?.putParcelable("filters", bundleFilters)
-                Log.d("mainSearch", it.toString())
+//                Log.d("bundle", "$bundle ${bundle==null}")
+//                if (bundle == null) bundle = Bundle()
+//                val bundleFilters = bundle?.getParcelable<FilterObject>("filters")
+//                bundleFilters?.title = it.toString()
+//                bundle?.putParcelable("filters", bundleFilters)
+//                Log.d("mainSearch", it.toString())
+                if (bundle?.getParcelable<FilterObject>("filters") == null) {
+                    bundle?.putParcelable("filters", FilterObject())
+                }
                 loadApiData(it.toString())
             }, {
                 Log.d("testing", "error")

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.yarmarka.model.FilterObject
 import com.example.yarmarka.model.Project
+import com.example.yarmarka.model.Test
 import com.example.yarmarka.network.services.ApiServiceProjects
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,12 +17,12 @@ class MainViewModel : ViewModel() {
     private val api = ApiServiceProjects.buildService()
 
     private var projectListLiveData: MutableLiveData<List<Project>?> = MutableLiveData()
-    private var filteredProjectListLiveData: MutableLiveData<List<Project>?> = MutableLiveData()
+    private var filteredProjectListLiveData: MutableLiveData<Test?> = MutableLiveData()
 
     val projectList: MutableLiveData<List<Project>?>
         get() = projectListLiveData
 
-    val filteredProjectList: MutableLiveData<List<Project>?>
+    val filteredProjectList: MutableLiveData<Test?>
         get() = filteredProjectListLiveData
 
     fun getProjectList(page: Int = 0) {
@@ -37,8 +38,8 @@ class MainViewModel : ViewModel() {
             state = filters.state,
             supervisor = filters.supervisor,
             tags = filters.tags,
-            date_start = filters.date_start,
-            date_end = filters.date_end,
+            date_start = null,
+            date_end = null,
             difficulty = filters.difficulty,
             title = filters.title,
             page = page
@@ -66,12 +67,12 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    private fun getFilteredProjectListObserver(): Observer<List<Project>> {
-        return object : Observer<List<Project>> {
+    private fun getFilteredProjectListObserver(): Observer<Test> {
+        return object : Observer<Test> {
             override fun onSubscribe(d: Disposable) {}
 
-            override fun onNext(t: List<Project>) {
-
+            override fun onNext(t: Test) {
+                Log.d("mainSearch", "${t.request}")
                 filteredProjectListLiveData.postValue(t)
             }
 
