@@ -25,7 +25,7 @@ interface ProjectsApi {
         @Query("difficulty[]") difficulty: List<Int>?,
         @Query("title") title: String?,
         @Query("page") page: Int = 0
-    ): Observable<Test>
+    ): Observable<List<Project>>
 
     @GET("api/tags")
     fun getTags(): Observable<List<Tag>>

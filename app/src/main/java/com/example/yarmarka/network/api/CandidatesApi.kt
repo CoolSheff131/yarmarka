@@ -3,6 +3,7 @@ package com.example.yarmarka.network.api
 import com.example.yarmarka.model.*
 import io.reactivex.Observable
 import io.reactivex.Single
+import okhttp3.Response
 import retrofit2.http.*
 
 interface CandidatesApi {
@@ -42,12 +43,12 @@ interface CandidatesApi {
     fun deleteStudentParticipationRequest(
        @Path("id") id: Int,
        @Query("x-api-key") token: String
-    )
+    ): Observable<ResponseBody>
 
     @POST("api/participations/{id}")
     fun createProjectRequest(
         @Path("id") id: Int,
         @Path("x-api-key") token: String,
         @Body participate: ParticipationCreate
-    )
+    ): Observable<ResponseBody>
 }

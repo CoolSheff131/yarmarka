@@ -17,18 +17,19 @@ import com.example.yarmarka.ui.account.AccountViewModel
 import com.example.yarmarka.ui.account.skills.OnSkillClickListener
 import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
 import com.example.yarmarka.ui.account.skills.SkillsRecyclerAdapter
-import com.example.yarmarka.utils.skills
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
-class DialogSkills(private val onDialogClickedListener: OnSkillsDialogClickedListener) :
+class DialogSkills(
+    private val onDialogClickedListener: OnSkillsDialogClickedListener,
+    private val availableSkills: List<Skill>?) :
     DialogFragment(), OnSkillClickListener {
 
     private val binding by viewBinding(DialogSkillsChoiceBinding::bind)
 
-    private lateinit var mViewModel: AccountViewModel
+    private lateinit var mViewModel: DialogSkillsViewModel
 
     private lateinit var mAdapterSkillsChosen: SkillsDeletableRecyclerAdapter
 
@@ -55,7 +56,7 @@ class DialogSkills(private val onDialogClickedListener: OnSkillsDialogClickedLis
     }
 
     private fun init() {
-        mViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+        mViewModel = ViewModelProvider(this).get(DialogSkillsViewModel::class.java)
 
         //mAdapterSkills = SkillsRecyclerAdapter(emptyList())
         mAdapterSkills = SkillsRecyclerAdapter(emptyList(), this)
@@ -87,12 +88,17 @@ class DialogSkills(private val onDialogClickedListener: OnSkillsDialogClickedLis
 
     private fun loadSkills(searchPart: String) {
         mViewModel.skills.observe(viewLifecycleOwner, {
-            if (it != null) {
+            if (it != null && availableSkills != null) {
                 val list = mutableListOf<Skill>()
+                val skills = availableSkills
+                //Log.d("application_skills", "$skills")
                 for (i in it) {
-                    if (!skills.contains(i.id)) list.add(i)
+                    if (skills.contains(i)) {
+                        list.add(i)
+                    }
                 }
-                mAdapterSkills = SkillsRecyclerAdapter(list.sortedBy { it -> it.id }, this)
+                //Log.d("application_skills", "$list")
+                mAdapterSkills = SkillsRecyclerAdapter(list.sortedBy { item -> item.id }, this)
                 binding.rcvDialogSkillsChoice.adapter = mAdapterSkills
                 mAdapterSkills.notifyDataSetChanged()
             }
