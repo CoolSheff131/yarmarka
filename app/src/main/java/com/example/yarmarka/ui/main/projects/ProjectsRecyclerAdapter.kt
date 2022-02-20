@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.yarmarka.model.Project
+import com.example.yarmarka.domain.model.Project
 
 class ProjectsRecyclerAdapter(
     private val projectsList: List<Project>,

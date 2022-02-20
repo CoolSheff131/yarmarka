@@ -1,6 +1,6 @@
 package com.example.yarmarka.ui.account.dialog_skills_choice
 
-import com.example.yarmarka.model.Skill
+import com.example.yarmarka.domain.model.Skill
 
 interface OnSkillsDialogClickedListener {
 

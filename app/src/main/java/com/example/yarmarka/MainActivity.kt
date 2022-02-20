@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private val CHANNEL_ID = "channel_id"
 
     private val tickReceiver by lazy { makeBroadcastReceiver() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

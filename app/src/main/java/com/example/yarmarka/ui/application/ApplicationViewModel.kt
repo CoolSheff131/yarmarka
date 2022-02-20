@@ -3,21 +3,24 @@ package com.example.yarmarka.ui.application
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.yarmarka.model.Candidate
-import com.example.yarmarka.model.ParticipationCreate
-import com.example.yarmarka.model.ResponseBody
-import com.example.yarmarka.model.Skill
-import com.example.yarmarka.network.services.ApiServiceCandidates
+import com.example.yarmarka.domain.model.ParticipationCreate
+import com.example.yarmarka.domain.model.ResponseStatus
+import com.example.yarmarka.domain.model.Skill
+import com.example.yarmarka.data.remote.client.ApiClient
+import com.example.yarmarka.domain.usecase.CandidatesUseCase
+import com.example.yarmarka.domain.usecase.SkillsUseCase
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class ApplicationViewModel: ViewModel() {
+class ApplicationViewModel @Inject constructor(
+    private val candidatesUseCase: CandidatesUseCase,
+    private val skillsUseCase: SkillsUseCase
+) : ViewModel() {
 
-    private val candidateApi = ApiServiceCandidates.buildService()
-
-    private var participationCreateLiveData: MutableLiveData<ResponseBody> = MutableLiveData()
+    private var participationCreateLiveData: MutableLiveData<ResponseStatus> = MutableLiveData()
     private var studentSkillsLiveData: MutableLiveData<List<Skill>?> = MutableLiveData()
     private var allSkillsLiveData: MutableLiveData<List<Skill>?> = MutableLiveData()
 
@@ -27,34 +30,42 @@ class ApplicationViewModel: ViewModel() {
     val allSkills: MutableLiveData<List<Skill>?>
         get() = allSkillsLiveData
 
-    fun sendParticipationRequest(projectId: Int, token: String, participationCreate: ParticipationCreate) {
-        candidateApi.createProjectRequest(projectId, token, participationCreate)
+    fun sendParticipationRequest(
+        projectId: Int,
+        token: String,
+        participationCreate: ParticipationCreate
+    ) {
+        candidatesUseCase.createProjectRequest(
+            token = token,
+            id = projectId,
+            participate = participationCreate
+        )
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(sendParticipationRequestObserver())
     }
 
     fun getStudentSkills(token: String) {
-        candidateApi.getStudentSkills(token)
+        candidatesUseCase.getStudentSkills(token)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getStudentSkillsObserver())
     }
 
     fun getAllSkills() {
-        candidateApi.getSkills()
+        skillsUseCase.getSkills()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getAllSkillsObserver())
     }
 
-    private fun sendParticipationRequestObserver(): Observer<ResponseBody> {
-        return object : Observer<ResponseBody> {
+    private fun sendParticipationRequestObserver(): Observer<ResponseStatus> {
+        return object : Observer<ResponseStatus> {
             override fun onSubscribe(d: Disposable) {
 
             }
 
-            override fun onNext(t: ResponseBody) {
+            override fun onNext(t: ResponseStatus) {
                 Log.d("application_skills", "response - $t")
             }
 

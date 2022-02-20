@@ -1,8 +1,6 @@
 package com.example.yarmarka.ui.account.skills
 
-import com.example.yarmarka.model.Project
-import com.example.yarmarka.model.Skill
-import com.example.yarmarka.model.Tag
+import com.example.yarmarka.domain.model.Skill
 
 interface OnSkillClickListener {
 

@@ -12,8 +12,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentProjectInformationBinding
-import com.example.yarmarka.model.Project
-import com.example.yarmarka.ui.main.MainFragmentDirections
+import com.example.yarmarka.domain.model.Project
 import com.example.yarmarka.ui.main.tags.TagsRecyclerAdapter
 
 class ProjectInformationFragment : Fragment() {

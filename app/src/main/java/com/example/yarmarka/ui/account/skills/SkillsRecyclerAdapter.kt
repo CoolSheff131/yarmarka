@@ -3,8 +3,7 @@ package com.example.yarmarka.ui.account.skills
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.yarmarka.model.Skill
-import com.example.yarmarka.model.Tag
+import com.example.yarmarka.domain.model.Skill
 
 class SkillsRecyclerAdapter(
     private val skillsList: List<Skill>,

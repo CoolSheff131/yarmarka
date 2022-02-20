@@ -12,7 +12,7 @@ class Notifications {
         private val notificationId = 101
         //Делает уведомление принимает контекст заголовок и текст (опционально иконку)
         fun sendNotification(context: Context,title: String, content: String,icon: Int = R.drawable.ic_account){
-            val builder = context?.let {
+            val builder = context.let {
                 NotificationCompat.Builder(it,CHANNEL_ID)
                     .setSmallIcon(icon)
                     .setContentTitle(title)
@@ -20,10 +20,8 @@ class Notifications {
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                     .setDefaults(Notification.DEFAULT_ALL)
             }
-            if (builder != null) {
-                with(context?.let { NotificationManagerCompat.from(it) }){
-                    this?.notify(notificationId,builder.build())
-                }
+            with(context.let { NotificationManagerCompat.from(it) }){
+                this.notify(notificationId,builder.build())
             }
         }
     }

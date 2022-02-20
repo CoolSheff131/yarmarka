@@ -20,10 +20,6 @@ import android.webkit.WebViewClient
 import com.example.yarmarka.MainActivity
 import android.content.SharedPreferences
 
-
-
-
-
 class LoginFragment : Fragment() {
 
     private val binding by viewBinding(FragmentLoginBinding::bind)
@@ -38,7 +34,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val preferences: SharedPreferences =
-            (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
+            activity?.getSharedPreferences("pref", Context.MODE_PRIVATE) as SharedPreferences
         val token = preferences.getString("token","")
         if(token != ""){
             view.findNavController().navigate(R.id.action_loginFragment_to_mainFragment)

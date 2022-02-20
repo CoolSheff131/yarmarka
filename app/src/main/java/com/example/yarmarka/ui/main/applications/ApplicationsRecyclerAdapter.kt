@@ -1,11 +1,9 @@
 package com.example.yarmarka.ui.main.applications
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.yarmarka.model.Participation
-import com.example.yarmarka.model.Project
+import com.example.yarmarka.domain.model.Participation
 import com.example.yarmarka.ui.main.projects.OnProjectClickListener
 
 class ApplicationsRecyclerAdapter(

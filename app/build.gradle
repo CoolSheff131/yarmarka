@@ -1,8 +1,9 @@
 plugins {
     id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
     id 'kotlin-android'
-    id 'kotlin-kapt'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
 }
 
 apply plugin: 'androidx.navigation.safeargs'
@@ -94,9 +95,10 @@ dependencies {
     implementation("androidx.room:room-paging:2.4.0-alpha04")
 
     //dagger
-    def dagger_version = "2.27"
+    def dagger_version = "2.40.5"
     implementation "com.google.dagger:dagger:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
 
     //retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'

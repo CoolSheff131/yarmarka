@@ -3,20 +3,22 @@ package com.example.yarmarka.ui.account
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.yarmarka.model.Candidate
-import com.example.yarmarka.model.CandidateUpdate
-import com.example.yarmarka.model.ResponseBody
-import com.example.yarmarka.model.Skill
-import com.example.yarmarka.network.services.ApiServiceCandidates
+import com.example.yarmarka.domain.model.Candidate
+import com.example.yarmarka.domain.model.CandidateUpdate
+import com.example.yarmarka.domain.model.ResponseStatus
+import com.example.yarmarka.domain.model.Skill
+import com.example.yarmarka.domain.usecase.CandidatesUseCase
+import com.example.yarmarka.domain.usecase.SkillsUseCase
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
-class AccountViewModel: ViewModel() {
-
-    private val candidateApi = ApiServiceCandidates.buildService()
+class AccountViewModel @Inject constructor(
+    private val candidatesUseCase: CandidatesUseCase,
+    private val skillsUseCase: SkillsUseCase
+): ViewModel() {
 
     private var accountDataLiveData: MutableLiveData<Candidate?> = MutableLiveData()
     private var skillsLiveData: MutableLiveData<List<Skill>?> = MutableLiveData()
@@ -28,7 +30,7 @@ class AccountViewModel: ViewModel() {
         get() = skillsLiveData
 
     fun getAccountData(token: String, onNext: () -> Unit) {
-        candidateApi.getStudentById(token)
+        candidatesUseCase.getStudentById(token)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doAfterTerminate(onNext)
@@ -36,14 +38,14 @@ class AccountViewModel: ViewModel() {
     }
 
     fun getSkills(searchPart: String) {
-        candidateApi.searchSkills(searchPart)
+        skillsUseCase.searchSkills(searchPart)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getSkillsObserver())
     }
 
     fun updateAccountData(token: String, candidateUpdate: CandidateUpdate, onNext: () -> Unit) {
-        candidateApi.updateStudentInfo(token, candidateUpdate)
+        candidatesUseCase.updateStudentInfo(token, candidateUpdate)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doAfterTerminate(onNext)
@@ -71,13 +73,13 @@ class AccountViewModel: ViewModel() {
         }
     }
 
-    private fun updateAccountDataObserver(): Observer<ResponseBody> {
-        return object : Observer<ResponseBody> {
+    private fun updateAccountDataObserver(): Observer<ResponseStatus> {
+        return object : Observer<ResponseStatus> {
             override fun onSubscribe(d: Disposable) {
 
             }
 
-            override fun onNext(t: ResponseBody) {
+            override fun onNext(t: ResponseStatus) {
                 Log.d("testing", "response - $t")
             }
 

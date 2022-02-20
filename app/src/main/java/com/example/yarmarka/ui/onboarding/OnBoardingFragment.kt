@@ -28,7 +28,7 @@ class OnBoardingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val preferences: SharedPreferences =
-            (getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) ?: null) as SharedPreferences
+            getActivity()?.getSharedPreferences("pref", Context.MODE_PRIVATE) as SharedPreferences
         val token = preferences.getString("token","")
         if(token != ""){
             view.findNavController().navigate(R.id.action_onBoardingFragment_to_loginFragment)

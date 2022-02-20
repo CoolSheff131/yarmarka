@@ -3,16 +3,18 @@ package com.example.yarmarka.ui.my_projects
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.yarmarka.model.Participation
-import com.example.yarmarka.network.services.ApiServiceCandidates
+import com.example.yarmarka.domain.model.Participation
+import com.example.yarmarka.data.remote.client.ApiClient
+import com.example.yarmarka.domain.usecase.CandidatesUseCase
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MyProjectsViewModel : ViewModel() {
-
-    private val api = ApiServiceCandidates.buildService()
+class MyProjectsViewModel @Inject constructor(
+    private val candidatesUseCase: CandidatesUseCase
+) : ViewModel() {
 
     private var participationsLiveData: MutableLiveData<List<Participation>?> = MutableLiveData()
 
@@ -20,7 +22,7 @@ class MyProjectsViewModel : ViewModel() {
         get() = participationsLiveData
 
     fun getParticipationsList(page: Int = 0, token: String) {
-        api.getStudentParticipations(page, token)
+        candidatesUseCase.getStudentParticipations(token = token, page = page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getParticipationsListObserver())

@@ -3,19 +3,20 @@ package com.example.yarmarka.ui.filters
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.yarmarka.model.SupervisorName
-import com.example.yarmarka.model.Tag
-import com.example.yarmarka.network.services.ApiServiceProjects
-import com.example.yarmarka.network.services.ApiServiceSupervisors
+import com.example.yarmarka.domain.model.SupervisorName
+import com.example.yarmarka.domain.model.Tag
+import com.example.yarmarka.domain.usecase.ProjectsUseCase
+import com.example.yarmarka.domain.usecase.SupervisorsUseCase
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class FiltersViewModel : ViewModel() {
-
-    private val apiProjects = ApiServiceProjects.buildService()
-    private val apiSupervisors = ApiServiceSupervisors.buildService()
+class FiltersViewModel @Inject constructor(
+    private val supervisorsUseCase: SupervisorsUseCase,
+    private val projectsUseCase: ProjectsUseCase
+) : ViewModel() {
 
     private var supervisorsLiveData: MutableLiveData<List<SupervisorName>?> = MutableLiveData()
     val supervisorsList: MutableLiveData<List<SupervisorName>?>
@@ -26,14 +27,14 @@ class FiltersViewModel : ViewModel() {
         get() = tagsLiveData
 
     fun getSupervisors() {
-        apiSupervisors.getSupervisorsNames()
+        supervisorsUseCase.getSupervisorsNames()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getSupervisorsObserver())
     }
 
     fun getTags() {
-        apiProjects.getTags()
+        projectsUseCase.getTags()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getTagsObserver())

@@ -5,10 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
-import com.example.yarmarka.databinding.SkillListItemBinding
 import com.example.yarmarka.databinding.SkillListItemDeletableBinding
-import com.example.yarmarka.model.Skill
-import com.example.yarmarka.model.Tag
+import com.example.yarmarka.domain.model.Skill
 
 class SkillsDeletableRecyclerViewHolder(
     inflater: LayoutInflater,

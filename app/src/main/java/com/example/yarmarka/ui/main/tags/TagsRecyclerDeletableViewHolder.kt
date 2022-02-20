@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.TagListItemDeletableBinding
-import com.example.yarmarka.model.Tag
+import com.example.yarmarka.domain.model.Tag
 
 class TagsRecyclerDeletableViewHolder(
     inflater: LayoutInflater, parent: ViewGroup,

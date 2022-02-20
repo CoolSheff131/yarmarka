@@ -3,37 +3,38 @@ package com.example.yarmarka.ui.main
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.yarmarka.model.FilterObject
-import com.example.yarmarka.model.Project
-import com.example.yarmarka.model.Test
-import com.example.yarmarka.network.services.ApiServiceProjects
+import com.example.yarmarka.domain.model.FilterObject
+import com.example.yarmarka.domain.model.Project
+import com.example.yarmarka.domain.model.ProjectListResponse
+import com.example.yarmarka.domain.usecase.ProjectsUseCase
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class MainViewModel : ViewModel() {
+class MainViewModel @Inject constructor(
+    private val projectsUseCase: ProjectsUseCase
+) : ViewModel() {
 
-    private val api = ApiServiceProjects.buildService()
+    private var projectListLiveData: MutableLiveData<ProjectListResponse?> = MutableLiveData()
+    private var filteredProjectListLiveData: MutableLiveData<ProjectListResponse?> = MutableLiveData()
 
-    private var projectListLiveData: MutableLiveData<List<Project>?> = MutableLiveData()
-    private var filteredProjectListLiveData: MutableLiveData<Test?> = MutableLiveData()
-
-    val projectList: MutableLiveData<List<Project>?>
+    val projectList: MutableLiveData<ProjectListResponse?>
         get() = projectListLiveData
 
-    val filteredProjectList: MutableLiveData<Test?>
+    val filteredProjectList: MutableLiveData<ProjectListResponse?>
         get() = filteredProjectListLiveData
 
     fun getProjectList(page: Int = 0) {
-        api.getProjects(page)
+        projectsUseCase.getProjects(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(getProjectListObserver())
     }
 
     fun getFilteredProjectList(filters: FilterObject, page: Int = 0) {
-        api.getFilteredProjects(
+        projectsUseCase.getFilteredProjects(
             type = filters.type,
             state = filters.state,
             supervisor = filters.supervisor,
@@ -49,11 +50,11 @@ class MainViewModel : ViewModel() {
             .subscribe(getFilteredProjectListObserver())
     }
 
-    private fun getProjectListObserver(): Observer<List<Project>> {
-        return object : Observer<List<Project>> {
+    private fun getProjectListObserver(): Observer<ProjectListResponse> {
+        return object : Observer<ProjectListResponse> {
             override fun onSubscribe(d: Disposable) {}
 
-            override fun onNext(t: List<Project>) {
+            override fun onNext(t: ProjectListResponse) {
                 Log.d("testing", "$t")
                 projectListLiveData.postValue(t)
             }
@@ -67,12 +68,12 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    private fun getFilteredProjectListObserver(): Observer<Test> {
-        return object : Observer<Test> {
+    private fun getFilteredProjectListObserver(): Observer<ProjectListResponse> {
+        return object : Observer<ProjectListResponse> {
             override fun onSubscribe(d: Disposable) {}
 
-            override fun onNext(t: Test) {
-                Log.d("mainSearch", "${t.request}")
+            override fun onNext(t: ProjectListResponse) {
+                Log.d("mainSearch", "${t}")
                 filteredProjectListLiveData.postValue(t)
             }
 

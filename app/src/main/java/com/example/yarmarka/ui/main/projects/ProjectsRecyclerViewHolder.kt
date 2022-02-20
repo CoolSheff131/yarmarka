@@ -9,11 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.CardListItemBinding
-import com.example.yarmarka.model.Project
-import com.example.yarmarka.model.Tag
-import com.example.yarmarka.ui.main.tags.OnTagClickListener
+import com.example.yarmarka.domain.model.Project
 import com.example.yarmarka.ui.main.tags.TagsRecyclerAdapter
-import com.example.yarmarka.ui.main.tags.TagsRecyclerDeletableAdapter
 import com.example.yarmarka.utils.convertDate
 
 class ProjectsRecyclerViewHolder(

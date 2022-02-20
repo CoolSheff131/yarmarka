@@ -1,21 +1,23 @@
 package com.example.yarmarka.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.yarmarka.App
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentMainBinding
-import com.example.yarmarka.model.FilterObject
-import com.example.yarmarka.model.Project
+import com.example.yarmarka.domain.model.FilterObject
+import com.example.yarmarka.domain.model.Project
 import com.example.yarmarka.ui.main.projects.OnProjectClickListener
 import com.example.yarmarka.ui.main.projects.ProjectsRecyclerAdapter
 import com.example.yarmarka.utils.bundle
@@ -23,15 +25,24 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 
 class MainFragment : Fragment(), OnProjectClickListener {
 
     private val binding by viewBinding(FragmentMainBinding::bind)
 
+    @Inject
     lateinit var mViewModel: MainViewModel
+
     lateinit var mAdapter: ProjectsRecyclerAdapter
     private var page: Int = 1;
     //private var mCompositeDisposable: CompositeDisposable? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        (requireActivity().application as App).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,7 +62,6 @@ class MainFragment : Fragment(), OnProjectClickListener {
     }
 
     private fun init() {
-        mViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         mAdapter = ProjectsRecyclerAdapter(emptyList(), this, requireContext())
     }
 
@@ -60,16 +70,16 @@ class MainFragment : Fragment(), OnProjectClickListener {
         bundleFilters?.title = searchPart
         Log.d("mainSearch", "===========$bundleFilters")
         if (bundleFilters == null) {
-            mViewModel.projectList.observe(viewLifecycleOwner, {
-                if (it != null && it.size != 0) {
+            mViewModel.projectList.observe(viewLifecycleOwner) {
+                if (it != null && it.data.size != 0) {
                     Log.d("mainSearch", "mere")
                     val col = mAdapter.getList().toMutableList()
-                    col.addAll(it)
+                    col.addAll(it.data)
                     mAdapter = ProjectsRecyclerAdapter(col, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()
                 }
-            })
+            }
             mViewModel.getProjectList(page)
             binding.btnDismissFilters.visibility = View.GONE
         } else {
@@ -82,7 +92,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
                     bundleFilters.difficulty == null &&
                     bundleFilters.title == ""
             if (check) return
-            mViewModel.filteredProjectList.observe(viewLifecycleOwner, {
+            mViewModel.filteredProjectList.observe(viewLifecycleOwner) {
                 if (it != null) {
                     Log.d("mainSearch", "filtered")
 
@@ -90,7 +100,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()
                 }
-            })
+            }
             mViewModel.getFilteredProjectList(bundleFilters)
             binding.btnDismissFilters.visibility = View.VISIBLE
         }

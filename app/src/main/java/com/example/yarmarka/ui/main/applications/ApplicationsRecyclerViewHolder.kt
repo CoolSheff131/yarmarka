@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.ApplicationListItemBinding
-import com.example.yarmarka.model.Participation
+import com.example.yarmarka.domain.model.Participation
 import com.example.yarmarka.ui.main.projects.OnProjectClickListener
 import com.example.yarmarka.utils.*
 

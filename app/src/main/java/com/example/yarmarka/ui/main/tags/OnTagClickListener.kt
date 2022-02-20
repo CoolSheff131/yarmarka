@@ -1,7 +1,6 @@
 package com.example.yarmarka.ui.main.tags
 
-import com.example.yarmarka.model.Project
-import com.example.yarmarka.model.Tag
+import com.example.yarmarka.domain.model.Tag
 
 interface OnTagClickListener {
 

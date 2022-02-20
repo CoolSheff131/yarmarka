@@ -1,6 +1,7 @@
 package com.example.yarmarka.ui.filters
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -13,11 +14,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.yarmarka.App
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentFiltersBinding
-import com.example.yarmarka.model.FilterObject
-import com.example.yarmarka.model.SupervisorName
-import com.example.yarmarka.model.Tag
+import com.example.yarmarka.domain.model.FilterObject
+import com.example.yarmarka.domain.model.SupervisorName
+import com.example.yarmarka.domain.model.Tag
 import com.example.yarmarka.ui.filters.supervisors.OnSupervisorClickListener
 import com.example.yarmarka.ui.filters.supervisors.SupervisorsRecyclerAdapter
 import com.example.yarmarka.ui.main.tags.OnTagClickListener
@@ -25,12 +27,14 @@ import com.example.yarmarka.ui.main.tags.TagsRecyclerDeletableAdapter
 import com.example.yarmarka.utils.addZeroToDate
 import com.example.yarmarka.utils.bundle
 import java.util.*
+import javax.inject.Inject
 
 class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListener {
 
     private val binding by viewBinding(FragmentFiltersBinding::bind)
 
-    private lateinit var mViewModel: FiltersViewModel
+    @Inject
+    lateinit var mViewModel: FiltersViewModel
 
     private var tags = listOf<Tag>()
     private val tagList = mutableListOf<Tag>()
@@ -57,6 +61,12 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
     var day_start = c.get(Calendar.DAY_OF_MONTH)
     var day_end = c.get(Calendar.DAY_OF_MONTH)
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        (requireActivity().application as App).appComponent.inject(this)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,7 +77,6 @@ class FiltersFragment : Fragment(), OnTagClickListener, OnSupervisorClickListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewModel = ViewModelProvider(this).get(FiltersViewModel::class.java)
         init()
         initListeners(view)
         loadData()

@@ -8,15 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.yarmarka.App
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentAccountBinding
-import com.example.yarmarka.model.Candidate
-import com.example.yarmarka.model.CandidateUpdate
-import com.example.yarmarka.model.Skill
+import com.example.yarmarka.domain.model.Candidate
+import com.example.yarmarka.domain.model.CandidateUpdate
+import com.example.yarmarka.domain.model.Skill
 import com.example.yarmarka.ui.account.dialog_quit.DialogQuit
 import com.example.yarmarka.ui.account.dialog_quit.OnQuitDialogClickedListener
 import com.example.yarmarka.ui.account.dialog_skills_choice.DialogSkills
@@ -24,12 +25,12 @@ import com.example.yarmarka.ui.account.dialog_skills_choice.OnSkillsDialogClicke
 import com.example.yarmarka.ui.account.skills.OnSkillClickListener
 import com.example.yarmarka.ui.account.skills.SkillsDeletableRecyclerAdapter
 import com.example.yarmarka.ui.account.skills.SkillsRecyclerAdapter
-import com.example.yarmarka.utils.bundle
 import com.example.yarmarka.utils.fm
 import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
+import javax.inject.Inject
 
 
 class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickListener,
@@ -37,7 +38,8 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
 
     private val binding by viewBinding(FragmentAccountBinding::bind)
 
-    private lateinit var mViewModel: AccountViewModel
+    @Inject
+    lateinit var mViewModel: AccountViewModel
 
     private lateinit var rootView: View
 
@@ -49,6 +51,12 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
     private var skillsToDelete = mutableListOf<Skill>()
 
     private var isEditing = false
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        (requireActivity().application as App).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -77,7 +85,6 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
         rcv.layoutManager = layoutManager
         rcv.adapter = mAdapter
         mAdapter.notifyDataSetChanged()
-        mViewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
         loadAccountData()
     }
 
@@ -150,12 +157,14 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
 
         binding.tvPhone.visibility = View.INVISIBLE
         var text = binding.tvPhone.text.toString()
-        binding.etPhone.setText(text
-            .replace("+7", "")
-            .replace("(", "")
-            .replace(")", "")
-            .replace("-", "")
-            .replace(" ", ""))
+        binding.etPhone.setText(
+            text
+                .replace("+7", "")
+                .replace("(", "")
+                .replace(")", "")
+                .replace("-", "")
+                .replace(" ", "")
+        )
         binding.etPhone.visibility = View.VISIBLE
 
         binding.btnAccountAddSkill.visibility = View.VISIBLE
@@ -193,8 +202,7 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
     }
 
     override fun onYesClicked() {
-        val preferences = (activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-            ?: null) as SharedPreferences
+        val preferences = activity?.getSharedPreferences("pref", Context.MODE_PRIVATE) as SharedPreferences
         val editor = preferences.edit()
         Log.d("AUTH", "UNAUTHED")
         editor.remove("token")
@@ -203,14 +211,13 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
     }
 
     private fun loadAccountData() {
-        mViewModel.accountData.observe(viewLifecycleOwner, {
+        mViewModel.accountData.observe(viewLifecycleOwner) {
             if (it != null) {
                 accountData = it
                 setAccountData(it)
             }
-        })
-        val preferences = (activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-            ?: null) as SharedPreferences
+        }
+        val preferences = activity?.getSharedPreferences("pref", Context.MODE_PRIVATE) as SharedPreferences
         val token = preferences.getString("token", "")
         if (token != "") {
             mViewModel.getAccountData(token!!) {}
@@ -243,8 +250,7 @@ class AccountFragment : Fragment(), OnQuitDialogClickedListener, OnSkillClickLis
     }
 
     private fun updateAccountInfo(ids: List<Int>?) {
-        val preferences = (activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-            ?: null) as SharedPreferences
+        val preferences = activity?.getSharedPreferences("pref", Context.MODE_PRIVATE) as SharedPreferences
         val token = preferences.getString("token", "")
         Log.d("testing", "$token")
         Log.d("testing", binding.etPhone.text.toString())

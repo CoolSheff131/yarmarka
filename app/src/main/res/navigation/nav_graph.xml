@@ -60,7 +60,7 @@
             app:destination="@id/accountFragment" />
         <argument
             android:name="Project"
-            app:argType="com.example.yarmarka.model.Project" />
+            app:argType="com.example.yarmarka.domain.model.Project" />
     </fragment>
     <fragment
         android:id="@+id/accountFragment"
@@ -103,7 +103,7 @@
             app:destination="@id/accountFragment" />
         <argument
             android:name="project"
-            app:argType="com.example.yarmarka.model.Project" />
+            app:argType="com.example.yarmarka.domain.model.Project" />
     </fragment>
     <fragment
         android:id="@+id/motivationFragment"

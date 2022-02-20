@@ -12,11 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.yarmarka.App
 import com.example.yarmarka.R
 import com.example.yarmarka.databinding.FragmentApplicationBinding
-import com.example.yarmarka.model.ParticipationCreate
-import com.example.yarmarka.model.Project
-import com.example.yarmarka.model.Skill
+import com.example.yarmarka.domain.model.ParticipationCreate
+import com.example.yarmarka.domain.model.Project
+import com.example.yarmarka.domain.model.Skill
 import com.example.yarmarka.ui.account.dialog_skills_choice.DialogSkills
 import com.example.yarmarka.ui.account.dialog_skills_choice.OnSkillsDialogClickedListener
 import com.example.yarmarka.ui.account.skills.OnSkillClickListener
@@ -26,13 +27,14 @@ import com.google.android.flexbox.AlignItems
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
 import com.google.android.flexbox.FlexboxLayoutManager
-import com.jakewharton.rxbinding2.widget.checked
+import javax.inject.Inject
 
 class ApplicationFragment : Fragment(), OnSkillClickListener, OnSkillsDialogClickedListener {
 
     private val binding by viewBinding(FragmentApplicationBinding::bind)
 
-    private lateinit var mViewModel: ApplicationViewModel
+    @Inject
+    lateinit var mViewModel: ApplicationViewModel
 
     private lateinit var mAdapter: SkillsDeletableRecyclerAdapter
 
@@ -40,6 +42,12 @@ class ApplicationFragment : Fragment(), OnSkillClickListener, OnSkillsDialogClic
     private var missingSkillsList = mutableListOf<Skill>()
 
     private var project: Project? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        (requireActivity().application as App).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +83,7 @@ class ApplicationFragment : Fragment(), OnSkillClickListener, OnSkillsDialogClic
             view.findNavController().popBackStack()
         }
 
-        mViewModel.studentSkills.observe(viewLifecycleOwner, {
+        mViewModel.studentSkills.observe(viewLifecycleOwner) {
             if (it != null) {
                 val layoutManager = FlexboxLayoutManager()
                 layoutManager.flexWrap = FlexWrap.WRAP
@@ -87,9 +95,9 @@ class ApplicationFragment : Fragment(), OnSkillClickListener, OnSkillsDialogClic
                 skillsList.clear()
                 skillsList.addAll(it)
             }
-        })
+        }
 
-        mViewModel.allSkills.observe(viewLifecycleOwner, {
+        mViewModel.allSkills.observe(viewLifecycleOwner) {
             if (it != null) {
                 val newMissings = mutableListOf<Skill>()
                 for (i in it) {
@@ -100,7 +108,7 @@ class ApplicationFragment : Fragment(), OnSkillClickListener, OnSkillsDialogClic
                 }
                 missingSkillsList = newMissings
             }
-        })
+        }
 
         binding.btnApplicationAddSkill.setOnClickListener {
             Log.d("application_skills", "$missingSkillsList}")
@@ -113,8 +121,7 @@ class ApplicationFragment : Fragment(), OnSkillClickListener, OnSkillsDialogClic
             } else {
                 binding.tvError.visibility = View.INVISIBLE
 
-                val preferences = (activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-                    ?: null) as SharedPreferences
+                val preferences = activity?.getSharedPreferences("pref", Context.MODE_PRIVATE) as SharedPreferences
                 val token = preferences.getString("token", "")
                 if (token != "") {
                     mViewModel.sendParticipationRequest(
@@ -134,8 +141,7 @@ class ApplicationFragment : Fragment(), OnSkillClickListener, OnSkillsDialogClic
     }
 
     private fun loadStudentSkills() {
-        val preferences = (activity?.getSharedPreferences("pref", Context.MODE_PRIVATE)
-            ?: null) as SharedPreferences
+        val preferences = activity?.getSharedPreferences("pref", Context.MODE_PRIVATE) as SharedPreferences
         val token = preferences.getString("token", "")
         if (token != "") {
             mViewModel.getStudentSkills(token!!)

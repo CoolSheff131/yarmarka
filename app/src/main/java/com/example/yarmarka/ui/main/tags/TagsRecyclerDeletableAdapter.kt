@@ -3,7 +3,7 @@ package com.example.yarmarka.ui.main.tags
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.yarmarka.model.Tag
+import com.example.yarmarka.domain.model.Tag
 
 class TagsRecyclerDeletableAdapter(
     private val tagsList: List<Tag>,
