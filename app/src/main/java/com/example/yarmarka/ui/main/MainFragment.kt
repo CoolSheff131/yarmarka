@@ -35,6 +35,7 @@ import javax.inject.Inject
 class MainFragment : Fragment(), OnProjectClickListener {
 
     private val binding by viewBinding(FragmentMainBinding::bind)
+    //animation
     lateinit var pgBar: SpinKitView
     @Inject
     lateinit var mViewModel: MainViewModel
