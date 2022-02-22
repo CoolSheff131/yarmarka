@@ -6,12 +6,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import by.kirich1409.viewbindingdelegate.internal.findRootView
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.yarmarka.App
 import com.example.yarmarka.R
@@ -21,6 +24,8 @@ import com.example.yarmarka.domain.model.Project
 import com.example.yarmarka.ui.main.projects.OnProjectClickListener
 import com.example.yarmarka.ui.main.projects.ProjectsRecyclerAdapter
 import com.example.yarmarka.utils.bundle
+import com.github.ybq.android.spinkit.SpinKitView
+import com.jakewharton.rxbinding2.view.enabled
 import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -30,12 +35,13 @@ import javax.inject.Inject
 class MainFragment : Fragment(), OnProjectClickListener {
 
     private val binding by viewBinding(FragmentMainBinding::bind)
-
+    lateinit var pgBar: SpinKitView
     @Inject
     lateinit var mViewModel: MainViewModel
 
     lateinit var mAdapter: ProjectsRecyclerAdapter
     private var page: Int = 1;
+
     //private var mCompositeDisposable: CompositeDisposable? = null
 
     override fun onAttach(context: Context) {
@@ -59,13 +65,17 @@ class MainFragment : Fragment(), OnProjectClickListener {
         init()
         initListeners(view)
         loadApiData()
+
+        //pgBar.visibility = View.GONE
     }
 
     private fun init() {
+        pgBar = activity?.findViewById(R.id.pgBar)!!
         mAdapter = ProjectsRecyclerAdapter(emptyList(), this, requireContext())
     }
 
     private fun loadApiData(searchPart: String? = null) {
+
         val bundleFilters = bundle?.getParcelable<FilterObject>("filters")
         bundleFilters?.title = searchPart
         Log.d("mainSearch", "===========$bundleFilters")
@@ -74,6 +84,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
                 if (it != null && it.data.size != 0) {
                     Log.d("mainSearch", "mere")
                     val col = mAdapter.getList().toMutableList()
+                    pgBar.visibility = View.GONE
                     col.addAll(it.data)
                     mAdapter = ProjectsRecyclerAdapter(col, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
@@ -95,7 +106,7 @@ class MainFragment : Fragment(), OnProjectClickListener {
             mViewModel.filteredProjectList.observe(viewLifecycleOwner) {
                 if (it != null) {
                     Log.d("mainSearch", "filtered")
-
+                    pgBar.visibility = View.GONE
                     mAdapter = ProjectsRecyclerAdapter(it.data, this, requireContext())
                     binding.rcvMainAllProjects.adapter = mAdapter
                     mAdapter.notifyDataSetChanged()

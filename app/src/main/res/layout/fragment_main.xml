@@ -110,5 +110,19 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_dismiss_filters"
         tools:listitem="@layout/card_list_item" />
 
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/pgBar"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/light_grey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rcv_main_all_projects"
+        app:layout_constraintVertical_bias="0.426" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
